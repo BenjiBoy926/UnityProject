@@ -49,12 +49,12 @@ public class PlayerStateMachine : StateMachine
         MovementVectorChanged();
     }
 
-    public void Move(Vector2 direction)
+    public void TurnTowardsDirection(Vector2 direction)
     {
-        Vector3 translation = new Vector3(direction.x, 0, direction.y) * _stats.MoveSpeed * DeltaTime;
-        Vector3 newPosition = _rigidbody.position + translation;
-        Quaternion newRotation = Quaternion.LookRotation(translation);
-        _rigidbody.Move(newPosition, newRotation);
+        Vector3 direction3D = new Vector3(direction.x, 0, direction.y); 
+        Quaternion targetRotation = Quaternion.LookRotation(direction3D);
+        Quaternion nextRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _stats.MaxDegreeTurnPerSecond * DeltaTime);
+        transform.rotation = nextRotation;
     }
     public void BlendTowardsIdleAnimation()
     {

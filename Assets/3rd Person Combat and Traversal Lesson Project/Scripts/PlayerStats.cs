@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "3rd Person/Player Stats")]
 public class PlayerStats : ScriptableObject
 {
-    public float MoveSpeed => _moveSpeed;
+    public float MaxDegreeTurnPerSecond => 180 / _timeToTurnAround;
 
     [SerializeField]
-    private float _moveSpeed = 5;
+    private float _timeToTurnAround = 0.5f;
 }

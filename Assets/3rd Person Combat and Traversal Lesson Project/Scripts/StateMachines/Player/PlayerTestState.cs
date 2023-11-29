@@ -19,7 +19,7 @@ public class PlayerTestState : PlayerState
     {
         if (_isMovementVectorNonZero)
         {
-            Machine.Move(Machine.MovementVector);
+            Machine.TurnTowardsDirection(Machine.MovementVector);
             Machine.BlendTowardsWalkingAnimation();
         }
         else
