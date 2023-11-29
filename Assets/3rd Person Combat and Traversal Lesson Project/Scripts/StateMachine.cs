@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
+    // Codey: use this public property in case we want to change to using some other delta liked fixedDeltaTime
+    public float DeltaTime => Time.deltaTime;
+
     private IState _currentState;
 
     protected virtual void Awake()
@@ -31,6 +34,6 @@ public class StateMachine : MonoBehaviour
     }
     private void Update()
     {
-        _currentState.Tick(Time.deltaTime);
+        _currentState.Tick();
     }
 }

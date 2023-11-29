@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerTestState : PlayerState
 {
     private string _name;
+    private bool _isMovementVectorNonZero;
 
     public PlayerTestState(PlayerStateMachine machine, string name) : base(machine) 
     { 
@@ -11,14 +12,32 @@ public class PlayerTestState : PlayerState
 
     public override void Enter()
     {
-        Debug.Log($"Entered the test state: {_name}");
+        Machine.MovementVectorChanged += OnMovementVectorChanged;
+        RefreshIsMovementVectorNonZero();
     }
-    public override void Tick(float deltaTime)
+    public override void Tick()
     {
-
+        if (_isMovementVectorNonZero)
+        {
+            Machine.Move(Machine.MovementVector);
+            Machine.BlendTowardsWalkingAnimation();
+        }
+        else
+        {
+            Machine.BlendTowardsIdleAnimation();
+        }
     }
     public override void Exit()
     {
-        Debug.Log($"Exited the test state: {_name}");
+        Machine.MovementVectorChanged -= OnMovementVectorChanged;
+    }
+
+    private void OnMovementVectorChanged()
+    {
+        RefreshIsMovementVectorNonZero();
+    }
+    private void RefreshIsMovementVectorNonZero()
+    {
+        _isMovementVectorNonZero = Machine.IsMovementVectorNonZero;
     }
 }

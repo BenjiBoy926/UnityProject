@@ -6,8 +6,12 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
 {
     public event Action Jumped = delegate { };
     public event Action Dodged = delegate { };
-    public event Action Moved = delegate { };
+    public event Action MoveVectorChanged = delegate { };
 
+    public bool IsMovementVectorNonZero => _movementVector.magnitude > 0;
+    public Vector2 MovementVector => _movementVector;
+
+    private Vector2 _movementVector;
     private DefaultControls _controls;
 
     private void Awake()
@@ -39,6 +43,7 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        Moved();
+        _movementVector = context.ReadValue<Vector2>();
+        MoveVectorChanged();
     }
 }

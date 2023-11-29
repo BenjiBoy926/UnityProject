@@ -28,6 +28,15 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
             ""id"": ""37ad12d7-e28e-4b40-b72e-8b42d7e65025"",
             ""actions"": [
                 {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""e7be9b33-6ff2-4575-be85-59f50b767434"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f25c099a-0ab4-47e4-b7da-c229db670220"",
@@ -40,15 +49,6 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                     ""name"": ""Dodge"",
                     ""type"": ""Button"",
                     ""id"": ""abbf5cc0-dac7-4bff-a1f9-bb9c2af5dd1b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Button"",
-                    ""id"": ""e7be9b33-6ff2-4575-be85-59f50b767434"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -102,14 +102,124 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2759922c-3187-4854-a197-6d5710e9bfaf"",
-                    ""path"": """",
+                    ""id"": ""062e5e23-0fcf-4202-98fa-410b63d127d1"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""eccc4067-5360-4f84-abb9-30eb5d964dad"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""76065784-bf1a-4c52-a708-9e494ee25638"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1056bd94-13fd-4928-950a-ee83d8132341"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5491c933-a6b6-4a06-8adc-6b838e846fec"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0535df9b-9a35-4670-aca9-0839a4ec8e70"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrow Keys"",
+                    ""id"": ""5ef251bc-5f13-4742-994b-7b1f55ad5d62"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""948533a3-0edb-4fa0-b9c5-9fdf0619b1a9"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9966c871-14c5-4981-970f-ea58e0329a6e"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b578eba7-4805-4f11-98f4-341e96e324d6"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""449f9a3e-101f-444f-849b-3d6ad799dd60"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -146,9 +256,9 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -210,16 +320,16 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dodge;
-    private readonly InputAction m_Player_Move;
     public struct PlayerActions
     {
         private @DefaultControls m_Wrapper;
         public PlayerActions(@DefaultControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
-        public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -229,28 +339,28 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -288,8 +398,8 @@ public partial class @DefaultControls: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
+        void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
     }
 }
