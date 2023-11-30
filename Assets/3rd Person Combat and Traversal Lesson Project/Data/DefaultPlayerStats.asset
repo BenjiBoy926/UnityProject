@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7487124b108879249b4fd79b939ee40f, type: 3}
   m_Name: DefaultPlayerStats
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _timeToTurnAround: 0.25

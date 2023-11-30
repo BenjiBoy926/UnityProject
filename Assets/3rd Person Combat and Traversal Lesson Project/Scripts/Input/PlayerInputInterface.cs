@@ -46,4 +46,8 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
         _movementVector = context.ReadValue<Vector2>();
         MoveVectorChanged();
     }
+    public void OnLook(InputAction.CallbackContext context)
+    {
+
+    }
 }
