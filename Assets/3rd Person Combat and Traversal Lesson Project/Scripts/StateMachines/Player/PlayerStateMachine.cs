@@ -15,11 +15,13 @@ public class PlayerStateMachine : StateMachine
     [SerializeField]
     private PlayerInputInterface _input;
     [SerializeField]
-    private Rigidbody _rigidbody;
+    private Transform _body;
     [SerializeField]
     private PlayerStats _stats;
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private Transform _cameraTransform;
 
     protected override void Awake()
     {
@@ -51,11 +53,19 @@ public class PlayerStateMachine : StateMachine
 
     public void TurnTowardsDirection(Vector2 direction)
     {
-        Vector3 direction3D = new Vector3(direction.x, 0, direction.y); 
+        Vector3 direction3D = ConvertAnalogDirectionToWorldDirection(direction);
         Quaternion targetRotation = Quaternion.LookRotation(direction3D);
-        Quaternion nextRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _stats.MaxDegreeTurnPerSecond * DeltaTime);
-        transform.rotation = nextRotation;
+        Quaternion nextRotation = Quaternion.RotateTowards(_body.rotation, targetRotation, _stats.MaxDegreeTurnPerSecond * DeltaTime);
+        _body.rotation = nextRotation;
     }
+    private Vector3 ConvertAnalogDirectionToWorldDirection(Vector2 analog)
+    {
+        Vector3 world = new Vector3(analog.x, 0, analog.y);
+        world = _cameraTransform.TransformDirection(world);
+        world.y = 0;
+        return world;
+    }
+
     public void BlendTowardsIdleAnimation()
     {
         _animator.SetFloat(FreeLookSpeedAnimatorParameterName, 0, 0.1f, DeltaTime);
