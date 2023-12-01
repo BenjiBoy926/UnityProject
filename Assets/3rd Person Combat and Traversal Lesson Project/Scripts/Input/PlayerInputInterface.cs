@@ -50,4 +50,8 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
     {
 
     }
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+
+    }
 }

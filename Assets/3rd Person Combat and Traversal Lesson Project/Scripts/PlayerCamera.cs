@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    private Vector3 TargetPosition => _cameraTarget.TransformPoint(_followOffset);
+    private Vector3 TargetPosition => _cameraTarget.position + _followOffset;
 
     [SerializeField]
     private Transform _cameraTarget;
@@ -25,6 +25,6 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, TargetPosition, _maxFollowDistancePerSecond * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, TargetPosition, _maxFollowDistancePerSecond * Time.deltaTime);
     }
 }

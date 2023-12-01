@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    private const string FreeLookSpeedAnimatorParameterName = "FreeLookSpeed";
+    private readonly int FreeLookSpeedAnimatorHash = Animator.StringToHash("FreeLookSpeed");
 
     public event Action Jumped = delegate { };
     public event Action Dodged = delegate { };
@@ -29,7 +29,7 @@ public class PlayerStateMachine : StateMachine
         _input.Jumped += OnJump;
         _input.Dodged += OnDodge;
         _input.MoveVectorChanged += OnMovementVectorChanged;
-        SetState(new PlayerTestState(this, "Move"));
+        SetState(new PlayerFreeLookState(this));
     }
     private void OnDestroy()
     {
@@ -68,10 +68,10 @@ public class PlayerStateMachine : StateMachine
 
     public void BlendTowardsIdleAnimation()
     {
-        _animator.SetFloat(FreeLookSpeedAnimatorParameterName, 0, 0.1f, DeltaTime);
+        _animator.SetFloat(FreeLookSpeedAnimatorHash, 0, _stats.IdleToWalkTransitionTime, DeltaTime);
     }
     public void BlendTowardsWalkingAnimation()
     {
-        _animator.SetFloat(FreeLookSpeedAnimatorParameterName, 1, 0.1f, DeltaTime);
+        _animator.SetFloat(FreeLookSpeedAnimatorHash, 1, _stats.IdleToWalkTransitionTime, DeltaTime);
     }
 }

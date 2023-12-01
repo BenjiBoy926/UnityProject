@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DefaultPlayerStats
   m_EditorClassIdentifier: 
   _timeToTurnAround: 0.5
+  _idleToWalkTransitionTime: 0.5
