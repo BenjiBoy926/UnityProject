@@ -25,6 +25,6 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, TargetPosition, _maxFollowDistancePerSecond * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, TargetPosition, _maxFollowDistancePerSecond * Time.deltaTime);
     }
 }
