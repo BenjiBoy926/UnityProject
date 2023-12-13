@@ -7,12 +7,15 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
     public event Action Jumped = delegate { };
     public event Action Dodged = delegate { };
     public event Action MoveVectorChanged = delegate { };
+    public event Action AttackBuffered = delegate { };
 
     public bool IsMovementVectorNonZero => _movementVector.magnitude > 0;
     public Vector2 MovementVector => _movementVector;
+    public bool IsAttackBuffered => _attackBuffer.IsAttackBuffered;
 
     private Vector2 _movementVector;
     private DefaultControls _controls;
+    private AttackBuffer _attackBuffer;
 
     private void Awake()
     {
@@ -53,5 +56,18 @@ public class PlayerInputInterface : MonoBehaviour, DefaultControls.IPlayerAction
     public void OnZoom(InputAction.CallbackContext context)
     {
 
+    }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _attackBuffer.BufferAttack();
+            AttackBuffered();
+        }
+    }
+
+    public void ClearAttackBuffer()
+    {
+        _attackBuffer.Clear();
     }
 }

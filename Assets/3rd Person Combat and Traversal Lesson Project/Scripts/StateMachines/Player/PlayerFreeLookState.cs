@@ -12,10 +12,16 @@ public class PlayerFreeLookState : PlayerState
     public override void Enter()
     {
         Machine.MovementVectorChanged += OnMovementVectorChanged;
+        Machine.BlendToFreeLookAnimation(0.1f);
         RefreshIsMovementVectorNonZero();
     }
     public override void Tick()
     {
+        if (Machine.IsAttackBuffered)
+        {
+            Machine.SetState(new PlayerAttackingState(Machine, 0));
+            return;
+        }
         if (_isMovementVectorNonZero)
         {
             Machine.TurnTowardsDirection(Machine.MovementVector);

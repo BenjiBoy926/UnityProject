@@ -9,7 +9,6 @@ public class Targeter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"On trigger enter: {other}");
         if (other.TryGetComponent(out Target target))
         {
             targets.Add(target);

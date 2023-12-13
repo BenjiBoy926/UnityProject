@@ -14,3 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToTurnAround: 0.5
   _idleToWalkTransitionTime: 0.5
+  _attackCombo:
+  - _animationName: Male Attack 1
+    _transitionDuration: 0.1
+    _duration: 0.9
+  - _animationName: Male Attack 2
+    _transitionDuration: 0.1
+    _duration: 0.9
+  - _animationName: Male Attack 3
+    _transitionDuration: 0.1
+    _duration: 0.9
+  _attackTransitionTime: 0.1

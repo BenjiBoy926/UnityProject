@@ -8,9 +8,12 @@ public class PlayerStateMachine : StateMachine
     public event Action Jumped = delegate { };
     public event Action Dodged = delegate { };
     public event Action MovementVectorChanged = delegate { };
+    public event Action AttackBuffered = delegate { };
 
     public bool IsMovementVectorNonZero => _input.IsMovementVectorNonZero;
     public Vector2 MovementVector => _input.MovementVector;
+    public bool IsAttackBuffered => _input.IsAttackBuffered;
+    public int ComboLength => _stats.ComboLength;
 
     [SerializeField]
     private PlayerInputInterface _input;
@@ -29,6 +32,7 @@ public class PlayerStateMachine : StateMachine
         _input.Jumped += OnJump;
         _input.Dodged += OnDodge;
         _input.MoveVectorChanged += OnMovementVectorChanged;
+        _input.AttackBuffered += OnAttackBuffered;
         SetState(new PlayerFreeLookState(this));
     }
     private void OnDestroy()
@@ -36,6 +40,7 @@ public class PlayerStateMachine : StateMachine
         _input.Jumped -= OnJump;
         _input.Dodged -= OnDodge;
         _input.MoveVectorChanged -= OnMovementVectorChanged;
+        _input.AttackBuffered -= OnAttackBuffered;
     }
 
     private void OnJump()
@@ -49,6 +54,10 @@ public class PlayerStateMachine : StateMachine
     private void OnMovementVectorChanged()
     {
         MovementVectorChanged();
+    }
+    private void OnAttackBuffered()
+    {
+        AttackBuffered();
     }
 
     public void TurnTowardsDirection(Vector2 direction)
@@ -73,5 +82,23 @@ public class PlayerStateMachine : StateMachine
     public void BlendTowardsWalkingAnimation()
     {
         _animator.SetFloat(FreeLookSpeedAnimatorHash, 1, _stats.IdleToWalkTransitionTime, DeltaTime);
+    }
+    public void BlendToFreeLookAnimation(float time)
+    {
+        _animator.CrossFadeInFixedTime("FreeLookBlendTree", time);
+    }
+    public void BlendToAttackAnimation(int attackIndex)
+    {
+        string name = _stats.GetAttack(attackIndex).AnimationName;
+        _animator.CrossFadeInFixedTime(name, _stats.AttackTransitionTime);
+    }
+
+    public void ClearAttackBuffer()
+    {
+        _input.ClearAttackBuffer();
+    }
+    public AttackInfo GetAttack(int index)
+    {
+        return _stats.GetAttack(index);
     }
 }
