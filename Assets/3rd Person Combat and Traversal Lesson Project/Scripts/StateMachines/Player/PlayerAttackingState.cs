@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerAttackingState : PlayerState
 {
     private float ElapsedTime => Time.time - _startTime;
+    private int NextAttackIndex => _attackIndex + 1;
+    private bool HasNextAttack => NextAttackIndex < Machine.ComboLength;
 
     private int _attackIndex;
     private AttackInfo _attack;
@@ -22,21 +24,18 @@ public class PlayerAttackingState : PlayerState
     }
     public override void Tick()
     {
+        if (ElapsedTime > _attack.TimeBeforeNextAttack && Machine.IsAttackBuffered && HasNextAttack)
+        {
+            Machine.SetState(new PlayerAttackingState(Machine, NextAttackIndex));
+        }
         if (ElapsedTime > _attack.TotalDuration)
-        {
-            HandleAttackEnd();
-        }
-    }
-    private void HandleAttackEnd()
-    {
-        if (Machine.IsAttackBuffered)
-        {
-            Machine.SetState(new PlayerAttackingState(Machine, _attackIndex + 1));
-        }
-        else
         {
             Machine.SetState(new PlayerFreeLookState(Machine));
         }
+    }
+    private bool ShouldTransitionToNextAttack()
+    {
+        return ElapsedTime > _attack.TimeBeforeNextAttack && Machine.IsAttackBuffered && HasNextAttack;
     }
 
     public override void Exit()

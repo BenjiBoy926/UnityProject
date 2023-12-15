@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    private readonly int FreeLookSpeedAnimatorHash = Animator.StringToHash("FreeLookSpeed");
+    private readonly int FreeLookSpeedPropertyHash = Animator.StringToHash("FreeLookSpeed");
+    private readonly int FreeLookStateHash = Animator.StringToHash("FreeLookBlendTree");
 
     public event Action Jumped = delegate { };
     public event Action Dodged = delegate { };
@@ -77,20 +78,20 @@ public class PlayerStateMachine : StateMachine
 
     public void BlendTowardsIdleAnimation()
     {
-        _animator.SetFloat(FreeLookSpeedAnimatorHash, 0, _stats.IdleToWalkTransitionTime, DeltaTime);
+        _animator.SetFloat(FreeLookSpeedPropertyHash, 0, _stats.IdleToWalkTransitionTime, DeltaTime);
     }
     public void BlendTowardsWalkingAnimation()
     {
-        _animator.SetFloat(FreeLookSpeedAnimatorHash, 1, _stats.IdleToWalkTransitionTime, DeltaTime);
+        _animator.SetFloat(FreeLookSpeedPropertyHash, 1, _stats.IdleToWalkTransitionTime, DeltaTime);
     }
-    public void BlendToFreeLookAnimation(float time)
+    public void BlendToFreeLookAnimationState(float time)
     {
-        _animator.CrossFadeInFixedTime("FreeLookBlendTree", time);
+        _animator.CrossFadeInFixedTime(FreeLookStateHash, time);
     }
     public void BlendToAttackAnimation(int attackIndex)
     {
-        string name = _stats.GetAttack(attackIndex).AnimationName;
-        _animator.CrossFadeInFixedTime(name, _stats.AttackTransitionTime);
+        AttackInfo attack = _stats.GetAttack(attackIndex);
+        _animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
     }
 
     public void ClearAttackBuffer()

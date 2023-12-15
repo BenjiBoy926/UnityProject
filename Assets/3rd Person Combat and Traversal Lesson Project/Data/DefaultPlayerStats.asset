@@ -17,11 +17,14 @@ MonoBehaviour:
   _attackCombo:
   - _animationName: Male Attack 1
     _transitionDuration: 0.1
-    _duration: 0.9
+    _animationDuration: 0.7
+    _timeBeforeNextAttack: 0.5
   - _animationName: Male Attack 2
     _transitionDuration: 0.1
-    _duration: 0.9
+    _animationDuration: 0.7
+    _timeBeforeNextAttack: 0.5
   - _animationName: Male Attack 3
     _transitionDuration: 0.1
-    _duration: 0.9
+    _animationDuration: 0.7
+    _timeBeforeNextAttack: 0.5
   _attackTransitionTime: 0.1
