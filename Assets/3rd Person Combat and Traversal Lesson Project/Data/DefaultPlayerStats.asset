@@ -19,12 +19,18 @@ MonoBehaviour:
     _transitionDuration: 0.1
     _animationDuration: 0.7
     _timeBeforeNextAttack: 0.5
+    _timeOfAttackLeap: 0.1
+    _leapSpeed: 7
   - _animationName: Male Attack 2
     _transitionDuration: 0.1
     _animationDuration: 0.7
     _timeBeforeNextAttack: 0.5
+    _timeOfAttackLeap: 0.1
+    _leapSpeed: 7
   - _animationName: Male Attack 3
     _transitionDuration: 0.1
     _animationDuration: 0.7
     _timeBeforeNextAttack: 0.5
+    _timeOfAttackLeap: 0.1
+    _leapSpeed: 7
   _attackTransitionTime: 0.1

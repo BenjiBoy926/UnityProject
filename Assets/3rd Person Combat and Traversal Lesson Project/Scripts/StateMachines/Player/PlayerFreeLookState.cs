@@ -13,6 +13,7 @@ public class PlayerFreeLookState : PlayerState
     {
         Machine.MovementVectorChanged += OnMovementVectorChanged;
         Machine.BlendToFreeLookAnimationState(0.1f);
+        Machine.SetRootMotionActive(true);
         RefreshIsMovementVectorNonZero();
     }
     public override void Tick()
@@ -24,7 +25,7 @@ public class PlayerFreeLookState : PlayerState
         }
         if (_isMovementVectorNonZero)
         {
-            Machine.TurnTowardsDirection(Machine.MovementVector);
+            Machine.TurnTowardsDirection(Machine.WorldMovementVector, Machine.TimeToTurnAroundWhileWalking);
             Machine.BlendTowardsWalkingAnimation();
         }
         else
