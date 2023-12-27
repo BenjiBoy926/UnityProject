@@ -1,0 +1,54 @@
+{
+    "name": "GravityToyActions",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "e934f2e9-b7c9-423b-b88e-cc8ebfc59960",
+            "actions": [
+                {
+                    "name": "IsGravityActive",
+                    "type": "Value",
+                    "id": "471d0f9f-1ba2-4b19-af3c-c1433a51d8c1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "GravityMove",
+                    "type": "Value",
+                    "id": "392fe2db-07f9-463c-b68f-960c1a58b7c3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b3a55255-197f-48c4-b977-3a7b7af48e07",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsGravityActive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9cca2fe6-6529-45ad-9d4e-8e6e3c538c0e",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GravityMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
