@@ -6,16 +6,19 @@ using UnityEngine.InputSystem;
 
 namespace GravityToy
 {
-    public class InputInterface : MonoBehaviour, GravityToyActions.IDefaultActions
+    public class Player : MonoBehaviour, GravityToyActions.IDefaultActions
     {
-        public Vector3 WorldGravityPosition => _mouseConversionCamera.ScreenToWorldPoint(_gravityPosition);
+        public Vector3 WorldGravityPosition => _mouseConversionCamera.ScreenToWorldPoint(_inputGravityPosition);
         public bool IsGravityActive => _isGravityActive;
 
         [SerializeField]
         private Camera _mouseConversionCamera;
-        private GravityToyActions _actions;
-        private Vector2 _gravityPosition;
+        [SerializeField]
+        private GravityWell _well;
+        [SerializeField]
         private bool _isGravityActive;
+        private Vector2 _inputGravityPosition;
+        private GravityToyActions _actions;
 
         public event Action GravityIsActiveChanged = delegate { };
         public event Action GravityPositionChanged = delegate { };
@@ -28,6 +31,7 @@ namespace GravityToy
         private void OnEnable()
         {
             _actions.Enable();
+            ReflectIsGravityActive();
         }
         private void OnDisable()
         {
@@ -44,12 +48,17 @@ namespace GravityToy
             {
                 _isGravityActive = false;
             }
-            GravityIsActiveChanged();
+            ReflectIsGravityActive();
         }
         public void OnGravityPosition(InputAction.CallbackContext context)
         {
-            _gravityPosition = context.ReadValue<Vector2>();
-            GravityPositionChanged();
+            _inputGravityPosition = context.ReadValue<Vector2>();
+            _well.MoveTo(WorldGravityPosition);
+        }
+
+        private void ReflectIsGravityActive()
+        {
+            _well.SetIsEnabled(_isGravityActive);
         }
     }
 }

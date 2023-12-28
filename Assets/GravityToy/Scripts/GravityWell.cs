@@ -14,8 +14,13 @@ namespace GravityToy
         [SerializeField]
         private List<GravityReceiver> _receivers;
 
+        public void SetIsEnabled(bool isEnabled)
+        {
+            enabled = isEnabled;
+        }
         public void MoveTo(Vector3 position)
         {
+            position.z = 0;
             transform.position = position;
         }
 
