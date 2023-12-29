@@ -130,6 +130,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "64b3b71c-2262-46b2-a5d4-67d55eaa5a97",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recoil",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "AD",
                     "id": "9cef8efd-9411-451d-967d-7f22dafb120d",
                     "path": "1DAxis",
