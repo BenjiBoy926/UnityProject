@@ -108,6 +108,18 @@ MonoBehaviour:
   _reticle: {fileID: 7817157004503400808}
   _attackGun: {fileID: 5239316253178560197}
   _recoilGun: {fileID: 1335316309907310390}
+  _legs: {fileID: 7309188202861355296}
+--- !u!114 &7309188202861355296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2486581162167573171, guid: 5f3776c805d4d3942b85e44e73914c16, type: 3}
+  m_PrefabInstance: {fileID: 5182921434601356179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484092977955799208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc400a3c535f17418a15f0a058afc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7817157004503400808 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3139415163766717179, guid: 5f3776c805d4d3942b85e44e73914c16, type: 3}

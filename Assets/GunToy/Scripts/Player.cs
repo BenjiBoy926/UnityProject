@@ -15,6 +15,8 @@ namespace GunToy
         private AttackGun _attackGun;
         [SerializeField]
         private RecoilGun _recoilGun;
+        [SerializeField]
+        private HeroLegs _legs;
         private GunToyActions _actions;
 
         private void Awake()
@@ -33,7 +35,8 @@ namespace GunToy
 
         public void OnMove(InputAction.CallbackContext context)
         {
-
+            float direction = context.ReadValue<float>();
+            _legs.SetCurrentMoveDirection(direction);
         }
         public void OnAimPoint(InputAction.CallbackContext context)
         {
