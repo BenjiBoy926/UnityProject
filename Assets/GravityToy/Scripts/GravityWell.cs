@@ -18,6 +18,10 @@ namespace GravityToy
         {
             enabled = isEnabled;
         }
+        public void Shift(Vector3 shift)
+        {
+            transform.Translate(shift);
+        }
         public void MoveTo(Vector3 position)
         {
             position.z = 0;

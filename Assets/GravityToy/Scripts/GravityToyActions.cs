@@ -44,6 +44,15 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GravityMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""5248b3a8-ad93-449f-ab24-819b7b647499"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,116 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
                     ""action"": ""GravityPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""6ad44771-d845-4194-b0e8-a74b299a8a3d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ae5f9299-47d4-46cd-82f1-5c4561f000f6"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8f34278d-9486-4acd-b7e8-cb5d1453bc96"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""58af513b-5599-4741-99ca-a2246ed36670"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""df9a9896-58d0-4d4c-902d-3c33d96f6a96"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrow Keys"",
+                    ""id"": ""ffe764ee-e4ec-4a39-b34e-3bc63375042f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e3d284ff-e537-4ed3-99fd-036584ba7f27"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3909c019-c088-4b9a-adf2-4b8d723e7112"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""66c871b7-7b69-40b2-b6d7-8061ee2621c1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""11657fcb-8ce4-4cf6-90c0-6b4637b34feb"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravityMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -78,6 +197,7 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_IsGravityActive = m_Default.FindAction("IsGravityActive", throwIfNotFound: true);
         m_Default_GravityPosition = m_Default.FindAction("GravityPosition", throwIfNotFound: true);
+        m_Default_GravityMove = m_Default.FindAction("GravityMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +261,14 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
     private List<IDefaultActions> m_DefaultActionsCallbackInterfaces = new List<IDefaultActions>();
     private readonly InputAction m_Default_IsGravityActive;
     private readonly InputAction m_Default_GravityPosition;
+    private readonly InputAction m_Default_GravityMove;
     public struct DefaultActions
     {
         private @GravityToyActions m_Wrapper;
         public DefaultActions(@GravityToyActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @IsGravityActive => m_Wrapper.m_Default_IsGravityActive;
         public InputAction @GravityPosition => m_Wrapper.m_Default_GravityPosition;
+        public InputAction @GravityMove => m_Wrapper.m_Default_GravityMove;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +284,9 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
             @GravityPosition.started += instance.OnGravityPosition;
             @GravityPosition.performed += instance.OnGravityPosition;
             @GravityPosition.canceled += instance.OnGravityPosition;
+            @GravityMove.started += instance.OnGravityMove;
+            @GravityMove.performed += instance.OnGravityMove;
+            @GravityMove.canceled += instance.OnGravityMove;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -172,6 +297,9 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
             @GravityPosition.started -= instance.OnGravityPosition;
             @GravityPosition.performed -= instance.OnGravityPosition;
             @GravityPosition.canceled -= instance.OnGravityPosition;
+            @GravityMove.started -= instance.OnGravityMove;
+            @GravityMove.performed -= instance.OnGravityMove;
+            @GravityMove.canceled -= instance.OnGravityMove;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -193,5 +321,6 @@ public partial class @GravityToyActions: IInputActionCollection2, IDisposable
     {
         void OnIsGravityActive(InputAction.CallbackContext context);
         void OnGravityPosition(InputAction.CallbackContext context);
+        void OnGravityMove(InputAction.CallbackContext context);
     }
 }

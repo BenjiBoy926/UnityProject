@@ -17,6 +17,10 @@ namespace GravityToy
         private GravityWell _well;
         [SerializeField]
         private bool _isGravityActive;
+        [SerializeField]
+        private float _moveSpeed = 5;
+        [SerializeField]
+        private Vector2 _gravityInputMovement;
         private Vector2 _inputGravityPosition;
         private GravityToyActions _actions;
 
@@ -37,6 +41,10 @@ namespace GravityToy
         {
             _actions.Disable();
         }
+        private void Update()
+        {
+            _well.Shift(_gravityInputMovement * _moveSpeed * Time.deltaTime);
+        }
 
         public void OnIsGravityActive(InputAction.CallbackContext context)
         {
@@ -54,6 +62,10 @@ namespace GravityToy
         {
             _inputGravityPosition = context.ReadValue<Vector2>();
             _well.MoveTo(WorldGravityPosition);
+        }
+        public void OnGravityMove(InputAction.CallbackContext context)
+        {
+            _gravityInputMovement = context.ReadValue<Vector2>();
         }
 
         private void ReflectIsGravityActive()
