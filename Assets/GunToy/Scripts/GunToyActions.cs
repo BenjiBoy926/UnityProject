@@ -62,6 +62,15 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7482f2b0-0f41-4f0c-92bd-2ff3be608a73"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bba0346-c9ac-439f-b304-0685d1c98d6a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
         m_Default_AimPoint = m_Default.FindAction("AimPoint", throwIfNotFound: true);
         m_Default_AimDirection = m_Default.FindAction("AimDirection", throwIfNotFound: true);
         m_Default_Recoil = m_Default.FindAction("Recoil", throwIfNotFound: true);
+        m_Default_Attack = m_Default.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_AimPoint;
     private readonly InputAction m_Default_AimDirection;
     private readonly InputAction m_Default_Recoil;
+    private readonly InputAction m_Default_Attack;
     public struct DefaultActions
     {
         private @GunToyActions m_Wrapper;
@@ -259,6 +281,7 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
         public InputAction @AimPoint => m_Wrapper.m_Default_AimPoint;
         public InputAction @AimDirection => m_Wrapper.m_Default_AimDirection;
         public InputAction @Recoil => m_Wrapper.m_Default_Recoil;
+        public InputAction @Attack => m_Wrapper.m_Default_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +303,9 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
             @Recoil.started += instance.OnRecoil;
             @Recoil.performed += instance.OnRecoil;
             @Recoil.canceled += instance.OnRecoil;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -296,6 +322,9 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
             @Recoil.started -= instance.OnRecoil;
             @Recoil.performed -= instance.OnRecoil;
             @Recoil.canceled -= instance.OnRecoil;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -319,5 +348,6 @@ public partial class @GunToyActions: IInputActionCollection2, IDisposable
         void OnAimPoint(InputAction.CallbackContext context);
         void OnAimDirection(InputAction.CallbackContext context);
         void OnRecoil(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

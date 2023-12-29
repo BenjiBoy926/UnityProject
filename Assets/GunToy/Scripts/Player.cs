@@ -56,5 +56,12 @@ namespace GunToy
                 _recoilGun.Fire();
             }
         }
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _attackGun.Fire();
+            }
+        }
     }
 }
