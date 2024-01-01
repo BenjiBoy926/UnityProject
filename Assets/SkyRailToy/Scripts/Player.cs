@@ -40,7 +40,14 @@ namespace SkyRailToy
         }
         public void OnJump(InputAction.CallbackContext context)
         {
-            _hero.StartJumping();
+            if (context.performed)
+            {
+                _hero.StartJumping();
+            }
+            if (context.canceled)
+            {
+                _hero.StopJumping();
+            }
         }
         public void OnFire(InputAction.CallbackContext context)
         {
