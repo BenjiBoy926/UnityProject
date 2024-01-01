@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace SkyRailToy
 {
     public class Hero : MonoBehaviour
     {
+        public float TimeSinceJumpStart => Time.time - _timeOfJumpStart;
+
         [SerializeField]
         private HeroStats _stats;
         [SerializeField]
@@ -15,6 +18,17 @@ namespace SkyRailToy
         private bool _isJumping;
         private float _timeOfJumpStart;
 
+        [Button("Start Jumping")]
+        public void StartJumping()
+        {
+            _isJumping = true;
+            _timeOfJumpStart = Time.time;
+        }
+        public void StopJumping()
+        {
+            _isJumping = false;
+        }
+
         private void Update()
         {
             UpdateLateralMovement();
@@ -22,13 +36,25 @@ namespace SkyRailToy
         }
         private void UpdateLateralMovement()
         {
-            Vector2 currentVelocity = _rigidbody.velocity;
-            currentVelocity.x = _lateralDirection * _stats.MoveSpeed;
-            _rigidbody.velocity = currentVelocity;
+            SetVelocityAlongAxis(_lateralDirection * _stats.MoveSpeed, 0);
         }
         private void UpdateJump()
         {
-
+            if (!_isJumping)
+            {
+                return;
+            }
+            SetVelocityAlongAxis(_stats.JumpSpeed, 1);
+            if (TimeSinceJumpStart > _stats.MaxJumpTime)
+            {
+                StopJumping();
+            }
+        }
+        private void SetVelocityAlongAxis(float velocity, int axis)
+        {
+            Vector2 currentVelocity = _rigidbody.velocity;
+            currentVelocity[axis] = velocity;
+            _rigidbody.velocity = currentVelocity;
         }
     }
 }
