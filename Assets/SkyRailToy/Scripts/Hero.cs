@@ -18,6 +18,10 @@ namespace SkyRailToy
         private bool _isJumping;
         private float _timeOfJumpStart;
 
+        public void SetLateralDirection(int lateralDirection)
+        {
+            _lateralDirection = lateralDirection;
+        }
         [Button("Start Jumping")]
         public void StartJumping()
         {
