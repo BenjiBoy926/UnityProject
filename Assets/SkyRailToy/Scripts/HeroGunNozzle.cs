@@ -11,6 +11,7 @@ namespace SkyRailToy
         {
             bullet = Instantiate(bullet, transform.position, transform.rotation);
             bullet.Send(_stats.BulletSpeed);
+            Destroy(bullet.gameObject, _stats.BulletLifetime);
         }
     }
 }

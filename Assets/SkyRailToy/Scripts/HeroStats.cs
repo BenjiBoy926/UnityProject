@@ -10,6 +10,7 @@ namespace SkyRailToy
         public float MaxJumpTime => _maxJumpTime;
         public float FireRate => _fireRate;
         public float BulletSpeed => _bulletSpeed;
+        public float BulletLifetime => _bulletRange / _bulletSpeed;
 
         [SerializeField]
         private float _moveSpeed = 5;
@@ -21,5 +22,7 @@ namespace SkyRailToy
         private float _fireRate = 0.1f;
         [SerializeField]
         private float _bulletSpeed = 20;
+        [SerializeField]
+        private float _bulletRange = 3;
     }
 }
