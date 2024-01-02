@@ -6,6 +6,7 @@ namespace SkyRailToy
 {
     public class Hero : MonoBehaviour
     {
+        public bool IsJumping => _isJumping;
         public float TimeSinceJumpStart => Time.time - _timeOfJumpStart;
 
         [SerializeField]

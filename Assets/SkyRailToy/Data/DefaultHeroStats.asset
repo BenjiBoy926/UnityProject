@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _jumpSpeed: 5
-  _maxJumpTime: 0.2
+  _maxJumpTime: 0.4

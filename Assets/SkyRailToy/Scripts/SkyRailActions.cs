@@ -66,7 +66,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""AD"",
+                    ""name"": ""Arrow Keys"",
                     ""id"": ""7d7e29a4-b5a5-4d61-9c30-d0552b52be6e"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -79,7 +79,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""c153c5ab-dbac-4776-931d-c532065d4092"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -90,7 +90,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""172c8db2-434f-4bb1-a1cd-7eacd8314b86"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -121,7 +121,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Arrow Keys"",
+                    ""name"": ""AD"",
                     ""id"": ""c4b00335-d437-4057-b2b7-8b34b2b75082"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -134,7 +134,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""503fc912-61b2-4b5f-89e6-74620c56987a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -145,7 +145,7 @@ public partial class @SkyRailActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""800780b6-d0bc-4e97-9eee-114eb7c8747b"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

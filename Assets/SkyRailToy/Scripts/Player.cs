@@ -60,7 +60,18 @@ namespace SkyRailToy
         }
         public void OnDrop(InputAction.CallbackContext context)
         {
-
+            if (_hero.IsJumping)
+            {
+                return;
+            }
+            if (context.performed)
+            {
+                _rail.Release();
+            }
+            if (context.canceled)
+            {
+                _rail.Catch(_heroSkyObject);
+            }
         }
     }
 }

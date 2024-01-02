@@ -37,6 +37,7 @@ namespace SkyRailToy
             {
                 transform.position = _target.CatchPosition;
             }
+            gameObject.SetActive(_target != null);
         }
     }
 }
