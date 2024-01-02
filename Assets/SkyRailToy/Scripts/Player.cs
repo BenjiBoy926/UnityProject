@@ -9,9 +9,13 @@ namespace SkyRailToy
         [SerializeField]
         private HeroBody _heroBody;
         [SerializeField]
+        private HeroGun _heroGun;
+        [SerializeField]
         private SkyObject _heroSkyObject;
         [SerializeField]
         private SkyRail _rail;
+        [SerializeField]
+        private int _shootingDirection = 0;
         private SkyRailActions _actions;
 
         private void Awake()
@@ -27,19 +31,21 @@ namespace SkyRailToy
         {
             _actions.Disable();
         }
+        private void Update()
+        {
+            if (_shootingDirection == 1)
+            {
+                _heroGun.FireRight();
+            }
+            if (_shootingDirection == -1)
+            {
+                _heroGun.FireLeft();
+            }
+        }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            float analog = context.ReadValue<float>();
-            int direction = 0;
-            if (analog < -0.1f)
-            {
-                direction = -1;
-            }
-            if (analog > 0.1f)
-            {
-                direction = 1;
-            }
+            int direction = GetRawAxis(context);
             _heroBody.SetLateralDirection(direction);
         }
         public void OnJump(InputAction.CallbackContext context)
@@ -56,7 +62,7 @@ namespace SkyRailToy
         }
         public void OnFire(InputAction.CallbackContext context)
         {
-
+            _shootingDirection = GetRawAxis(context);
         }
         public void OnDrop(InputAction.CallbackContext context)
         {
@@ -72,6 +78,20 @@ namespace SkyRailToy
             {
                 _rail.Catch(_heroSkyObject);
             }
+        }
+
+        private int GetRawAxis(InputAction.CallbackContext context)
+        {
+            float axis = context.ReadValue<float>();
+            if (axis > 0.1f)
+            {
+                return 1;
+            }
+            if (axis < -0.1f)
+            {
+                return -1;
+            }
+            return 0;
         }
     }
 }
