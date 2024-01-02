@@ -7,7 +7,7 @@ namespace SkyRailToy
     public class Player : MonoBehaviour, SkyRailActions.IDefaultActions
     {
         [SerializeField]
-        private Hero _hero;
+        private HeroBody _heroBody;
         [SerializeField]
         private SkyObject _heroSkyObject;
         [SerializeField]
@@ -40,18 +40,18 @@ namespace SkyRailToy
             {
                 direction = 1;
             }
-            _hero.SetLateralDirection(direction);
+            _heroBody.SetLateralDirection(direction);
         }
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                _hero.StartJumping();
+                _heroBody.StartJumping();
                 _rail.Catch(_heroSkyObject);
             }
             if (context.canceled)
             {
-                _hero.StopJumping();
+                _heroBody.StopJumping();
             }
         }
         public void OnFire(InputAction.CallbackContext context)
@@ -60,7 +60,7 @@ namespace SkyRailToy
         }
         public void OnDrop(InputAction.CallbackContext context)
         {
-            if (_hero.IsJumping)
+            if (_heroBody.IsJumping)
             {
                 return;
             }

@@ -4,10 +4,10 @@ using NaughtyAttributes;
 
 namespace SkyRailToy
 {
-    public class Hero : MonoBehaviour
+    public class HeroBody : MonoBehaviour
     {
         public bool IsJumping => _isJumping;
-        public float TimeSinceJumpStart => Time.time - _timeOfJumpStart;
+        private float TimeSinceJumpStart => Time.time - _timeOfJumpStart;
 
         [SerializeField]
         private HeroStats _stats;

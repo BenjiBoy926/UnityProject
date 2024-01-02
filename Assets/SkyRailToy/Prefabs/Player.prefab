@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bad619f78e17fd46906bab545dd5842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hero: {fileID: 4491789394613432787}
+  _heroBody: {fileID: 4491789394613432787}
   _heroSkyObject: {fileID: 1641198984621195655}
   _rail: {fileID: 6092405470081454387}
