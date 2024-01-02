@@ -8,6 +8,10 @@ namespace SkyRailToy
     {
         [SerializeField]
         private Hero _hero;
+        [SerializeField]
+        private SkyObject _heroSkyObject;
+        [SerializeField]
+        private SkyRail _rail;
         private SkyRailActions _actions;
 
         private void Awake()
@@ -43,6 +47,7 @@ namespace SkyRailToy
             if (context.performed)
             {
                 _hero.StartJumping();
+                _rail.Catch(_heroSkyObject);
             }
             if (context.canceled)
             {

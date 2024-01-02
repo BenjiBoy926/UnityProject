@@ -28,10 +28,6 @@ namespace SkyRailToy
 
         private void SetTarget(SkyObject target)
         {
-            if (target == _target)
-            {
-                return;
-            }
             _target = target;
             ReflectTarget();
         }
