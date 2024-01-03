@@ -5,6 +5,8 @@ namespace SkyRailToy
 {
     public class SkyRail : MonoBehaviour
     {
+        public float Altitude => _collider.bounds.max.y;
+
         [SerializeField]
         private SpriteRenderer _renderer;
         [SerializeField]

@@ -6,6 +6,8 @@ namespace SkyRailToy
 {
     public class SkyRailing : MonoBehaviour
     {
+        public int RailCount => _railCount;
+
         [SerializeField, ReadOnly]
         private SkyRail[] _rails;
         [SerializeField]
@@ -46,6 +48,11 @@ namespace SkyRailToy
             Color color = Color.HSVToRGB(hue, _railColorSaturation, _railColorValue);
             color.a = _railColorAlpha;
             return color;
+        }
+
+        public float GetRailAltitude(int index)
+        {
+            return _rails[index].Altitude;
         }
 
         public void Catch()
