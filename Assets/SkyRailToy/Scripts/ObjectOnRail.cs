@@ -6,6 +6,7 @@ namespace SkyRailToy
     public class ObjectOnRail : MonoBehaviour
     {
         private float FeetHeight => _collider.bounds.min.y;
+        public bool IsMoving => _currentMovemenTween.IsActive();
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -20,6 +21,7 @@ namespace SkyRailToy
         private Ease _moveUpEase = Ease.OutBack;
         [SerializeField]
         private Ease _moveDownEase = Ease.OutBounce;
+        private Tween _currentMovemenTween;
 
         private SkyRailing _railing;
 
@@ -75,8 +77,7 @@ namespace SkyRailToy
             
             float targetAltitude = GetTargetAltitude();
             Ease ease = GetAnimationEase();
-            transform.DOMoveY(targetAltitude, _animationDuration)
-                .SetEase(ease);
+            _currentMovemenTween = transform.DOMoveY(targetAltitude, _animationDuration).SetEase(ease);
         }
         private Ease GetAnimationEase()
         {

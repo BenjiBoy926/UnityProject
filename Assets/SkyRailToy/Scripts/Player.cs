@@ -13,6 +13,8 @@ namespace SkyRailToy
         [SerializeField]
         private ObjectOnRail _heroOnRail;
         [SerializeField]
+        private Vector2Int _movementDirection;
+        [SerializeField]
         private int _shootingDirection = 0;
         private SkyRailActions _actions;
 
@@ -39,39 +41,43 @@ namespace SkyRailToy
             {
                 _heroGun.FireLeft();
             }
+            UpdateObjectOnRailPosition();
         }
-
-        public void OnMove(InputAction.CallbackContext context)
+        private void UpdateObjectOnRailPosition()
         {
-            int direction = GetRawAxis(context);
-            _heroBody.SetLateralDirection(direction);
-        }
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                _heroOnRail.MoveUp();
-            }
-        }
-        public void OnFire(InputAction.CallbackContext context)
-        {
-            _shootingDirection = GetRawAxis(context);
-        }
-        public void OnDrop(InputAction.CallbackContext context)
-        {
-            if (_heroBody.IsJumping)
+            if (_heroOnRail.IsMoving)
             {
                 return;
             }
-            if (context.performed)
+            if (_movementDirection.y > 0)
+            {
+                _heroOnRail.MoveUp();
+            }
+            if (_movementDirection.y < 0)
             {
                 _heroOnRail.MoveDown();
             }
         }
 
-        private int GetRawAxis(InputAction.CallbackContext context)
+        public void OnMove(InputAction.CallbackContext context)
         {
-            float axis = context.ReadValue<float>();
+            Vector2 axis = context.ReadValue<Vector2>();
+            _movementDirection = GetRawAxis(axis);
+            _heroBody.SetLateralDirection(_movementDirection.x);
+        }
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            _shootingDirection = GetRawAxis(context.ReadValue<float>());
+        }
+
+        private Vector2Int GetRawAxis(Vector2 axis)
+        {
+            return new Vector2Int(
+                GetRawAxis(axis.x),
+                GetRawAxis(axis.y));
+        }
+        private int GetRawAxis(float axis)
+        {
             if (axis > 0.1f)
             {
                 return 1;
