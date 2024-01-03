@@ -102,5 +102,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroBody: {fileID: 4491789394613432787}
   _heroGun: {fileID: 170677870833317822}
-  _rail: {fileID: 0}
+  _heroOnRail: {fileID: 7928408009200233244}
   _shootingDirection: 0
+--- !u!114 &7928408009200233244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3402275655649086402, guid: 5667caaa1e25ef346890ec692f104d74, type: 3}
+  m_PrefabInstance: {fileID: 4697275014914875614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3c8460b36b002458ab26b527e9ea0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

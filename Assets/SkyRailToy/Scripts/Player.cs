@@ -11,7 +11,7 @@ namespace SkyRailToy
         [SerializeField]
         private HeroGun _heroGun;
         [SerializeField]
-        private SkyRailing _rail;
+        private ObjectOnRail _heroOnRail;
         [SerializeField]
         private int _shootingDirection = 0;
         private SkyRailActions _actions;
@@ -50,12 +50,7 @@ namespace SkyRailToy
         {
             if (context.performed)
             {
-                _heroBody.StartJumping();
-                _rail.Catch();
-            }
-            if (context.canceled)
-            {
-                _heroBody.StopJumping();
+                _heroOnRail.MoveUp();
             }
         }
         public void OnFire(InputAction.CallbackContext context)
@@ -70,11 +65,7 @@ namespace SkyRailToy
             }
             if (context.performed)
             {
-                _rail.Release();
-            }
-            if (context.canceled)
-            {
-                _rail.Catch();
+                _heroOnRail.MoveDown();
             }
         }
 
