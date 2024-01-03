@@ -71,11 +71,11 @@ namespace SkyRailToy
         }
         private void AnimateToCurrentRail()
         {
-            _rigidbody.DOKill();
+            transform.DOKill();
             
             float targetAltitude = GetTargetAltitude();
             Ease ease = GetAnimationEase();
-            _rigidbody.DOMoveY(targetAltitude, _animationDuration)
+            transform.DOMoveY(targetAltitude, _animationDuration)
                 .SetEase(ease);
         }
         private Ease GetAnimationEase()
