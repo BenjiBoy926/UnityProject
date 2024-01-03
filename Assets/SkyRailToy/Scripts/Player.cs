@@ -11,7 +11,7 @@ namespace SkyRailToy
         [SerializeField]
         private HeroGun _heroGun;
         [SerializeField]
-        private SkyRail _rail;
+        private SkyRailing _rail;
         [SerializeField]
         private int _shootingDirection = 0;
         private SkyRailActions _actions;

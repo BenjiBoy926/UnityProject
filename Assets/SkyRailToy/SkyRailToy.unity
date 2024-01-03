@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5546267459427694535, guid: 5b85be847f330734f8157f4446f5b1bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5546267459427694535, guid: 5b85be847f330734f8157f4446f5b1bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -267,11 +267,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8082820059249017039, guid: 5b85be847f330734f8157f4446f5b1bd, type: 3}
+      propertyPath: _rail
+      value: 
+      objectReference: {fileID: 897651592}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b85be847f330734f8157f4446f5b1bd, type: 3}
+--- !u!1 &897651590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 897651591}
+  - component: {fileID: 897651592}
+  m_Layer: 0
+  m_Name: SkyRailing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &897651591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897651590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &897651592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897651590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac5f387e6d5cb848a62427867d214e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rails: []
+  _railPrefab: {fileID: 2079765673005855313, guid: a6171b864f2b8c947ac687f4b3e74a9b, type: 3}
+  _railCount: 6
+  _offsetBetweenRails: 1.5
+  _railColorSaturation: 0.6
+  _railColorValue: 1
+  _railColorAlpha: 0.1
 --- !u!1 &1963834232
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,3 +428,4 @@ SceneRoots:
   - {fileID: 275368454}
   - {fileID: 1963834234}
   - {fileID: 591900319}
+  - {fileID: 897651591}

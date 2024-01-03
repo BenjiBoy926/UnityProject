@@ -6,28 +6,23 @@ namespace SkyRailToy
     public class SkyRail : MonoBehaviour
     {
         [SerializeField]
-        private Collider2D[] _colliders;
+        private SpriteRenderer _renderer;
+        [SerializeField]
+        private Collider2D _collider;
 
         private void Reset()
         {
-            _colliders = GetComponentsInChildren<Collider2D>(true);
+            _renderer = GetComponent<SpriteRenderer>();
+            _collider = GetComponent<Collider2D>();
         }
 
-        public void Catch()
+        public void SetColor(Color color)
         {
-            SetCollidersEnabled(true);
+            _renderer.color = color;
         }
-        public void Release()
+        public void SetLocalPosition(Vector3 position)
         {
-            SetCollidersEnabled(false);
-        }
-
-        private void SetCollidersEnabled(bool enabled)
-        {
-            foreach (var collider in _colliders)
-            {
-                collider.enabled = enabled;
-            }
+            transform.localPosition = position;
         }
     }
 }
