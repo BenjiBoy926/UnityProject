@@ -165,7 +165,6 @@ GameObject:
   - component: {fileID: 1349973238929617345}
   - component: {fileID: 6699963949443229021}
   - component: {fileID: 6923520802209163180}
-  - component: {fileID: 6338437671492624729}
   - component: {fileID: 9180051393671418125}
   - component: {fileID: 6427222232869063845}
   - component: {fileID: 4858904763910821728}
@@ -297,7 +296,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0.1
   m_AngularDrag: 0.05
-  m_GravityScale: 3.2
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -309,19 +308,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6338437671492624729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6624005882007281876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da548a5743807bc4cbe3e3a0545156c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _catchPosition: {fileID: 1438744119628931589}
 --- !u!114 &9180051393671418125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,3 +373,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 6923520802209163180}
   _collider: {fileID: 6699963949443229021}
   _currentRailIndex: 0
+  _animationDuration: 0.3
+  _moveUpEase: 27
+  _moveDownEase: 30

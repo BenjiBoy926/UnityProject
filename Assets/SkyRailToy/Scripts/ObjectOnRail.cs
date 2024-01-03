@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace SkyRailToy
@@ -13,6 +13,14 @@ namespace SkyRailToy
         private Collider2D _collider;
         [SerializeField]
         private int _currentRailIndex = 0;
+
+        [SerializeField]
+        private float _animationDuration = 0.3f;
+        [SerializeField]
+        private Ease _moveUpEase = Ease.OutBack;
+        [SerializeField]
+        private Ease _moveDownEase = Ease.OutBounce;
+
         private SkyRailing _railing;
 
         private void Reset()
@@ -26,7 +34,7 @@ namespace SkyRailToy
             {
                 return;
             }
-            GoToCurrentRail();
+            AnimateToCurrentRail();
         }
         private void Awake()
         {
@@ -58,18 +66,36 @@ namespace SkyRailToy
 
         private void GoToCurrentRail()
         {
-            _rigidbody.position = GetTargetPosition();
+            Vector2 targetPosition = new Vector2(_rigidbody.position.x, GetTargetAltitude());
+            _rigidbody.position = targetPosition;
         }
         private void AnimateToCurrentRail()
         {
-
+            _rigidbody.DOKill();
+            
+            float targetAltitude = GetTargetAltitude();
+            Ease ease = GetAnimationEase();
+            _rigidbody.DOMoveY(targetAltitude, _animationDuration)
+                .SetEase(ease);
+        }
+        private Ease GetAnimationEase()
+        {
+            if (ShouldMoveDown())
+            {
+                return _moveDownEase;
+            }
+            return _moveUpEase;
+        }
+        private bool ShouldMoveDown()
+        {
+            return GetTargetAltitude() < _rigidbody.position.y;
         }
 
-        private Vector2 GetTargetPosition()
+        private float GetTargetAltitude()
         {
             float targetFeetHeight = _railing.GetRailAltitude(_currentRailIndex);
             float feetToBody = _rigidbody.position.y - FeetHeight;
-            return new Vector2(_rigidbody.position.x, targetFeetHeight + feetToBody);
+            return targetFeetHeight + feetToBody;
         }
     }
 }
