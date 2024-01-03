@@ -6,38 +6,28 @@ namespace SkyRailToy
     public class SkyRail : MonoBehaviour
     {
         [SerializeField]
-        private SkyObject _target;
+        private Collider2D[] _colliders;
 
-        private void OnValidate()
+        private void Reset()
         {
-            ReflectTarget();
-        }
-        private void OnEnable()
-        {
-            ReflectTarget();
+            _colliders = GetComponentsInChildren<Collider2D>(true);
         }
 
-        public void Catch(SkyObject target)
+        public void Catch()
         {
-            SetTarget(target);
+            SetCollidersEnabled(true);
         }
         public void Release()
         {
-            SetTarget(null);
+            SetCollidersEnabled(false);
         }
 
-        private void SetTarget(SkyObject target)
+        private void SetCollidersEnabled(bool enabled)
         {
-            _target = target;
-            ReflectTarget();
-        }
-        private void ReflectTarget()
-        {
-            if (_target != null)
+            foreach (var collider in _colliders)
             {
-                transform.position = _target.CatchPosition;
+                collider.enabled = enabled;
             }
-            gameObject.SetActive(_target != null);
         }
     }
 }

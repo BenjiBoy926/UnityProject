@@ -11,8 +11,6 @@ namespace SkyRailToy
         [SerializeField]
         private HeroGun _heroGun;
         [SerializeField]
-        private SkyObject _heroSkyObject;
-        [SerializeField]
         private SkyRail _rail;
         [SerializeField]
         private int _shootingDirection = 0;
@@ -53,7 +51,7 @@ namespace SkyRailToy
             if (context.performed)
             {
                 _heroBody.StartJumping();
-                _rail.Catch(_heroSkyObject);
+                _rail.Catch();
             }
             if (context.canceled)
             {
@@ -76,7 +74,7 @@ namespace SkyRailToy
             }
             if (context.canceled)
             {
-                _rail.Catch(_heroSkyObject);
+                _rail.Catch();
             }
         }
 
