@@ -68,7 +68,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -191,3 +191,5 @@ MonoBehaviour:
   _mouseConversionCamera: {fileID: 5254232725087533610}
   _well: {fileID: 1881619906662393594}
   _isGravityActive: 0
+  _moveSpeed: 5
+  _gravityInputMovement: {x: 0, y: 0}
