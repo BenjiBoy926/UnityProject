@@ -8,9 +8,17 @@ namespace GravityToy
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Target t))
+            TryToHitTarget(collision.otherCollider);
+        }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            TryToHitTarget(collision);
+        }
+        private void TryToHitTarget(Collider2D collider)
+        {
+            if (collider.TryGetComponent(out Target t))
             {
-                t.Hit(collision.relativeVelocity.magnitude);
+                t.Hit();
             }
         }
     }
