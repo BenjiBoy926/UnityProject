@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace TurnBasedStrategyToy
 {
     public class ObjectOnGrid : MonoBehaviour
     {
-        private Vector3 IntendedWorldPosition => GridPositionToWorldPosition(_position);
+        private Vector3 IntendedWorldPosition => Grid.GridPositionToWorldPosition(_position);
+        public Vector2Int Position => _position;
 
         [SerializeField]
         private Vector2Int _position;
@@ -20,25 +22,49 @@ namespace TurnBasedStrategyToy
         {
             if (Application.isPlaying)
             {
-                AnimateToPosition();
+                AnimateToCurrentPosition();
             }
             else
             {
-                SnapToPosition();
+                SnapToCurrentPosition();
             }
         }
-        private void AnimateToPosition()
+        private void Awake()
+        {
+            Grid.Register(this);
+        }
+        private void OnDestroy()
+        {
+            Grid.Unregister(this);
+        }
+
+        public void AnimateTo(Vector2Int position)
+        {
+            if (position == _position)
+            {
+                return;
+            }
+            _position = position;
+            AnimateToCurrentPosition();
+        }
+        private void AnimateToCurrentPosition()
         {
             transform.DOKill();
             transform.DOMove(IntendedWorldPosition, _moveDuration);
         }
-        private void SnapToPosition()
+
+        internal void SnapTo(Vector2Int position)
+        {
+            if (position == _position)
+            {
+                return;
+            }
+            _position = position;
+            SnapToCurrentPosition();
+        }
+        private void SnapToCurrentPosition()
         {
             transform.position = IntendedWorldPosition;
-        }
-        private static Vector3 GridPositionToWorldPosition(Vector2Int gridPosition)
-        {
-            return new Vector3(gridPosition.x, gridPosition.y, 0);
         }
     }
 }
