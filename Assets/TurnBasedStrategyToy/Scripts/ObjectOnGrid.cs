@@ -8,9 +8,11 @@ namespace TurnBasedStrategyToy
 {
     public class ObjectOnGrid : MonoBehaviour
     {
-        private Vector3 IntendedWorldPosition => Grid.GridPositionToWorldPosition(_position);
+        private Vector3 IntendedWorldPosition => _grid.GridToWorld(_position);
         public Vector2Int Position => _position;
 
+        [SerializeField]
+        private Grid _grid;
         [SerializeField]
         private Vector2Int _position;
         [SerializeField]
@@ -31,11 +33,11 @@ namespace TurnBasedStrategyToy
         }
         private void Awake()
         {
-            Grid.Register(this);
+            _grid.Register(this);
         }
         private void OnDestroy()
         {
-            Grid.Unregister(this);
+            _grid.Unregister(this);
         }
 
         public void AnimateTo(Vector2Int position)

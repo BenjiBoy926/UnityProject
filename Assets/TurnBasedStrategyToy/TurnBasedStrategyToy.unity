@@ -215,6 +215,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &967616623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967616625}
+  - component: {fileID: 967616624}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &967616624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967616623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ce92320afa84d4994ab202e10a590a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screenToWorld: {fileID: 72121115}
+  _occupants: []
+--- !u!4 &967616625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967616623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063139691
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +434,7 @@ Transform:
   m_GameObject: {fileID: 1104787575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -406,7 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e1917c84cc8644ca732ec170f98657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _position: {x: 3, y: 4}
+  _grid: {fileID: 967616624}
+  _position: {x: 0, y: 4}
   _moveEase: 15
   _moveDuration: 1
 --- !u!1 &1881378728
@@ -507,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e1917c84cc8644ca732ec170f98657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _grid: {fileID: 967616624}
   _position: {x: 3, y: 4}
   _moveEase: 15
   _moveDuration: 1
@@ -532,3 +580,4 @@ SceneRoots:
   - {fileID: 1063139693}
   - {fileID: 1104787577}
   - {fileID: 1881378730}
+  - {fileID: 967616625}
