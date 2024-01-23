@@ -24,7 +24,7 @@ namespace TurnBasedStrategyToy
         {
             _occupants.Remove(obj);
         }
-        public IEnumerable<ObjectOnGrid> GetOccupants(Vector2Int gridPosition)
+        public IEnumerable<ObjectOnGrid> OccupantsOf(Vector2Int gridPosition)
         {
             return _occupants.Where(x => x.Position == gridPosition);
         }

@@ -31,7 +31,15 @@ namespace TurnBasedStrategyToy
         }
         public void OnCursorSelect(InputAction.CallbackContext context)
         {
-
+            if (context.performed)
+            {
+                _cursor.Select();
+            }
+            if (context.canceled)
+            {
+                _cursor.AnimateTargetToSelf();
+                _cursor.Deselect();
+            }
         }
     }
 }

@@ -40,6 +40,10 @@ namespace TurnBasedStrategyToy
             _grid.Unregister(this);
         }
 
+        public IEnumerable<ObjectOnGrid> OccupantsOf(Vector2Int position)
+        {
+            return _grid.OccupantsOf(position);
+        }
         public void AnimateTo(Vector2Int position)
         {
             if (position == _position)
