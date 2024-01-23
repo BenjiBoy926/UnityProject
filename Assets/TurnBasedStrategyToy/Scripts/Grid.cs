@@ -26,7 +26,7 @@ namespace TurnBasedStrategyToy
         }
         public IEnumerable<ObjectOnGrid> OccupantsOf(Vector2Int gridPosition)
         {
-            return _occupants.Where(x => x.Position == gridPosition);
+            return _occupants.Where(x => x.GridPosition == gridPosition);
         }
 
         public Vector2Int ScreenToGrid(Vector2 screen)

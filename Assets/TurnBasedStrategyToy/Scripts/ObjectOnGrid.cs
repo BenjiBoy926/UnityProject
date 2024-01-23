@@ -9,7 +9,8 @@ namespace TurnBasedStrategyToy
     public class ObjectOnGrid : MonoBehaviour
     {
         private Vector3 IntendedWorldPosition => _grid.GridToWorld(_position);
-        public Vector2Int Position => _position;
+        public Vector2Int GridPosition => _position;
+        public Vector3 WorldPosition => transform.position;
 
         [SerializeField]
         private Grid _grid;
