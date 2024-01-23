@@ -11,6 +11,11 @@ namespace TurnBasedStrategyToy
         [SerializeField]
         private ObjectOnGrid _target;
 
+        public void SnapToGridPointClosestToScreenPoint(Vector2 screen)
+        {
+            _self.SnapToGridPointClosestToScreenPoint(screen);
+        }
+
         [Button("Snap Target to Self")]
         public void SnapTargetToSelf()
         {

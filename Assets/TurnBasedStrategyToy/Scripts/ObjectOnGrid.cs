@@ -52,9 +52,13 @@ namespace TurnBasedStrategyToy
         private void AnimateToCurrentPosition()
         {
             transform.DOKill();
-            transform.DOMove(IntendedWorldPosition, _moveDuration);
+            transform.DOMove(IntendedWorldPosition, _moveDuration).SetEase(_moveEase);
         }
 
+        public void SnapToGridPointClosestToScreenPoint(Vector2 screen)
+        {
+            SnapTo(_grid.ScreenToGrid(screen));
+        }
         internal void SnapTo(Vector2Int position)
         {
             if (position == _position)
