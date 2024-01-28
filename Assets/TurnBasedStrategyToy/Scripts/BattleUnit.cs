@@ -28,21 +28,21 @@ namespace TurnBasedStrategyToy
                 return position;
             }
             int shortestIndex = 0;
-            int shortestDistance = int.MaxValue;
+            int shortestDistanceX = int.MaxValue;
+            int shortestDistanceY = int.MaxValue;
             for (int i = 0; i < _reachableTiles.Count; i++)
             {
-                int distance = RectangularDistance(position, _reachableTiles[i]);
-                if (distance < shortestDistance)
+                Vector2Int reachableTile = _reachableTiles[i];
+                int currentDistanceX = Mathf.Abs(position.x - reachableTile.x);
+                int currentDistanceY = Mathf.Abs(position.y - reachableTile.y);
+                if (currentDistanceX < shortestDistanceX || currentDistanceY < shortestDistanceY)
                 {
                     shortestIndex = i;
-                    shortestDistance = distance;
+                    shortestDistanceX = currentDistanceX;
+                    shortestDistanceY = currentDistanceY;
                 }
             }
             return _reachableTiles[shortestIndex];
-        }
-        private int RectangularDistance(Vector2Int a, Vector2Int b)
-        {
-            return Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y);
         }
 
         private void MovementReachableTiles(List<Vector2Int> tiles)
