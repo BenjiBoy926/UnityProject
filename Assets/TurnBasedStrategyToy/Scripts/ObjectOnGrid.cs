@@ -41,6 +41,10 @@ namespace TurnBasedStrategyToy
             _grid.Unregister(this);
         }
 
+        public Vector3 GridToWorld(Vector2Int grid)
+        {
+            return _grid.GridToWorld(grid);
+        }
         public IEnumerable<ObjectOnGrid> OccupantsOf(Vector2Int position)
         {
             return _grid.OccupantsOf(position);
