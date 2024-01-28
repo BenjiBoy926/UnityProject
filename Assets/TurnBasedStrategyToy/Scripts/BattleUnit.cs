@@ -16,10 +16,27 @@ namespace TurnBasedStrategyToy
         {
             _self.AnimateTo(position);
         }
-        public bool IsPositionInMovementRange(Vector2Int position)
+        public Vector2Int ClampInMovement(Vector2Int position)
         {
             Vector2Int delta = position - _self.GridPosition;
-            return Mathf.Abs(delta.x) + Mathf.Abs(delta.y) <= _stats.Movement;
+            delta = ClampSum(delta, _stats.Movement);
+            return _self.GridPosition + delta;
+        }
+        private Vector2Int ClampSum(Vector2Int vector, int maxSum)
+        {
+            while (Sum(vector) > maxSum)
+            {
+
+            }
+            return vector;
+        }
+        private int Sum(Vector2Int vector)
+        {
+            return vector.x + vector.y;
+        }
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(WorldPosition, _stats.Movement);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace TurnBasedStrategyToy
 
         private void Update()
         {
-            if (!IsSelfInTargetMovementRange())
+            if (_target == null)
             {
                 _moveLine.enabled = false;
                 return;
@@ -58,15 +58,11 @@ namespace TurnBasedStrategyToy
         [Button("Animate Target to Self", EButtonEnableMode.Playmode)]
         public void AnimateTargetToSelf()
         {
-            if (!IsSelfInTargetMovementRange())
+            if (_target == null)
             {
                 return;
             }
             _target.AnimateTo(_self.GridPosition);
-        }
-        private bool IsSelfInTargetMovementRange()
-        {
-            return _target != null && _target.IsPositionInMovementRange(_self.GridPosition);
         }
     }
 }
