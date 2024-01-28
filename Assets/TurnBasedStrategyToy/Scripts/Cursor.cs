@@ -21,9 +21,10 @@ namespace TurnBasedStrategyToy
                 _moveLine.enabled = false;
                 return;
             }
+            Vector2Int intendedNextPosition = _target.ClampInMovement(_self.GridPosition);
             _moveLine.enabled = true;
             _linePositions[0] = _target.WorldPosition;
-            _linePositions[1] = _self.WorldPosition;
+            _linePositions[1] = _self.GridToWorld(intendedNextPosition);
             _moveLine.SetPositions(_linePositions);
         }
 
