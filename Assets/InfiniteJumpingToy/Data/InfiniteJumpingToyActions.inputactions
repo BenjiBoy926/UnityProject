@@ -1,0 +1,34 @@
+{
+    "name": "InfiniteJumpingToyActions",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "97b37910-71bb-46de-ace3-7e3883b2b239",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "c92c7d5f-e7d3-45ed-9fe1-515d018cccbc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f7d27dc0-4cb8-4227-854c-93f3a66ead3a",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

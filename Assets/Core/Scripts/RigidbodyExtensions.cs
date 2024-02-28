@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public static class RigidbodyExtensions
+namespace Core
 {
-    // 2D 
-
-    public static void SetVelocity(this Rigidbody2D rigidbody, float velocity, Dimension dimension)
+    public static class RigidbodyExtensions
     {
-        rigidbody.velocity = rigidbody.velocity.Set(velocity, dimension);
+        // 2D 
+
+        public static void SetVelocity(this Rigidbody2D rigidbody, float velocity, Dimension dimension)
+        {
+            rigidbody.velocity = rigidbody.velocity.Set(velocity, dimension);
+        }
     }
 }

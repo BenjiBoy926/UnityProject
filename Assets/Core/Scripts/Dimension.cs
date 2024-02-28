@@ -1,1 +1,4 @@
-public enum Dimension { X, Y, Z }
+namespace Core
+{
+    public enum Dimension { X, Y, Z }
+}
