@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 5611168982688924438}
   - component: {fileID: 1872492635292077278}
   - component: {fileID: 5343491550355229917}
+  - component: {fileID: 7389367496249101694}
   m_Layer: 0
   m_Name: HeroBody
   m_TagString: Untagged
@@ -193,6 +194,21 @@ MonoBehaviour:
   _body: {fileID: 1872492635292077278}
   _jumpSpeed: 5
   _maxJumpTime: 0.5
+--- !u!114 &7389367496249101694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4703271641322243567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5bedac8317f1e49aa96ede074a4ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _body: {fileID: 1872492635292077278}
+  _speed: 5
+  _direction: 0
 --- !u!1 &4906851266287678439
 GameObject:
   m_ObjectHideFlags: 0
