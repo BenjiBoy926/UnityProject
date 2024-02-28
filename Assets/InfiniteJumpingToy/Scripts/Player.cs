@@ -8,6 +8,8 @@ namespace InfinitJumpingToy
     public class Player : MonoBehaviour, InfiniteJumpingToyActions.IDefaultActions
     {
         [SerializeField]
+        private HeroMove _move;
+        [SerializeField]
         private HeroJump _jump;
         private InfiniteJumpingToyActions _actions;
 
@@ -35,6 +37,10 @@ namespace InfinitJumpingToy
             {
                 _jump.StopJumping();
             }
+        }
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            _move.SetDirection(context.ReadValue<float>());
         }
     }
 }
