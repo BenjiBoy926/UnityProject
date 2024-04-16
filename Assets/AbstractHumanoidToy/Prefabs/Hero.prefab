@@ -568,8 +568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 1453050486134114383}
-  _currentAnimation: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
-  _currentFrame: 0
+  _currentAnimation: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _currentFrame: 1
 --- !u!1 &6771603333935247310
 GameObject:
   m_ObjectHideFlags: 0
