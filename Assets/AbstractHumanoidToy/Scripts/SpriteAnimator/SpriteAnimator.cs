@@ -7,6 +7,7 @@ namespace AbstractHumanoidToy
     public class SpriteAnimator : MonoBehaviour
     {
         private SpriteAnimationFrame CurrentAnimationFrame => _currentAnimation.GetFrame(_currentFrame);
+        private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
         
         [SerializeField]
         private SpriteBody _body;
@@ -14,6 +15,7 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _currentAnimation;
         [SerializeField]
         private int _currentFrame;
+        private float _currentFrameStartTime;
 
         private void Reset()
         {
@@ -25,10 +27,35 @@ namespace AbstractHumanoidToy
             {
                 return;
             }
+            UpdateSpriteBody();
+        }
+        private void OnEnable()
+        {
+            UpdateSpriteBody();
+        }
+        private void Update()
+        {
+            if (ReadyToAdvanceOneFrame())
+            {
+                AdvanceOneFrame();
+            }
+        }
+
+        private bool ReadyToAdvanceOneFrame()
+        {
+            return TimeSinceCurrentFrameStart >= CurrentAnimationFrame.Duration;
+        }
+        private void AdvanceOneFrame()
+        {
+            _currentFrame++;
+            UpdateSpriteBody();
+        }
+
+        private void UpdateSpriteBody()
+        {
             ValidateCurrentFrame();
             ShowCurrentFrame();
         }
-
         private void ValidateCurrentFrame()
         {
             _currentFrame %= _currentAnimation.FrameCount;
@@ -36,6 +63,7 @@ namespace AbstractHumanoidToy
         private void ShowCurrentFrame()
         {
             _body.ShowFrame(CurrentAnimationFrame);
+            _currentFrameStartTime = Time.time;
         }
     }
 }

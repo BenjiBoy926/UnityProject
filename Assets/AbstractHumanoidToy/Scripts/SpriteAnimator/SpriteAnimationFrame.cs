@@ -6,6 +6,8 @@ namespace AbstractHumanoidToy
     [Serializable]
     public class SpriteAnimationFrame
     {
+        public float Duration => _duration;
+
         [SerializeField]
         private SpriteAnimationFramePart[] _parts;
         [SerializeField]
