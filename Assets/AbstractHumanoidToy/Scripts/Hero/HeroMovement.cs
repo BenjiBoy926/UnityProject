@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace AbstractHumanoidToy
@@ -14,6 +15,10 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _idle;
         [SerializeField] 
         private SpriteAnimation _run;
+        [SerializeField]
+        private float _leapDistance = 1;
+        [SerializeField]
+        private Ease _leapEase = Ease.OutQuint;
         [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
 
@@ -43,7 +48,10 @@ namespace AbstractHumanoidToy
 
         private void OnActionFrameEntered()
         {
-            Debug.Log("Action frame entered");
+            Vector3 current = transform.position;
+            float currentX = current.x;
+            float nextX = currentX + (_leapDistance * _currentDirection);
+            transform.DOMoveX(nextX, _animator.CurrentFrameDuration);
         }
 
         public void SetCurrentDirection(int direction)

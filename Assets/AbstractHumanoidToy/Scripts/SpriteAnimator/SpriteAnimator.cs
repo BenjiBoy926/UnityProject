@@ -11,6 +11,7 @@ namespace AbstractHumanoidToy
 
         private SpriteAnimationFrame CurrentAnimationFrame => _currentAnimation.GetFrame(_currentFrame);
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
+        public float CurrentFrameDuration => CurrentAnimationFrame.Duration;
         
         [SerializeField]
         private SpriteBody _body;

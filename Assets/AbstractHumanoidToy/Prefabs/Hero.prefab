@@ -798,6 +798,8 @@ MonoBehaviour:
   _animator: {fileID: 8908563907554770964}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _leapDistance: 2
+  _leapEase: 15
   _currentDirection: 0
 --- !u!50 &3488960483544655785
 Rigidbody2D:
