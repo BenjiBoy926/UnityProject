@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace AbstractHumanoidToy
@@ -14,7 +15,10 @@ namespace AbstractHumanoidToy
 
         public void ShowFrame(SpriteAnimationFrame frame)
         {
-
+            for (int i = 0; i < _parts.Length; i++)
+            {
+                _parts[i].ShowFrame(frame);
+            }
         }
     }
 }
