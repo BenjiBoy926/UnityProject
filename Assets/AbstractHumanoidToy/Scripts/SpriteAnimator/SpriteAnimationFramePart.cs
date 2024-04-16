@@ -7,7 +7,7 @@ namespace AbstractHumanoidToy
     public class SpriteAnimationFramePart
     {
         [SerializeField]
-        private SpriteAnimationFramePartID _id;
+        private SpriteBodyPartID _id;
         [SerializeField]
         private Sprite _sprite;
     }
