@@ -29,3 +29,5 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: 1601148873, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 1
+    _isSmoothStopFrame: 1
+    _smoothStopDuration: 0

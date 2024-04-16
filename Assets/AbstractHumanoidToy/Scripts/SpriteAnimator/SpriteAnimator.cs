@@ -16,6 +16,7 @@ namespace AbstractHumanoidToy
         [SerializeField]
         private int _currentFrame;
         private float _currentFrameStartTime;
+        private SpriteAnimation _nextAnimation;
 
         private void Reset()
         {
@@ -35,16 +36,49 @@ namespace AbstractHumanoidToy
         }
         private void Update()
         {
+            if (ReadyToTransitionToNextAnimation())
+            {
+                SetNextAnimation();
+            }
             if (ReadyToAdvanceOneFrame())
             {
                 AdvanceOneFrame();
             }
         }
 
+        private void SetNextAnimation()
+        {
+            SetAnimation(_nextAnimation);
+        }
+        public void SetAnimation(SpriteAnimation animation)
+        {
+            _currentAnimation = animation;
+            _currentFrame = 0;
+            _nextAnimation = null;
+            UpdateSpriteBody();
+        }
+        public void TransitionTo(SpriteAnimation animation)
+        {
+            _nextAnimation = animation;
+        }
+
+        private bool ReadyToTransitionToNextAnimation()
+        {
+            return ShouldSmoothStopOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentAnimationFrame.SmoothStopDuration;
+        }
         private bool ReadyToAdvanceOneFrame()
         {
-            return TimeSinceCurrentFrameStart >= CurrentAnimationFrame.Duration;
+            return !ShouldSmoothStopOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentAnimationFrame.Duration;
         }
+        private bool ShouldSmoothStopOnCurrentFrame()
+        {
+            return HasAnimationToTransitionTo() && CurrentAnimationFrame.IsSmoothStopFrame;
+        }
+        private bool HasAnimationToTransitionTo()
+        {
+            return _nextAnimation != null;
+        }
+
         private void AdvanceOneFrame()
         {
             _currentFrame++;

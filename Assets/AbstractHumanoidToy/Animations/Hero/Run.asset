@@ -29,6 +29,8 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: 175927025, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 1
+    _smoothStopDuration: 0.2
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1422040116, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -45,6 +47,8 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: -460922234, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -968020389, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -60,7 +64,9 @@ MonoBehaviour:
       _sprite: {fileID: -1221501108, guid: 20c476b2e43e06746926752583470d9a, type: 3}
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: -834618800, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
-    _duration: 0.5
+    _duration: 0.25
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -679039041, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -77,6 +83,8 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: -117277119, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1954168719, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -93,6 +101,8 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: 175927025, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 1
+    _smoothStopDuration: 0.2
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1106640356, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -109,6 +119,8 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: 240028704, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -2087470646, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -124,7 +136,9 @@ MonoBehaviour:
       _sprite: {fileID: 1989688083, guid: 20c476b2e43e06746926752583470d9a, type: 3}
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: -1755623041, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
-    _duration: 0.5
+    _duration: 0.25
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1019347708, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -141,3 +155,5 @@ MonoBehaviour:
     - _id: {fileID: 11400000, guid: 53c7ece2b5e2e6848bac91f8ecb761a6, type: 2}
       _sprite: {fileID: -1275078737, guid: e1f0bff3b69f41f4587aceddfe9fd25e, type: 3}
     _duration: 0.1
+    _isSmoothStopFrame: 0
+    _smoothStopDuration: 0
