@@ -20,5 +20,12 @@ namespace AbstractHumanoidToy
                 _parts[i].ShowFrame(frame);
             }
         }
+        public void SetFlipX(bool flipX)
+        {
+            for (int i = 0; i < _parts.Length; i++)
+            {
+                _parts[i].SetFlipX(flipX);
+            }
+        }
     }
 }

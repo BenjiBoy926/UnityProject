@@ -23,5 +23,9 @@ namespace AbstractHumanoidToy
                 _renderer.sprite = part.Sprite;
             }
         }
+        internal void SetFlipX(bool flipX)
+        {
+            _renderer.flipX = flipX;
+        }
     }
 }
