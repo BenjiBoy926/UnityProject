@@ -33,7 +33,17 @@ namespace AbstractHumanoidToy
         }
         private void OnEnable()
         {
+            _animator.ActionFrameEntered += OnActionFrameEntered;
             ReflectCurrentDirection();
+        }
+        private void OnDisable()
+        {
+            _animator.ActionFrameEntered -= OnActionFrameEntered;
+        }
+
+        private void OnActionFrameEntered()
+        {
+            Debug.Log("Action frame entered");
         }
 
         public void SetCurrentDirection(int direction)

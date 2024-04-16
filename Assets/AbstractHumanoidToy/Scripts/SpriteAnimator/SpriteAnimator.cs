@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace AbstractHumanoidToy
 {
     public class SpriteAnimator : MonoBehaviour
     {
+        public event Action ActionFrameEntered = delegate { };
+
         private SpriteAnimationFrame CurrentAnimationFrame => _currentAnimation.GetFrame(_currentFrame);
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
         
@@ -90,11 +93,11 @@ namespace AbstractHumanoidToy
             _currentFrame++;
             UpdateSpriteBody();
         }
-
         private void UpdateSpriteBody()
         {
             ValidateCurrentFrame();
             ShowCurrentFrame();
+            RaiseNewFrameEvents();
         }
         private void ValidateCurrentFrame()
         {
@@ -104,6 +107,13 @@ namespace AbstractHumanoidToy
         {
             _body.ShowFrame(CurrentAnimationFrame);
             _currentFrameStartTime = Time.time;
+        }
+        private void RaiseNewFrameEvents()
+        {
+            if (CurrentAnimationFrame.IsActionFrame)
+            {
+                ActionFrameEntered();
+            }
         }
     }
 }

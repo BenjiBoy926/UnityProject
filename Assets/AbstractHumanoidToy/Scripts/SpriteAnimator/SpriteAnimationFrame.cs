@@ -10,6 +10,7 @@ namespace AbstractHumanoidToy
         public float Duration => _duration;
         public bool IsSmoothStopFrame => _isSmoothStopFrame;
         public float SmoothStopDuration => _smoothStopDuration;
+        public bool IsActionFrame => _isActionFrame;
 
         [SerializeField]
         private SpriteAnimationFramePart[] _parts;
@@ -19,6 +20,8 @@ namespace AbstractHumanoidToy
         private bool _isSmoothStopFrame;
         [SerializeField, ShowIf(nameof(_isSmoothStopFrame)), AllowNesting]
         private float _smoothStopDuration;
+        [SerializeField]
+        private bool _isActionFrame;
 
         internal SpriteAnimationFramePart FindPart(SpriteBodyPartID id)
         {

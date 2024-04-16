@@ -31,6 +31,7 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 1
     _smoothStopDuration: 0.2
+    _isActionFrame: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1422040116, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -49,6 +50,7 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -968020389, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -67,6 +69,7 @@ MonoBehaviour:
     _duration: 0.25
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 1
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -679039041, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -85,6 +88,7 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1954168719, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -103,6 +107,7 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 1
     _smoothStopDuration: 0.2
+    _isActionFrame: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1106640356, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -121,6 +126,7 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 0
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: -2087470646, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -139,6 +145,7 @@ MonoBehaviour:
     _duration: 0.25
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 1
   - _parts:
     - _id: {fileID: 11400000, guid: 3e6e36347fc77aa40a6183c65e1a693c, type: 2}
       _sprite: {fileID: 1019347708, guid: 39e7e1c94cacc8a459d7e6ac55713402, type: 3}
@@ -157,3 +164,4 @@ MonoBehaviour:
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
+    _isActionFrame: 0
