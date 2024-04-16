@@ -14,7 +14,7 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _idle;
         [SerializeField] 
         private SpriteAnimation _run;
-        [SerializeField]
+        [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
 
         private void Reset()
@@ -47,21 +47,10 @@ namespace AbstractHumanoidToy
         }
         private void ReflectCurrentDirection()
         {
-            UpdateSpriteBody();
-            UpdateSpriteAnimator();
+            TransitionAnimation();
+            TransitionFlipX();
         }
-        private void UpdateSpriteBody()
-        {
-            if (_currentDirection == -1)
-            {
-                _spriteBody.SetFlipX(true);
-            }
-            if (_currentDirection == 1)
-            {
-                _spriteBody.SetFlipX(false);
-            }
-        }
-        private void UpdateSpriteAnimator()
+        private void TransitionAnimation()
         {
             if (_currentDirection == 0)
             {
@@ -70,6 +59,17 @@ namespace AbstractHumanoidToy
             else
             {
                 _animator.TransitionTo(_run);
+            }
+        }
+        private void TransitionFlipX()
+        {
+            if (_currentDirection == -1)
+            {
+                _animator.TransitionFlipX(true);
+            }
+            if (_currentDirection == 1)
+            {
+                _animator.TransitionFlipX(false);
             }
         }
     }

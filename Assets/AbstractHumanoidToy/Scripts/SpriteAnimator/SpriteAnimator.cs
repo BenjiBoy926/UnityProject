@@ -17,6 +17,7 @@ namespace AbstractHumanoidToy
         private int _currentFrame;
         private float _currentFrameStartTime;
         private SpriteAnimation _nextAnimation;
+        private bool _nextFlipX;
 
         private void Reset()
         {
@@ -49,6 +50,7 @@ namespace AbstractHumanoidToy
         private void SetNextAnimation()
         {
             SetAnimation(_nextAnimation);
+            _body.SetFlipX(_nextFlipX);
         }
         public void SetAnimation(SpriteAnimation animation)
         {
@@ -60,6 +62,10 @@ namespace AbstractHumanoidToy
         public void TransitionTo(SpriteAnimation animation)
         {
             _nextAnimation = animation;
+        }
+        public void TransitionFlipX(bool flipX)
+        {
+            _nextFlipX = flipX;
         }
 
         private bool ReadyToTransitionToNextAnimation()
