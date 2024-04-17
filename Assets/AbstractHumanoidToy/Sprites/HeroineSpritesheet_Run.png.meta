@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 66ec5884306af4640a1e53d10dc75ca1
+guid: 08130bfbc8b08ff49b69f5a77764e0e6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_0
+      name: HeroineSpritesheet_Run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb7d6e86dc6e54f48b52a9d62e0d9f00
-      internalID: 1789708041
+      spriteID: 9f59a7b14b939ca4c948e48852c4e846
+      internalID: 1254686440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_1
+      name: HeroineSpritesheet_Run_1
       rect:
         serializedVersion: 2
         x: 500
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f85113eb8a89d2149885422c49e0ab48
-      internalID: -259632198
+      spriteID: d90af1219d5ed094cab1f43db4c56840
+      internalID: 1419492951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_2
+      name: HeroineSpritesheet_Run_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61fe95d6e2822fb4db30a952443de172
-      internalID: -1166336339
+      spriteID: 759057d12b819bc4bb921547d4c78a9d
+      internalID: -556498197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_3
+      name: HeroineSpritesheet_Run_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cc3a415f10e86d4e9deda6f18ae6c6b
-      internalID: 1683241017
+      spriteID: 1986a9c67e8d3c44592e14577a8975ee
+      internalID: -614787556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_4
+      name: HeroineSpritesheet_Run_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf9fc0bca5b4dcb499a64d102f26038a
-      internalID: 334407209
+      spriteID: a9c7fae5acbf7ec42a6afe5a49d51bc7
+      internalID: 1804857158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_5
+      name: HeroineSpritesheet_Run_5
       rect:
         serializedVersion: 2
         x: 2500
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b795f8e436dc9c4f807a75694ccc790
-      internalID: -1355452865
+      spriteID: 94fc4146a7479104bbc7cb5d8d9317ee
+      internalID: -39281408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_6
+      name: HeroineSpritesheet_Run_6
       rect:
         serializedVersion: 2
         x: 3000
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2760770b905e6e4bb0b85d66bfcdc33
-      internalID: 452863388
+      spriteID: 26414e8c94c062347b2b81e494f84ffe
+      internalID: -234883863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AbstractHumanoids_LeftArm_7
+      name: HeroineSpritesheet_Run_7
       rect:
         serializedVersion: 2
         x: 3500
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e73a6ee75b9fe64881a6b72c065c317
-      internalID: -1572301720
+      spriteID: 388cec54b061bad4fa7b65088dd2a23d
+      internalID: 2040832047
       vertices: []
       indices: 
       edges: []
@@ -293,7 +293,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6afc83ae3971a38458b12161a54d06ed
+    spriteID: c8be4de12a6a2d24585d84f6a2578711
     internalID: 0
     vertices: []
     indices: 
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AbstractHumanoids_LeftArm_0: 1789708041
-      AbstractHumanoids_LeftArm_1: -259632198
-      AbstractHumanoids_LeftArm_2: -1166336339
-      AbstractHumanoids_LeftArm_3: 1683241017
-      AbstractHumanoids_LeftArm_4: 334407209
-      AbstractHumanoids_LeftArm_5: -1355452865
-      AbstractHumanoids_LeftArm_6: 452863388
-      AbstractHumanoids_LeftArm_7: -1572301720
+      HeroineSpritesheet_Run_0: 1254686440
+      HeroineSpritesheet_Run_1: 1419492951
+      HeroineSpritesheet_Run_2: -556498197
+      HeroineSpritesheet_Run_3: -614787556
+      HeroineSpritesheet_Run_4: 1804857158
+      HeroineSpritesheet_Run_5: -39281408
+      HeroineSpritesheet_Run_6: -234883863
+      HeroineSpritesheet_Run_7: 2040832047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

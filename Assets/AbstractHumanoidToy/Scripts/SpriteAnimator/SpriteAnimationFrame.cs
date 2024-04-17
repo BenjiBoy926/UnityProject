@@ -7,13 +7,16 @@ namespace AbstractHumanoidToy
     [Serializable]
     public class SpriteAnimationFrame
     {
+        public const string SpriteRelativePath = nameof(_sprite);
+
+        public Sprite Sprite => _sprite;
         public float Duration => _duration;
         public bool IsSmoothStopFrame => _isSmoothStopFrame;
         public float SmoothStopDuration => _smoothStopDuration;
         public bool IsActionFrame => _isActionFrame;
 
         [SerializeField]
-        private SpriteAnimationFramePart[] _parts;
+        private Sprite _sprite;
         [SerializeField]
         private float _duration;
         [SerializeField]
@@ -22,11 +25,5 @@ namespace AbstractHumanoidToy
         private float _smoothStopDuration;
         [SerializeField]
         private bool _isActionFrame;
-
-        internal SpriteAnimationFramePart FindPart(SpriteBodyPartID id)
-        {
-            bool PartHasID(SpriteAnimationFramePart part) => part.HasID(id);
-            return Array.Find(_parts, PartHasID);
-        }
     }
 }

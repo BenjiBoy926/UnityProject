@@ -5,52 +5,23 @@ namespace AbstractHumanoidToy
 {
     public class SpriteBody : MonoBehaviour
     {
-        public bool FlipX => _flipX;
+        public bool FlipX => _renderer.flipX;
 
         [SerializeField]
-        private SpriteBodyPart[] _parts;
-        [SerializeField]
-        private bool _flipX;
+        private SpriteRenderer _renderer;
 
-        private void OnValidate()
-        {
-            if (_parts == null)
-            {
-                return;
-            }
-            ShowFlipX();
-        }
         private void Reset()
         {
-            _parts = GetComponentsInChildren<SpriteBodyPart>();
-        }
-        private void OnEnable()
-        {
-            ShowFlipX();
+            _renderer = GetComponent<SpriteRenderer>();
         }
 
         public void ShowFrame(SpriteAnimationFrame frame)
         {
-            for (int i = 0; i < _parts.Length; i++)
-            {
-                _parts[i].ShowFrame(frame);
-            }
+            _renderer.sprite = frame.Sprite;
         }
         public void SetFlipX(bool flipX)
         {
-            if (_flipX == flipX)
-            {
-                return;
-            }
-            _flipX = flipX;
-            ShowFlipX();
-        }
-        private void ShowFlipX()
-        {
-            for (int i = 0; i < _parts.Length; i++)
-            {
-                _parts[i].SetFlipX(_flipX);
-            }
+            _renderer.flipX = flipX;
         }
     }
 }
