@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 1453050486134114383}
-  _currentAnimation: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _currentAnimation: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _currentFrameIndex: 0
 --- !u!212 &7625393306548818467
 SpriteRenderer:
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -545619453, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,7 +188,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7925818720938264243
