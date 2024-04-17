@@ -1,12 +1,12 @@
 using Core;
 using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace AbstractHumanoidToy
 {
     public class HeroMovement : MonoBehaviour
     {
-        private float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         private int ApparentDirection
         {
             get
@@ -28,13 +28,9 @@ namespace AbstractHumanoidToy
         [SerializeField] 
         private SpriteAnimation _run;
         [SerializeField]
-        private float _baseRunSpeed = 1;
+        private float _maxSpeed = 10;
         [SerializeField]
-        private float _leapAdditionalSpeed = 1;
-        [SerializeField]
-        private AnimationCurve _leapSpeedCurve;
-        [SerializeField]
-        private AnimationCurve _landSpeedCurve;
+        private AnimationCurve _speedDuringAnimation;
         [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
 
@@ -66,15 +62,7 @@ namespace AbstractHumanoidToy
             {
                 return 0;
             }
-            if (_animator.IsCurrentFrameActionFrame)
-            {
-                return ApparentDirection * LeapMaxSpeed * _leapSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
-            }
-            if (_animator.IsPreviousFrameActionFrame)
-            {
-                return ApparentDirection * LeapMaxSpeed * _landSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
-            }
-            return ApparentDirection * _baseRunSpeed;
+            return 0;
         }
 
         public void SetCurrentDirection(int direction)

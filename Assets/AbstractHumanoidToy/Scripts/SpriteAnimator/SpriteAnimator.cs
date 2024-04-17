@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,15 +11,11 @@ namespace AbstractHumanoidToy
         public event Action ActionFrameEntered = delegate { };
 
         private SpriteAnimationFrame CurrentFrame => _currentAnimation.GetFrame(_currentFrameIndex);
-        private int PreviousFrameIndex => RepeatFrameIndex(_currentFrameIndex - 1);
-        private SpriteAnimationFrame PreviousFrame => _currentAnimation.GetFrame(PreviousFrameIndex);
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
-        public bool IsCurrentFrameActionFrame => CurrentFrame.IsActionFrame;
-        public bool IsPreviousFrameActionFrame => PreviousFrame.IsActionFrame;
         private int FrameCount => _currentAnimation.FrameCount;
-        public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
         public bool FlipX => _body.FlipX;
-        
+        public float CurrentAnimationProgress => (TimeSinceCurrentFrameStart + _currentAnimation.TimeBeforeFrame(_currentFrameIndex)) / _currentAnimation.Duration;
+
         [SerializeField]
         private SpriteBody _body;
         [SerializeField]
