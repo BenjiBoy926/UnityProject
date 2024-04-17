@@ -44,7 +44,11 @@ namespace AbstractHumanoidToy.Editor
         }
         private SerializedProperty GetSpriteProperty(int index)
         {
-            return _frames.GetArrayElementAtIndex(index).FindPropertyRelative(SpriteAnimationFrame.SpriteRelativePath);
+            return GetFrameProperty(index).FindPropertyRelative(SpriteAnimationFrame.SpriteRelativePath);
+        }
+        private SerializedProperty GetFrameProperty(int index)
+        {
+            return _frames.GetArrayElementAtIndex(index);
         }
 
         private Sprite ObjectAsSprite(Object obj)
