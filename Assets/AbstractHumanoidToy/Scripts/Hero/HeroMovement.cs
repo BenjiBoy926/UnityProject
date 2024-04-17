@@ -58,11 +58,7 @@ namespace AbstractHumanoidToy
         }
         private float CalculateHorizontalSpeed()
         {
-            if (ApparentDirection == 0)
-            {
-                return 0;
-            }
-            return 0;
+            return ApparentDirection * _maxSpeed * _speedDuringAnimation.Evaluate(_animator.CurrentAnimationProgress);
         }
 
         public void SetCurrentDirection(int direction)
