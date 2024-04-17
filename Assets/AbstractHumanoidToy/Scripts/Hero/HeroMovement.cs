@@ -1,3 +1,4 @@
+using Core;
 using DG.Tweening;
 using UnityEngine;
 
@@ -5,10 +6,21 @@ namespace AbstractHumanoidToy
 {
     public class HeroMovement : MonoBehaviour
     {
+        private float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
+        private int ApparentDirection
+        {
+            get
+            {
+                if (_animator.IsAnimating(_idle))
+                {
+                    return 0;
+                }
+                return FlipXToDirection(_animator.FlipX);
+            }
+        }
+
         [SerializeField]
         private Rigidbody2D _physicsBody;
-        [SerializeField]
-        private SpriteBody _spriteBody;
         [SerializeField]
         private SpriteAnimator _animator;
         [SerializeField]
@@ -16,21 +28,24 @@ namespace AbstractHumanoidToy
         [SerializeField] 
         private SpriteAnimation _run;
         [SerializeField]
-        private float _leapDistance = 1;
+        private float _baseRunSpeed = 1;
         [SerializeField]
-        private Ease _leapEase = Ease.OutQuint;
+        private float _leapAdditionalSpeed = 1;
+        [SerializeField]
+        private AnimationCurve _leapSpeedCurve;
+        [SerializeField]
+        private AnimationCurve _landSpeedCurve;
         [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
 
         private void Reset()
         {
             _physicsBody = GetComponentInChildren<Rigidbody2D>();
-            _spriteBody = GetComponentInChildren<SpriteBody>();
             _animator = GetComponentInChildren<SpriteAnimator>();
         }
         private void OnValidate()
         {
-            if (_physicsBody == null || _spriteBody == null || _animator == null)
+            if (_physicsBody == null || _animator == null)
             {
                 return;
             }
@@ -38,20 +53,28 @@ namespace AbstractHumanoidToy
         }
         private void OnEnable()
         {
-            _animator.ActionFrameEntered += OnActionFrameEntered;
             ReflectCurrentDirection();
         }
-        private void OnDisable()
+        private void Update()
         {
-            _animator.ActionFrameEntered -= OnActionFrameEntered;
+            float speed = CalculateHorizontalSpeed();
+            _physicsBody.SetVelocity(speed, Dimension.X);
         }
-
-        private void OnActionFrameEntered()
+        private float CalculateHorizontalSpeed()
         {
-            Vector3 current = transform.position;
-            float currentX = current.x;
-            float nextX = currentX + (_leapDistance * _currentDirection);
-            transform.DOMoveX(nextX, _animator.CurrentFrameDuration);
+            if (ApparentDirection == 0)
+            {
+                return 0;
+            }
+            if (_animator.IsCurrentFrameActionFrame)
+            {
+                return ApparentDirection * LeapMaxSpeed * _leapSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
+            }
+            if (_animator.IsPreviousFrameActionFrame)
+            {
+                return ApparentDirection * LeapMaxSpeed * _landSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
+            }
+            return ApparentDirection * _baseRunSpeed;
         }
 
         public void SetCurrentDirection(int direction)
@@ -81,14 +104,18 @@ namespace AbstractHumanoidToy
         }
         private void TransitionFlipX()
         {
-            if (_currentDirection == -1)
+            if (_currentDirection != 0)
             {
-                _animator.TransitionFlipX(true);
+                _animator.TransitionFlipX(DirectionToFlipX(_currentDirection));
             }
-            if (_currentDirection == 1)
-            {
-                _animator.TransitionFlipX(false);
-            }
+        }
+        private static bool DirectionToFlipX(int direction)
+        {
+            return direction == -1;
+        }
+        private static int FlipXToDirection(bool flipX)
+        {
+            return flipX ? -1 : 1;
         }
     }
 }
