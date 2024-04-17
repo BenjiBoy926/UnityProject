@@ -31,6 +31,8 @@ namespace AbstractHumanoidToy.Editor
             string spritesheetPath = AssetDatabase.GetAssetPath(_spritesheet);
             Object[] subspriteAssets = AssetDatabase.LoadAllAssetRepresentationsAtPath(spritesheetPath);
             Sprite[] subsprites = subspriteAssets.Select(ObjectAsSprite).Where(SpriteIsNotNull).OrderBy(SpriteName).ToArray();
+
+            _frames.arraySize = Mathf.Max(_frames.arraySize, subsprites.Length);
             for (int i = 0; i < subsprites.Length; i++)
             {
                 SetSprite(subsprites[i], i);
@@ -38,7 +40,6 @@ namespace AbstractHumanoidToy.Editor
         }
         private void SetSprite(Sprite sprite, int index)
         {
-            _frames.arraySize = Mathf.Max(_frames.arraySize, index + 1);
             SerializedProperty property = GetSpriteProperty(index);
             property.objectReferenceValue = sprite;
         }
