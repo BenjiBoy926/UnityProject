@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e97ee32f1822ad74aabbd806dc9d167b
+guid: 0f58777f54a2c6b4fb6efe6c7d0dbb84
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeroineSpritesheet_Idle_0
+      name: Heroine_Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,8 +137,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52b59fff78884cd46a17c33cb6fcdd62
-      internalID: -545619453
+      spriteID: 35688b30c5c6bc04bb9dfcb7ac5888ef
+      internalID: 1952333326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heroine_Jump_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d271f69f6325884186c83a377a0a419
+      internalID: 1941089592
       vertices: []
       indices: 
       edges: []
@@ -146,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 20ea57864e2696441a37f1fe300c9015
+    spriteID: 69ef51417e8d72c419e962a3db4bbc80
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeroineSpritesheet_Idle_0: -545619453
+      Heroine_Jump_0: 1952333326
+      Heroine_Jump_1: 1941089592
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

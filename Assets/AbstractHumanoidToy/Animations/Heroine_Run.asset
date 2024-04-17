@@ -13,42 +13,42 @@ MonoBehaviour:
   m_Name: Heroine_Run
   m_EditorClassIdentifier: 
   _frames:
-  - _sprite: {fileID: 1254686440, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: 787815596, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 1
     _smoothStopDuration: 0.2
     _isActionFrame: 0
-  - _sprite: {fileID: 1419492951, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: -473717965, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
     _isActionFrame: 0
-  - _sprite: {fileID: -556498197, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: -244097412, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.25
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
     _isActionFrame: 1
-  - _sprite: {fileID: -614787556, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: -516365496, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
     _isActionFrame: 0
-  - _sprite: {fileID: 1804857158, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: -1470405663, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 1
     _smoothStopDuration: 0.2
     _isActionFrame: 0
-  - _sprite: {fileID: -39281408, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: 1740368728, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
     _isActionFrame: 0
-  - _sprite: {fileID: -234883863, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: 173329744, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.25
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0
     _isActionFrame: 1
-  - _sprite: {fileID: 2040832047, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
+  - _sprite: {fileID: 578578306, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isSmoothStopFrame: 0
     _smoothStopDuration: 0

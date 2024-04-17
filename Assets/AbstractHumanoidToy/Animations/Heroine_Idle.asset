@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heroine_Idle
   m_EditorClassIdentifier: 
   _frames:
-  - _sprite: {fileID: -545619453, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
+  - _sprite: {fileID: -1422411248, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
     _duration: 1
     _isSmoothStopFrame: 1
     _smoothStopDuration: 0

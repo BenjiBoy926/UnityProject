@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 08130bfbc8b08ff49b69f5a77764e0e6
+guid: 149babd0092125d4aa30846167ca5866
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeroineSpritesheet_Run_0
+      name: Heroine_Backflip_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f59a7b14b939ca4c948e48852c4e846
-      internalID: 1254686440
+      spriteID: 7cdb4bd4ba45f1443b2861f5f2e806a3
+      internalID: -1433315000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroineSpritesheet_Run_1
+      name: Heroine_Backflip_1
       rect:
         serializedVersion: 2
         x: 500
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d90af1219d5ed094cab1f43db4c56840
-      internalID: 1419492951
+      spriteID: 65b71120f5655204483ed85c37175bfe
+      internalID: 1602225286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroineSpritesheet_Run_2
+      name: Heroine_Backflip_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 759057d12b819bc4bb921547d4c78a9d
-      internalID: -556498197
+      spriteID: 2edabb288ab0f0c42b11268e8d4d51de
+      internalID: -1960828448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroineSpritesheet_Run_3
+      name: Heroine_Backflip_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1986a9c67e8d3c44592e14577a8975ee
-      internalID: -614787556
+      spriteID: 180b046c1edfce043bd1f30fc0c9e523
+      internalID: 1182420367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeroineSpritesheet_Run_4
+      name: Heroine_Backflip_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -221,71 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9c7fae5acbf7ec42a6afe5a49d51bc7
-      internalID: 1804857158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HeroineSpritesheet_Run_5
-      rect:
-        serializedVersion: 2
-        x: 2500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94fc4146a7479104bbc7cb5d8d9317ee
-      internalID: -39281408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HeroineSpritesheet_Run_6
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26414e8c94c062347b2b81e494f84ffe
-      internalID: -234883863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HeroineSpritesheet_Run_7
-      rect:
-        serializedVersion: 2
-        x: 3500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 388cec54b061bad4fa7b65088dd2a23d
-      internalID: 2040832047
+      spriteID: fcda13dbd245fbf4a8063cd93778492e
+      internalID: 640047455
       vertices: []
       indices: 
       edges: []
@@ -293,7 +230,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c8be4de12a6a2d24585d84f6a2578711
+    spriteID: ba491be043b764d4a9ea50ea7d965241
     internalID: 0
     vertices: []
     indices: 
@@ -301,14 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeroineSpritesheet_Run_0: 1254686440
-      HeroineSpritesheet_Run_1: 1419492951
-      HeroineSpritesheet_Run_2: -556498197
-      HeroineSpritesheet_Run_3: -614787556
-      HeroineSpritesheet_Run_4: 1804857158
-      HeroineSpritesheet_Run_5: -39281408
-      HeroineSpritesheet_Run_6: -234883863
-      HeroineSpritesheet_Run_7: 2040832047
+      Heroine_Backflip_0: -1433315000
+      Heroine_Backflip_1: 1602225286
+      Heroine_Backflip_2: -1960828448
+      Heroine_Backflip_3: 1182420367
+      Heroine_Backflip_4: 640047455
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
