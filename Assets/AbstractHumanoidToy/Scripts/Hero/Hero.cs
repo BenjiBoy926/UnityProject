@@ -27,6 +27,7 @@ namespace AbstractHumanoidToy
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
+        public bool IsJumping => _isJumping;
 
         [Header("Parts")]
         [SerializeField]
@@ -63,6 +64,8 @@ namespace AbstractHumanoidToy
         [Header("Inputs")]
         [SerializeField, Range(-1, 1)]
         private int _horizontalDirection = 0;
+        [SerializeField]
+        private bool _isJumping = false;
 
         private void Awake()
         {
@@ -104,13 +107,21 @@ namespace AbstractHumanoidToy
             _horizontalDirection = horizontalDirection;
             HorizontalDirectionChanged();
         }
-        public void StartJumping()
+        public void SetIsJumping(bool isJumping)
         {
-            StartedJumping();
-        }
-        public void StopJumping()
-        {
-            StoppedJumping();
+            if (isJumping == _isJumping)
+            {
+                return;
+            }
+            _isJumping = isJumping;
+            if (_isJumping)
+            {
+                StartedJumping();
+            }
+            else
+            {
+                StoppedJumping();
+            }
         }
         public void SetHorizontalVelocity(float velocity)
         {

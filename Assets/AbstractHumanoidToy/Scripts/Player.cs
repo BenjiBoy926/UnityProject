@@ -45,14 +45,7 @@ namespace AbstractHumanoidToy
         }
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                _hero.StartJumping();
-            }
-            if (context.canceled)
-            {
-                _hero.StopJumping();
-            }
+            _hero.SetIsJumping(context.ReadValueAsButton());
         }
     }
 }

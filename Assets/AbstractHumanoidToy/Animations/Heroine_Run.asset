@@ -16,7 +16,7 @@ MonoBehaviour:
   - _sprite: {fileID: 787815596, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isTransitionFrame: 1
-    _transitionDuration: 0.2
+    _transitionDuration: 0.1
     _isActionFrame: 0
   - _sprite: {fileID: -473717965, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
@@ -36,7 +36,7 @@ MonoBehaviour:
   - _sprite: {fileID: -1470405663, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
     _isTransitionFrame: 1
-    _transitionDuration: 0.2
+    _transitionDuration: 0.1
     _isActionFrame: 0
   - _sprite: {fileID: 1740368728, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
