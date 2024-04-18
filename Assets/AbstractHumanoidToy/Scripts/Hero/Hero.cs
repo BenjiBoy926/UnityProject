@@ -44,6 +44,8 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _run;
         [SerializeField]
         private SpriteAnimation _jump;
+        [SerializeField]
+        private SpriteAnimation _backflip;
 
         [Header("Running")]
         [SerializeField]
@@ -142,6 +144,10 @@ namespace AbstractHumanoidToy
         public void TransitionToJumpAnimation()
         {
             _animator.TransitionTo(_jump);
+        }
+        public void SetBackflipAnimation()
+        {
+            _animator.SetAnimation(_backflip);
         }
         public void TransitionFlipX(bool flipX)
         {
