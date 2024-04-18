@@ -46,6 +46,12 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _jump;
         [SerializeField]
         private SpriteAnimation _backflip;
+        [SerializeField]
+        private SpriteAnimation _freeFallForward;
+        [SerializeField]
+        private SpriteAnimation _freeFallBack;
+        [SerializeField]
+        private SpriteAnimation _freeFallStraight;
 
         [Header("Running")]
         [SerializeField]
@@ -159,6 +165,18 @@ namespace AbstractHumanoidToy
         public void TransitionToJumpAnimation()
         {
             _animator.TransitionTo(_jump);
+        }
+        public void TransitionToFreeFallForwardAnimation()
+        {
+            _animator.TransitionTo(_freeFallForward);
+        }
+        public void TransitionToFreeFallBackwardAnimation()
+        {
+            _animator.TransitionTo(_freeFallBack);
+        }
+        public void TransitionToFreeFallStraightAnimation()
+        {
+            _animator.TransitionTo(_freeFallStraight);
         }
         public void SetBackflipAnimation()
         {

@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1422411248, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,6 +273,9 @@ MonoBehaviour:
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
   _backflip: {fileID: 11400000, guid: 7e678a9375cad894c82b2bbab6d360d9, type: 2}
+  _freeFallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
+  _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
+  _freeFallStraight: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
   _baseRunSpeed: 5
   _leapAdditionalSpeed: 15
   _runAccelerationCurve:
@@ -302,6 +305,8 @@ MonoBehaviour:
   _jumpSpeed: 10
   _minJumpTime: 0.2
   _maxJumpTime: 1
+  _airForce: 5
+  _airTopSpeed: 30
   _horizontalDirection: 0
   _isJumping: 0
 --- !u!114 &9130010180061938019
