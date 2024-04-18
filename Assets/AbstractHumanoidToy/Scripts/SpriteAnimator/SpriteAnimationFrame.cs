@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace AbstractHumanoidToy
 {
@@ -11,19 +12,24 @@ namespace AbstractHumanoidToy
 
         public Sprite Sprite => _sprite;
         public float Duration => _duration;
-        public bool IsSmoothStopFrame => _isSmoothStopFrame;
-        public float SmoothStopDuration => _smoothStopDuration;
+        public bool IsTransitionFrame => _isTransitionFrame;
+        public float TransitionDuration => _transitionDuration;
         public bool IsActionFrame => _isActionFrame;
 
         [SerializeField]
         private Sprite _sprite;
         [SerializeField]
         private float _duration;
-        [SerializeField]
-        private bool _isSmoothStopFrame;
-        [SerializeField, ShowIf(nameof(_isSmoothStopFrame)), AllowNesting]
-        private float _smoothStopDuration;
+        [SerializeField, FormerlySerializedAs("_isSmoothStopFrame")]
+        private bool _isTransitionFrame;
+        [SerializeField, FormerlySerializedAs("_smoothStopDuration")]
+        private float _transitionDuration;
         [SerializeField]
         private bool _isActionFrame;
+
+        public float GetDuration(bool isTransitioning)
+        {
+            return isTransitioning ? _transitionDuration : _duration;
+        }
     }
 }

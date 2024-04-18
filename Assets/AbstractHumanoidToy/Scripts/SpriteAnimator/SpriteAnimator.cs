@@ -7,6 +7,8 @@ namespace AbstractHumanoidToy
 {
     public class SpriteAnimator : MonoBehaviour
     {
+        private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
+        private float CurrentFrameDuration => CurrentFrame.GetDuration(IsTransitioning());
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
         public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
         public bool FlipX => _body.FlipX;
@@ -85,17 +87,17 @@ namespace AbstractHumanoidToy
 
         private bool ReadyToTransitionToNextAnimation()
         {
-            return IsSmoothStoppingOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.SmoothStopDuration;
+            return IsTransitioningOnCurrentFrame() && IsCurrentFrameFinished;
         }
         private bool ReadyToAdvanceOneFrame()
         {
-            return !IsSmoothStoppingOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.Duration;
+            return !IsTransitioningOnCurrentFrame() && IsCurrentFrameFinished;
         }
-        public bool IsSmoothStoppingOnCurrentFrame()
+        public bool IsTransitioningOnCurrentFrame()
         {
-            return HasAnimationToTransitionTo() && CurrentFrame.IsSmoothStopFrame;
+            return IsTransitioning() && CurrentFrame.IsTransitionFrame;
         }
-        private bool HasAnimationToTransitionTo()
+        private bool IsTransitioning()
         {
             return _nextAnimation != null;
         }

@@ -15,41 +15,41 @@ MonoBehaviour:
   _frames:
   - _sprite: {fileID: 787815596, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 1
-    _smoothStopDuration: 0.2
+    _isTransitionFrame: 1
+    _transitionDuration: 0.2
     _isActionFrame: 0
   - _sprite: {fileID: -473717965, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: -244097412, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.25
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.1
     _isActionFrame: 1
   - _sprite: {fileID: -516365496, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: -1470405663, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 1
-    _smoothStopDuration: 0.2
+    _isTransitionFrame: 1
+    _transitionDuration: 0.2
     _isActionFrame: 0
   - _sprite: {fileID: 1740368728, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: 173329744, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.25
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.1
     _isActionFrame: 1
   - _sprite: {fileID: 578578306, guid: 08130bfbc8b08ff49b69f5a77764e0e6, type: 3}
     _duration: 0.1
-    _isSmoothStopFrame: 0
-    _smoothStopDuration: 0
+    _isTransitionFrame: 0
+    _transitionDuration: 0.03
     _isActionFrame: 0

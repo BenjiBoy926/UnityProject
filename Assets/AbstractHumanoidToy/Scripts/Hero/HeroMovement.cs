@@ -75,7 +75,7 @@ namespace AbstractHumanoidToy
             {
                 return ApparentDirection * _toRun.Evaluate(_animator.CurrentFrameProgress);
             }
-            if (_animator.IsSmoothStoppingOnCurrentFrame())
+            if (_animator.IsTransitioningOnCurrentFrame())
             {
                 return ApparentDirection * _toRun.Evaluate(1 - _animator.CurrentFrameProgress);
             }
