@@ -200,8 +200,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8025318423783035417}
-  - component: {fileID: 5720444932014719263}
   - component: {fileID: 3488960483544655785}
+  - component: {fileID: 7646446932064873026}
+  - component: {fileID: 9130010180061938019}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -226,7 +227,34 @@ Transform:
   - {fileID: 5685054135906551177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5720444932014719263
+--- !u!50 &3488960483544655785
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925818720938264243}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &7646446932064873026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,9 +263,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7925818720938264243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d09da78f2aee642a7d1058aac93730, type: 3}
+  m_Script: {fileID: 11500000, guid: 68eedef41ed7c65478cd68c5d6193a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateMachine: {fileID: 9130010180061938019}
   _physicsBody: {fileID: 3488960483544655785}
   _animator: {fileID: 8908563907554770964}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
@@ -268,55 +297,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _decelerationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.0900277
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -3.0176926
-      outSlope: -3.0176926
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.02216065
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _currentDirection: 0
---- !u!50 &3488960483544655785
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &9130010180061938019
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7925818720938264243}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039ba5005c8765d43ba195a84c4d5ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,12 +8,12 @@ namespace AbstractHumanoidToy
     public class Player : MonoBehaviour, DefaultActions.IDefaultMapActions
     {
         [SerializeField]
-        private HeroMovement _movement;
+        private Hero _hero;
         private DefaultActions _actions;
 
         private void Reset()
         {
-            _movement = GetComponent<HeroMovement>();
+            _hero = GetComponent<Hero>();
         }
         private void Awake()
         {
@@ -41,7 +41,7 @@ namespace AbstractHumanoidToy
             {
                 direction = 1;
             }
-            _movement.SetCurrentDirection(direction);
+            _hero.SetCurrentDirection(direction);
         }
     }
 }
