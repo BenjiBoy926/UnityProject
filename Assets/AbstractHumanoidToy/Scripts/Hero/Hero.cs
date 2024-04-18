@@ -62,6 +62,10 @@ namespace AbstractHumanoidToy
         private float _minJumpTime = 0.1f;
         [SerializeField]
         private float _maxJumpTime = 1;
+        [SerializeField]
+        private float _airForce = 5;
+        [SerializeField]
+        private float _airTopSpeed = 30;
 
         [Header("Inputs")]
         [SerializeField, Range(-1, 1)]
@@ -132,6 +136,17 @@ namespace AbstractHumanoidToy
         public void SetJumpingVelocity()
         {
             _physicsBody.SetVelocity(_jumpSpeed, Dimension.Y);
+        }
+        public void ApplyHorizontalAirControlForce()
+        {
+            Vector2 direction = Vector2.right * _horizontalDirection;
+            _physicsBody.AddForce(direction * _airForce);
+        }
+        public void ClampHorizontalAirSpeed()
+        {
+            float horizontal = _physicsBody.GetVelocity(Dimension.X);
+            horizontal = Mathf.Clamp(horizontal, -_airTopSpeed, _airTopSpeed);
+            _physicsBody.SetVelocity(horizontal, Dimension.X);
         }
         public void TransitionToIdleAnimation()
         {
