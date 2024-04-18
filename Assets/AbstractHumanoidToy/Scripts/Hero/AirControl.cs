@@ -1,3 +1,4 @@
+using Core;
 using System;
 using UnityEngine;
 
@@ -7,24 +8,17 @@ namespace AbstractHumanoidToy
     public struct AirControl
     {
         [SerializeField]
-        private float _forwardForce;
+        private float _acceleration;
         [SerializeField]
-        private float _backwardForce;
-        [SerializeField]
-        private float _forwardTopSpeed;
-        [SerializeField]
-        private float _backwardTopSpeed;
+        private float _topSpeed;
 
-        public AirControl(float forwardForce, float backwardForce, float forwardTopSpeed, float backwardTopSpeed)
+        internal void ApplyTo(Rigidbody2D body, int applyDirection)
         {
-            _forwardForce = forwardForce;
-            _backwardForce = backwardForce;
-            _forwardTopSpeed = forwardTopSpeed;
-            _backwardTopSpeed = backwardTopSpeed;
-        }
-        public void ApplyToBody(Rigidbody2D body, float direction)
-        {
-
+            Vector2 force = _acceleration * applyDirection * Vector2.right;
+            body.AddForce(force);
+            float horizontalVelocity = body.GetVelocity(Dimension.X);
+            horizontalVelocity = Mathf.Clamp(horizontalVelocity, -_topSpeed, _topSpeed);
+            body.SetVelocity(horizontalVelocity, Dimension.X);
         }
     }
 }

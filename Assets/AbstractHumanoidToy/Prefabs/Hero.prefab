@@ -241,7 +241,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 2
   m_Material: {fileID: 0}
@@ -308,8 +308,20 @@ MonoBehaviour:
   _jumpSpeed: 10
   _minJumpTime: 0.2
   _maxJumpTime: 1
-  _airForce: 5
-  _airTopSpeed: 30
+  _jumpAirControl:
+    _forwards:
+      _acceleration: 10
+      _topSpeed: 20
+    _backwards:
+      _acceleration: 10
+      _topSpeed: 15
+  _freeFallAirControl:
+    _forwards:
+      _acceleration: 15
+      _topSpeed: 15
+    _backwards:
+      _acceleration: 10
+      _topSpeed: 10
   _horizontalDirection: 0
   _isJumping: 0
 --- !u!114 &9130010180061938019

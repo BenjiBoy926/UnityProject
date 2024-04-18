@@ -24,8 +24,7 @@ namespace AbstractHumanoidToy
         public override void Update(float dt)
         {
             base.Update(dt);
-            Hero.ApplyHorizontalAirControlForce();
-            Hero.ClampHorizontalAirSpeed();
+            Hero.ApplyFreeFallAirControl();
             if (Hero.IsOnGround)
             {
                 Hero.SetLandingAnimation();

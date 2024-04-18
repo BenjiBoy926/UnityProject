@@ -17,7 +17,7 @@ namespace AbstractHumanoidToy
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
-        public float SpriteDirection => _animator.FlipX ? -1 : 1;
+        public int SpriteDirection => _animator.FlipX ? -1 : 1;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
@@ -74,9 +74,9 @@ namespace AbstractHumanoidToy
         [SerializeField]
         private float _maxJumpTime = 1;
         [SerializeField]
-        private float _airForce = 5;
+        private DirectionalAirControl _jumpAirControl;
         [SerializeField]
-        private float _airTopSpeed = 30;
+        private DirectionalAirControl _freeFallAirControl;
 
         [Header("Inputs")]
         [SerializeField, Range(-1, 1)]
@@ -148,16 +148,13 @@ namespace AbstractHumanoidToy
         {
             _physicsBody.SetVelocity(_jumpSpeed, Dimension.Y);
         }
-        public void ApplyHorizontalAirControlForce()
+        public void ApplyJumpAirControl()
         {
-            Vector2 direction = Vector2.right * _horizontalDirection;
-            _physicsBody.AddForce(direction * _airForce);
+            _jumpAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
         }
-        public void ClampHorizontalAirSpeed()
+        public void ApplyFreeFallAirControl()
         {
-            float horizontal = _physicsBody.GetVelocity(Dimension.X);
-            horizontal = Mathf.Clamp(horizontal, -_airTopSpeed, _airTopSpeed);
-            _physicsBody.SetVelocity(horizontal, Dimension.X);
+            _freeFallAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
         }
         public void TransitionToIdleAnimation()
         {
