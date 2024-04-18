@@ -60,6 +60,10 @@ namespace AbstractHumanoidToy
             {
                 return 0;
             }
+            if (_isTransitioningToJump)
+            {
+                return Hero.SpriteDirection * Hero.LeapMaxSpeed;
+            }
             if (Hero.IsCurrentFrameFirstFrame)
             {
                 return Hero.SpriteDirection * _toRun.Evaluate(Hero.CurrentFrameProgress);
