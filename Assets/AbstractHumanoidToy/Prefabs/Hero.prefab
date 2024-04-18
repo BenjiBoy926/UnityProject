@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3488960483544655785}
   - component: {fileID: 7646446932064873026}
   - component: {fileID: 9130010180061938019}
+  - component: {fileID: 1035319642480623658}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -269,6 +270,7 @@ MonoBehaviour:
   _stateMachine: {fileID: 9130010180061938019}
   _physicsBody: {fileID: 3488960483544655785}
   _animator: {fileID: 8908563907554770964}
+  _contacts: {fileID: 1035319642480623658}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
@@ -276,6 +278,7 @@ MonoBehaviour:
   _freeFallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
   _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _freeFallStraight: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
+  _landingAnimation: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
   _baseRunSpeed: 5
   _leapAdditionalSpeed: 15
   _runAccelerationCurve:
@@ -321,3 +324,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039ba5005c8765d43ba195a84c4d5ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1035319642480623658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925818720938264243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a67e1a796d8404192a612365889f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 4379201103701369815}
+  _overlapAreaSize: 0.1
+  _overlapAreaMargin: 0.1
+  _isOnGround: 0

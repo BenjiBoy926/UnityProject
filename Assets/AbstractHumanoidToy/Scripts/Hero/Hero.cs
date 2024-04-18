@@ -28,6 +28,7 @@ namespace AbstractHumanoidToy
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _isJumping;
+        public bool IsOnGround => _contacts.IsOnGround;
 
         [Header("Parts")]
         [SerializeField]
@@ -36,6 +37,8 @@ namespace AbstractHumanoidToy
         private Rigidbody2D _physicsBody;
         [SerializeField]
         private SpriteAnimator _animator;
+        [SerializeField]
+        private HeroContacts _contacts;
 
         [Header("Animations")]
         [SerializeField]
@@ -52,6 +55,8 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _freeFallBack;
         [SerializeField]
         private SpriteAnimation _freeFallStraight;
+        [SerializeField]
+        private SpriteAnimation _landingAnimation;
 
         [Header("Running")]
         [SerializeField]
@@ -177,6 +182,10 @@ namespace AbstractHumanoidToy
         public void TransitionToFreeFallStraightAnimation()
         {
             _animator.TransitionTo(_freeFallStraight);
+        }
+        public void SetLandingAnimation()
+        {
+            _animator.SetAnimation(_landingAnimation);
         }
         public void SetBackflipAnimation()
         {

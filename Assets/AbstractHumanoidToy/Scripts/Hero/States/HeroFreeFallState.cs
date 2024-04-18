@@ -26,6 +26,11 @@ namespace AbstractHumanoidToy
             base.Update(dt);
             Hero.ApplyHorizontalAirControlForce();
             Hero.ClampHorizontalAirSpeed();
+            if (Hero.IsOnGround)
+            {
+                Hero.SetLandingAnimation();
+                Hero.SetState(new HeroOnGroundState(Hero));
+            }
         }
 
         private void ReflectCurrentHorizontalDirection()
