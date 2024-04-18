@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -545619453, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
+  m_Sprite: {fileID: -1422411248, guid: e97ee32f1822ad74aabbd806dc9d167b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,60 +244,51 @@ MonoBehaviour:
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   _baseRunSpeed: 5
   _leapAdditionalSpeed: 15
-  _leapSpeedCurve:
+  _accelerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.2
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.9
-      inSlope: -0.37364563
-      outSlope: -0.37364563
+      inSlope: 3.1321929
+      outSlope: 3.1321929
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.09907544
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.02631579
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.04403364
+      outSlope: 0.04403364
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07063711
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _landSpeedCurve:
+  _decelerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.9
-      inSlope: -2.2660654
-      outSlope: -2.2660654
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.07549255
+      inWeight: 0
+      outWeight: 0.0900277
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      inSlope: -3.0176926
+      outSlope: -3.0176926
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.02216065
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

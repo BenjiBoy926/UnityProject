@@ -32,9 +32,9 @@ namespace AbstractHumanoidToy
         [SerializeField]
         private float _leapAdditionalSpeed = 1;
         [SerializeField]
-        private AnimationCurve _leapSpeedCurve;
+        private AnimationCurve _accelerationCurve;
         [SerializeField]
-        private AnimationCurve _landSpeedCurve;
+        private AnimationCurve _decelerationCurve;
         [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
 
@@ -66,13 +66,25 @@ namespace AbstractHumanoidToy
             {
                 return 0;
             }
-            if (_animator.IsCurrentFrameActionFrame)
+            if (_animator.IsCurrentFrameFirstFrame)
             {
-                return ApparentDirection * LeapMaxSpeed * _leapSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
+                return ApparentDirection * _baseRunSpeed * _accelerationCurve.Evaluate(_animator.CurrentFrameProgress);
+            }
+            if (_animator.IsSmoothStoppingOnCurrentFrame())
+            {
+                return ApparentDirection * _baseRunSpeed * _decelerationCurve.Evaluate(_animator.CurrentFrameProgress);
+            }
+            if (_animator.IsNextFrameActionFrame)
+            {
+                return ApparentDirection * (_baseRunSpeed + (_leapAdditionalSpeed * _accelerationCurve.Evaluate(_animator.CurrentFrameProgress)));
             }
             if (_animator.IsPreviousFrameActionFrame)
             {
-                return ApparentDirection * LeapMaxSpeed * _landSpeedCurve.Evaluate(_animator.CurrentFrameProgress);
+                return ApparentDirection * (_baseRunSpeed + (_leapAdditionalSpeed * _decelerationCurve.Evaluate(_animator.CurrentFrameProgress)));
+            }
+            if (_animator.IsCurrentFrameActionFrame)
+            {
+                return ApparentDirection * (_baseRunSpeed + _leapAdditionalSpeed);
             }
             return ApparentDirection * _baseRunSpeed;
         }

@@ -7,17 +7,16 @@ namespace AbstractHumanoidToy
 {
     public class SpriteAnimator : MonoBehaviour
     {
-        public event Action ActionFrameEntered = delegate { };
-
-        private SpriteAnimationFrame CurrentFrame => _currentAnimation.GetFrame(_currentFrameIndex);
-        private int PreviousFrameIndex => RepeatFrameIndex(_currentFrameIndex - 1);
-        private SpriteAnimationFrame PreviousFrame => _currentAnimation.GetFrame(PreviousFrameIndex);
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
-        public bool IsCurrentFrameActionFrame => CurrentFrame.IsActionFrame;
-        public bool IsPreviousFrameActionFrame => PreviousFrame.IsActionFrame;
-        private int FrameCount => _currentAnimation.FrameCount;
         public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
         public bool FlipX => _body.FlipX;
+        private SpriteAnimationFrame CurrentFrame => _currentAnimation.GetFrame(_currentFrameIndex);
+        private SpriteAnimationFrame PreviousFrame => _currentAnimation.GetFrame(_currentFrameIndex + 1);
+        private SpriteAnimationFrame NextFrame => _currentAnimation.GetFrame(_currentFrameIndex - 1);
+        public bool IsCurrentFrameActionFrame => CurrentFrame.IsActionFrame;
+        public bool IsPreviousFrameActionFrame => PreviousFrame.IsActionFrame;
+        public bool IsNextFrameActionFrame => NextFrame.IsActionFrame;
+        public bool IsCurrentFrameFirstFrame => _isFirstFrame;
         
         [SerializeField]
         private SpriteBody _body;
@@ -28,6 +27,7 @@ namespace AbstractHumanoidToy
         private float _currentFrameStartTime;
         private SpriteAnimation _nextAnimation;
         private bool _nextFlipX;
+        private bool _isFirstFrame = true;
 
         private void Reset()
         {
@@ -67,6 +67,7 @@ namespace AbstractHumanoidToy
             _currentAnimation = animation;
             _currentFrameIndex = 0;
             _nextAnimation = null;
+            _isFirstFrame = true;
             UpdateSpriteBody();
         }
         public void TransitionTo(SpriteAnimation animation)
@@ -84,13 +85,13 @@ namespace AbstractHumanoidToy
 
         private bool ReadyToTransitionToNextAnimation()
         {
-            return ShouldSmoothStopOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.SmoothStopDuration;
+            return IsSmoothStoppingOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.SmoothStopDuration;
         }
         private bool ReadyToAdvanceOneFrame()
         {
-            return !ShouldSmoothStopOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.Duration;
+            return !IsSmoothStoppingOnCurrentFrame() && TimeSinceCurrentFrameStart >= CurrentFrame.Duration;
         }
-        private bool ShouldSmoothStopOnCurrentFrame()
+        public bool IsSmoothStoppingOnCurrentFrame()
         {
             return HasAnimationToTransitionTo() && CurrentFrame.IsSmoothStopFrame;
         }
@@ -102,37 +103,13 @@ namespace AbstractHumanoidToy
         private void AdvanceOneFrame()
         {
             _currentFrameIndex++;
+            _isFirstFrame = false;
             UpdateSpriteBody();
         }
         private void UpdateSpriteBody()
         {
-            _currentFrameIndex = RepeatFrameIndex(_currentFrameIndex);
-            ShowCurrentFrame();
-            RaiseNewFrameEvents();
-        }
-        private int RepeatFrameIndex(int index)
-        {
-            int remainder = index % _currentAnimation.FrameCount;
-            if (index < 0)
-            {
-                return (remainder + FrameCount) % FrameCount;
-            }
-            else
-            {
-                return remainder;
-            }
-        }
-        private void ShowCurrentFrame()
-        {
             _body.ShowFrame(CurrentFrame);
             _currentFrameStartTime = Time.time;
-        }
-        private void RaiseNewFrameEvents()
-        {
-            if (CurrentFrame.IsActionFrame)
-            {
-                ActionFrameEntered();
-            }
         }
     }
 }

@@ -15,9 +15,29 @@ namespace AbstractHumanoidToy
         [SerializeField]
         private SpriteAnimationFrame[] _frames;
 
-        internal SpriteAnimationFrame GetFrame(int currentFrame)
+        public SpriteAnimationFrame FrameBefore(int frameIndex)
         {
-            return _frames[currentFrame];
+            return GetFrame(frameIndex - 1);
+        }
+        public SpriteAnimationFrame FrameAfter(int frameIndex)
+        {
+            return GetFrame(frameIndex + 1);
+        }
+        public SpriteAnimationFrame GetFrame(int frameIndex)
+        {
+            return _frames[MakeIndexValid(frameIndex)];
+        }
+        private int MakeIndexValid(int index)
+        {
+            int remainder = index % FrameCount;
+            if (index < 0)
+            {
+                return (remainder + FrameCount) % FrameCount;
+            }
+            else
+            {
+                return remainder;
+            }
         }
     }
 }
