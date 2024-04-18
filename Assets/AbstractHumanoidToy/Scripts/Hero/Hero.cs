@@ -11,6 +11,7 @@ namespace AbstractHumanoidToy
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
         public event Action StartedJumpAnimation = delegate { };
+        public event Action ActionFrameEntered = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -24,25 +25,42 @@ namespace AbstractHumanoidToy
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
+        public float MinJumpTime => _minJumpTime;
+        public float MaxJumpTime => _maxJumpTime;
 
+        [Header("Parts")]
         [SerializeField]
         private HeroStateMachine _stateMachine;
         [SerializeField]
         private Rigidbody2D _physicsBody;
         [SerializeField]
         private SpriteAnimator _animator;
+
+        [Header("Animations")]
         [SerializeField]
         private SpriteAnimation _idle;
         [SerializeField]
         private SpriteAnimation _run;
         [SerializeField]
         private SpriteAnimation _jump;
+
+        [Header("Running")]
         [SerializeField]
         private float _baseRunSpeed = 1;
         [SerializeField]
         private float _leapAdditionalSpeed = 1;
         [SerializeField, FormerlySerializedAs("_accelerationCurve")]
         private AnimationCurve _runAccelerationCurve;
+
+        [Header("Jumping")]
+        [SerializeField]
+        private float _jumpSpeed = 5;
+        [SerializeField]
+        private float _minJumpTime = 0.1f;
+        [SerializeField]
+        private float _maxJumpTime = 1;
+
+        [Header("Inputs")]
         [SerializeField, Range(-1, 1)]
         private int _horizontalDirection = 0;
 
@@ -52,11 +70,13 @@ namespace AbstractHumanoidToy
         }
         private void OnEnable()
         {
-            _animator.StartedAnimation += OnAnimationStarted;   
+            _animator.StartedAnimation += OnAnimationStarted;
+            _animator.ActionFrameEntered += OnActionFrameEntered;
         }
         private void OnDisable()
         {
             _animator.StartedAnimation -= OnAnimationStarted;
+            _animator.ActionFrameEntered -= OnActionFrameEntered;
         }
 
         private void OnAnimationStarted()
@@ -65,6 +85,10 @@ namespace AbstractHumanoidToy
             {
                 StartedJumpAnimation();
             }
+        }
+        private void OnActionFrameEntered()
+        {
+            ActionFrameEntered();
         }
 
         public void SetState(HeroState state)
@@ -91,6 +115,10 @@ namespace AbstractHumanoidToy
         public void SetHorizontalVelocity(float velocity)
         {
             _physicsBody.SetVelocity(velocity, Dimension.X);
+        }
+        public void SetJumpingVelocity()
+        {
+            _physicsBody.SetVelocity(_jumpSpeed, Dimension.Y);
         }
         public void TransitionToIdleAnimation()
         {

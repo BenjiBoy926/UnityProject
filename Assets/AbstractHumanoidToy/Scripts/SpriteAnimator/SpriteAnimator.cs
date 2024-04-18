@@ -8,6 +8,7 @@ namespace AbstractHumanoidToy
     public class SpriteAnimator : MonoBehaviour
     {
         public event Action StartedAnimation = delegate { };
+        public event Action ActionFrameEntered = delegate { };
 
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
         private float CurrentFrameDuration => CurrentFrame.GetDuration(IsTransitioning());
@@ -115,6 +116,10 @@ namespace AbstractHumanoidToy
         {
             _body.ShowFrame(CurrentFrame);
             _currentFrameStartTime = Time.time;
+            if (IsCurrentFrameActionFrame)
+            {
+                ActionFrameEntered();
+            }
         }
     }
 }
