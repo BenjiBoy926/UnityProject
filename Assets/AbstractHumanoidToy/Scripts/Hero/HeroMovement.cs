@@ -33,10 +33,10 @@ namespace AbstractHumanoidToy
         private float _leapAdditionalSpeed = 1;
         [SerializeField]
         private AnimationCurve _accelerationCurve;
-        [SerializeField]
-        private AnimationCurve _decelerationCurve;
         [SerializeField, Range(-1, 1)]
         private int _currentDirection = 0;
+        private FromToCurve _toRun;
+        private FromToCurve _toLeap;
 
         private void Reset()
         {
@@ -50,6 +50,11 @@ namespace AbstractHumanoidToy
                 return;
             }
             ReflectCurrentDirection();
+        }
+        private void Awake()
+        {
+            _toRun = new FromToCurve(0, _baseRunSpeed, _accelerationCurve);
+            _toLeap = new FromToCurve(_baseRunSpeed, LeapMaxSpeed, _accelerationCurve);
         }
         private void OnEnable()
         {
@@ -68,23 +73,23 @@ namespace AbstractHumanoidToy
             }
             if (_animator.IsCurrentFrameFirstFrame)
             {
-                return ApparentDirection * _baseRunSpeed * _accelerationCurve.Evaluate(_animator.CurrentFrameProgress);
+                return ApparentDirection * _toRun.Evaluate(_animator.CurrentFrameProgress);
             }
             if (_animator.IsSmoothStoppingOnCurrentFrame())
             {
-                return ApparentDirection * _baseRunSpeed * _decelerationCurve.Evaluate(_animator.CurrentFrameProgress);
+                return ApparentDirection * _toRun.Evaluate(1 - _animator.CurrentFrameProgress);
             }
             if (_animator.IsNextFrameActionFrame)
             {
-                return ApparentDirection * (_baseRunSpeed + (_leapAdditionalSpeed * _accelerationCurve.Evaluate(_animator.CurrentFrameProgress)));
+                return ApparentDirection * _toLeap.Evaluate(_animator.CurrentFrameProgress);
             }
             if (_animator.IsPreviousFrameActionFrame)
             {
-                return ApparentDirection * (_baseRunSpeed + (_leapAdditionalSpeed * _decelerationCurve.Evaluate(_animator.CurrentFrameProgress)));
+                return ApparentDirection * _toLeap.Evaluate(1 - _animator.CurrentFrameProgress);
             }
             if (_animator.IsCurrentFrameActionFrame)
             {
-                return ApparentDirection * (_baseRunSpeed + _leapAdditionalSpeed);
+                return ApparentDirection * LeapMaxSpeed;
             }
             return ApparentDirection * _baseRunSpeed;
         }
