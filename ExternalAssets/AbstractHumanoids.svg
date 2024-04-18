@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.1767767"
-     inkscape:cx="715.59206"
-     inkscape:cy="2350.4229"
+     inkscape:zoom="0.5"
+     inkscape:cx="125"
+     inkscape:cy="2875"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -123,7 +123,10 @@
        height="132.29166"
        id="page67"
        margin="0"
-       bleed="0" />
+       bleed="0"
+       inkscape:export-filename="..\Assets\AbstractHumanoidToy\Sprites\Heroine_FreeFallBackwards.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -226,7 +229,7 @@
        id="path74" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
-       d="m 47.894698,841.88891 c 11.973673,-10.28988 43.778745,-16.838 43.778745,-16.838 0,0 4.905907,35.20151 -38.353176,53.88155 -16.4638,7.10936 -5.425569,-37.04355 -5.425569,-37.04355 z"
+       d="m 49.204319,845.81777 c 11.973673,-10.28988 42.469124,-20.76686 42.469124,-20.76686 0,0 -5.196881,35.94986 -38.353176,53.88155 -15.77409,8.53099 -4.115948,-33.11469 -4.115948,-33.11469 z"
        id="path71"
        sodipodi:nodetypes="ccsc" />
     <path
@@ -860,7 +863,7 @@
        ry="8.9769201" />
     <path
        style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.79375"
-       d="m 52.806679,844.98092 c 11.973673,17.58632 11.177643,34.88697 2.758652,38.0675 -8.418988,3.1805 -45.8367206,-13.84456 -43.030391,-71.46787 26.005324,10.85114 40.271739,33.40037 40.271739,33.40037 z"
+       d="m 52.806679,844.98092 c 11.973673,17.58632 11.371618,35.45752 2.758652,38.0675 -6.173924,1.87088 -29.747096,-4.30304 -39.288618,-57.8104 26.005324,10.85114 36.529966,19.7429 36.529966,19.7429 z"
        id="path70"
        sodipodi:nodetypes="cscc" />
     <path
