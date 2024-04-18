@@ -41,7 +41,7 @@ namespace AbstractHumanoidToy
             {
                 direction = 1;
             }
-            _hero.SetCurrentDirection(direction);
+            _hero.SetHorizontalDirection(direction);
         }
     }
 }
