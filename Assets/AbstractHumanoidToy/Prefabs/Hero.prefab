@@ -271,9 +271,10 @@ MonoBehaviour:
   _animator: {fileID: 8908563907554770964}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
+  _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
   _baseRunSpeed: 5
   _leapAdditionalSpeed: 15
-  _accelerationCurve:
+  _runAccelerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -297,7 +298,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _currentDirection: 0
+  _horizontalDirection: 0
 --- !u!114 &9130010180061938019
 MonoBehaviour:
   m_ObjectHideFlags: 0

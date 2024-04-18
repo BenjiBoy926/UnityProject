@@ -6,6 +6,7 @@ namespace AbstractHumanoidToy
     {
         private FromToCurve _toRun;
         private FromToCurve _toLeap;
+        private bool _isTransitioningToJump;
 
         public HeroOnGroundState(Hero hero) : base(hero) 
         {
@@ -17,17 +18,28 @@ namespace AbstractHumanoidToy
         {
             base.Enter(time);
             Hero.HorizontalDirectionChanged += OnHeroDirectionChanged;
+            Hero.StartedJumping += OnHeroStartedJumping;
             ReflectCurrentDirection();
         }
         public override void Exit()
         {
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroDirectionChanged;
+            Hero.StartedJumping -= OnHeroStartedJumping;
         }
 
         private void OnHeroDirectionChanged()
         {
+            if (_isTransitioningToJump)
+            {
+                return;
+            }
             ReflectCurrentDirection();
+        }
+        private void OnHeroStartedJumping()
+        {
+            _isTransitioningToJump = true;
+            Hero.TransitionToJumpAnimation();
         }
 
         public override void Update(float dt)
@@ -75,11 +87,11 @@ namespace AbstractHumanoidToy
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToIdle();
+                Hero.TransitionToIdleAnimation();
             }
             else
             {
-                Hero.TransitionToRun();
+                Hero.TransitionToRunAnimation();
             }
         }
         private void TransitionFlipX()

@@ -8,6 +8,8 @@ namespace AbstractHumanoidToy
     public class Hero : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
+        public event Action StartedJumping = delegate { };
+        public event Action StoppedJumping = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -32,6 +34,8 @@ namespace AbstractHumanoidToy
         private SpriteAnimation _idle;
         [SerializeField]
         private SpriteAnimation _run;
+        [SerializeField]
+        private SpriteAnimation _jump;
         [SerializeField]
         private float _baseRunSpeed = 1;
         [SerializeField]
@@ -58,17 +62,29 @@ namespace AbstractHumanoidToy
             _horizontalDirection = horizontalDirection;
             HorizontalDirectionChanged();
         }
+        public void StartJumping()
+        {
+            StartedJumping();
+        }
+        public void StopJumping()
+        {
+            StoppedJumping();
+        }
         public void SetHorizontalVelocity(float velocity)
         {
             _physicsBody.SetVelocity(velocity, Dimension.X);
         }
-        public void TransitionToIdle()
+        public void TransitionToIdleAnimation()
         {
             _animator.TransitionTo(_idle);
         }
-        public void TransitionToRun()
+        public void TransitionToRunAnimation()
         {
             _animator.TransitionTo(_run);
+        }
+        public void TransitionToJumpAnimation()
+        {
+            _animator.TransitionTo(_jump);
         }
         public void TransitionFlipX(bool flipX)
         {

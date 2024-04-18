@@ -35,6 +35,15 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d2bcd38-06fb-438c-aadb-60f6f7f0d772"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -169,6 +178,28 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa3787fb-9ec7-4c80-a70d-2247f187cb74"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""159705b3-d7c8-489f-b5af-a93604dc83bb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -178,6 +209,7 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
         // DefaultMap
         m_DefaultMap = asset.FindActionMap("DefaultMap", throwIfNotFound: true);
         m_DefaultMap_Move = m_DefaultMap.FindAction("Move", throwIfNotFound: true);
+        m_DefaultMap_Jump = m_DefaultMap.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,11 +272,13 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_DefaultMap;
     private List<IDefaultMapActions> m_DefaultMapActionsCallbackInterfaces = new List<IDefaultMapActions>();
     private readonly InputAction m_DefaultMap_Move;
+    private readonly InputAction m_DefaultMap_Jump;
     public struct DefaultMapActions
     {
         private @DefaultActions m_Wrapper;
         public DefaultMapActions(@DefaultActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_DefaultMap_Move;
+        public InputAction @Jump => m_Wrapper.m_DefaultMap_Jump;
         public InputActionMap Get() { return m_Wrapper.m_DefaultMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -257,6 +291,9 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IDefaultMapActions instance)
@@ -264,6 +301,9 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IDefaultMapActions instance)
@@ -284,5 +324,6 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
     public interface IDefaultMapActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

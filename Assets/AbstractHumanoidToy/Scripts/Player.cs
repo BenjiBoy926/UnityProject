@@ -43,5 +43,16 @@ namespace AbstractHumanoidToy
             }
             _hero.SetHorizontalDirection(direction);
         }
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _hero.StartJumping();
+            }
+            if (context.canceled)
+            {
+                _hero.StopJumping();
+            }
+        }
     }
 }

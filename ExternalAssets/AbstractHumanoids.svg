@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.25"
-     inkscape:cx="1870"
-     inkscape:cy="1070"
+     inkscape:zoom="0.5"
+     inkscape:cx="913"
+     inkscape:cy="1127"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -216,7 +216,7 @@
        sodipodi:nodetypes="cssc" />
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 198.40752,322.72794 c 27.97985,-13.5416 25.62517,24.61887 16.56124,40.49092 -15.34127,-6.17392 -30.98405,-33.51062 -16.56124,-40.49092 z"
+       d="m 190.92397,310.00591 c 27.97985,-13.5416 25.62517,24.61887 16.56124,40.49092 -15.34127,-6.17392 -30.98405,-33.51062 -16.56124,-40.49092 z"
        id="path16"
        sodipodi:nodetypes="scs" />
     <path
@@ -575,32 +575,33 @@
        id="path7"
        inkscape:connector-curvature="0" />
     <ellipse
-       cy="314.03134"
-       cx="198.60791"
+       cy="301.30933"
+       cx="191.12436"
        id="ellipse10"
        style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        rx="8.9769344"
        ry="8.9769201" />
     <path
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 232.43645,337.74061 c 5.38202,17.99647 -18.52084,42.46562 -18.52084,42.46562 l 2.24896,-25.79687 c 5.29167,2.64584 15.32286,-19.84211 16.27188,-16.66875 z"
+       d="m 224.9529,325.01858 c 5.38202,17.99647 -18.52084,42.46562 -18.52084,42.46562 l 2.24896,-25.79687 c 5.29167,2.64584 15.32286,-19.84211 16.27188,-16.66875 z"
        id="path18"
        sodipodi:nodetypes="sccs" />
     <path
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 231.6427,337.74061 c 0.26458,6.21771 -14.55209,22.88646 -19.71146,17.06562 -5.15938,-5.82083 6.87917,-20.37291 19.71146,-17.06562 z"
+       d="m 224.15915,325.01858 c 0.26458,6.21771 -14.55209,22.88646 -19.71146,17.06562 -5.15938,-5.82083 6.87917,-20.37291 19.71146,-17.06562 z"
        id="path19" />
     <path
        style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 213.91561,375.9729 c 6.08542,-4.89479 5.42396,-22.35729 -0.26458,-24.60625 -5.68854,-2.24896 -9.39271,16.13958 -7.80521,19.05 1.5875,2.91041 4.89479,7.54062 8.06979,5.55625 z"
+       d="m 206.43206,363.25087 c 6.08542,-4.89479 5.42396,-22.35729 -0.26458,-24.60625 -5.68854,-2.24896 -9.39271,16.13958 -7.80521,19.05 1.5875,2.91041 4.89479,7.54062 8.06979,5.55625 z"
        id="path20" />
     <path
-       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 178.85676,394.75707 h 30.68254 c 0,0 8.60608,-19.64431 0.56127,-25.81823 -8.04482,-6.17394 -3.92887,20.57974 -31.24381,25.81823 z"
-       id="path17" />
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
+       d="m 186.71448,366.13249 1.30962,27.12788 c 0,0 26.72112,-25.05509 19.45722,-35.17267 -5.23848,-7.29646 -12.16076,17.77341 -20.76684,8.04479 z"
+       id="path4"
+       sodipodi:nodetypes="ccsc" />
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.79375;stroke-dasharray:none;stroke-opacity:1"
-       d="m 197.37853,321.6054 c 16.7914,-6.11913 19.11737,9.9018 16.08963,25.81824 -5.3675,28.21623 -30.32165,32.8313 -30.32165,32.8313 0,0 -16.56198,-47.42757 14.23202,-58.64954 z"
+       d="m 189.89498,308.88337 c 16.7914,-6.11913 19.11737,9.9018 16.08963,25.81824 -5.3675,28.21623 -30.32165,32.8313 -30.32165,32.8313 0,0 -16.56198,-47.42757 14.23202,-58.64954 z"
        id="path15"
        sodipodi:nodetypes="sscs" />
     <path
