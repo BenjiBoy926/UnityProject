@@ -242,13 +242,56 @@ MonoBehaviour:
   _animator: {fileID: 8908563907554770964}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
-  _maxSpeed: 10
-  _speedDuringAnimation:
+  _baseRunSpeed: 5
+  _leapAdditionalSpeed: 7
+  _leapSpeedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.9
+      inSlope: -0.37364563
+      outSlope: -0.37364563
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09907544
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _landSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9
+      inSlope: -2.2660654
+      outSlope: -2.2660654
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07549255
+    - serializedVersion: 3
+      time: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 136
