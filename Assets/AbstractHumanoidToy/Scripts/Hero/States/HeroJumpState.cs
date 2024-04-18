@@ -36,7 +36,7 @@ namespace AbstractHumanoidToy
             if (ShouldTransitionOutOfJump())
             {
                 Hero.SetBackflipAnimation();
-                Hero.SetState(new HeroOnGroundState(Hero));
+                Hero.SetState(new HeroFreeFallState(Hero));
             }
             Hero.ApplyHorizontalAirControlForce();
             Hero.ClampHorizontalAirSpeed();
