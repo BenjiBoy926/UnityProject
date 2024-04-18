@@ -7,6 +7,8 @@ namespace AbstractHumanoidToy
 {
     public class SpriteAnimator : MonoBehaviour
     {
+        public event Action StartedAnimation = delegate { };
+
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
         private float CurrentFrameDuration => CurrentFrame.GetDuration(IsTransitioning());
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
@@ -71,6 +73,7 @@ namespace AbstractHumanoidToy
             _nextAnimation = null;
             _isFirstFrame = true;
             UpdateSpriteBody();
+            StartedAnimation();
         }
         public void TransitionTo(SpriteAnimation animation)
         {

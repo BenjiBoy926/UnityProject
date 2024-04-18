@@ -19,6 +19,7 @@ namespace AbstractHumanoidToy
             base.Enter(time);
             Hero.HorizontalDirectionChanged += OnHeroDirectionChanged;
             Hero.StartedJumping += OnHeroStartedJumping;
+            Hero.StartedJumpAnimation += OnHeroStartedJumpAnimation;
             ReflectCurrentDirection();
         }
         public override void Exit()
@@ -26,6 +27,7 @@ namespace AbstractHumanoidToy
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroDirectionChanged;
             Hero.StartedJumping -= OnHeroStartedJumping;
+            Hero.StartedJumpAnimation -= OnHeroStartedJumpAnimation;
         }
 
         private void OnHeroDirectionChanged()
@@ -40,6 +42,10 @@ namespace AbstractHumanoidToy
         {
             _isTransitioningToJump = true;
             Hero.TransitionToJumpAnimation();
+        }
+        private void OnHeroStartedJumpAnimation()
+        {
+            Hero.SetState(new HeroJumpState(Hero));
         }
 
         public override void Update(float dt)

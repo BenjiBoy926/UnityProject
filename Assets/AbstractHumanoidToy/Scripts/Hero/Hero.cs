@@ -10,6 +10,7 @@ namespace AbstractHumanoidToy
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
+        public event Action StartedJumpAnimation = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -49,6 +50,23 @@ namespace AbstractHumanoidToy
         {
             SetState(new HeroOnGroundState(this));
         }
+        private void OnEnable()
+        {
+            _animator.StartedAnimation += OnAnimationStarted;   
+        }
+        private void OnDisable()
+        {
+            _animator.StartedAnimation -= OnAnimationStarted;
+        }
+
+        private void OnAnimationStarted()
+        {
+            if (_animator.IsAnimating(_jump))
+            {
+                StartedJumpAnimation();
+            }
+        }
+
         public void SetState(HeroState state)
         {
             _stateMachine.SetState(state);
