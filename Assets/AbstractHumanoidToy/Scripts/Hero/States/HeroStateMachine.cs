@@ -17,7 +17,7 @@ namespace AbstractHumanoidToy
             _currentState = state;
             if (_currentState != null)
             {
-                _currentState.Enter(Time.time);
+                _currentState.Enter();
             }
         }
         private void Update()

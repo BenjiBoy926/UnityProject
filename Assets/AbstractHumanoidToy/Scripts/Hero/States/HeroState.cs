@@ -7,6 +7,7 @@ namespace AbstractHumanoidToy
     public class HeroState
     {
         protected Hero Hero => _hero;
+        protected float TimeSinceStateStart => Time.time - _timeOfStateStart;
 
         private Hero _hero;
         private float _timeOfStateStart;
@@ -15,9 +16,9 @@ namespace AbstractHumanoidToy
         {
             _hero = hero;
         }
-        public virtual void Enter(float time)
+        public virtual void Enter()
         {
-            _timeOfStateStart = time;
+            _timeOfStateStart = Time.time;
         }
         public virtual void Update(float dt)
         {

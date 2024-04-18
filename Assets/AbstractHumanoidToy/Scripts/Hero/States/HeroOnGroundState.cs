@@ -14,9 +14,9 @@ namespace AbstractHumanoidToy
             _toLeap = new FromToCurve(hero.BaseRunSpeed, hero.LeapMaxSpeed, hero.RunAccelerationCurve);
         }
 
-        public override void Enter(float time)
+        public override void Enter()
         {
-            base.Enter(time);
+            base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroDirectionChanged;
             Hero.StartedJumping += OnHeroStartedJumping;
             Hero.StartedJumpAnimation += OnHeroStartedJumpAnimation;
