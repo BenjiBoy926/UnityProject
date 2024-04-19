@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-namespace AbstractHumanoidToy.Editor
+namespace Abstract.Editor
 {
     [CustomEditor(typeof(SpriteAnimation))]
     public class SpriteAnimationEditor : UnityEditor.Editor

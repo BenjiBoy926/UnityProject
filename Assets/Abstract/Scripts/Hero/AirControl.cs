@@ -2,7 +2,7 @@ using Core;
 using System;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     [Serializable]
     public struct AirControl

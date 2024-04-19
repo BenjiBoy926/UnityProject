@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     [Serializable]
     public class FromToCurve

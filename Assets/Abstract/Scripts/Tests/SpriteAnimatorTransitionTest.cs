@@ -1,7 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class SpriteAnimationTransitionTest : MonoBehaviour
     {

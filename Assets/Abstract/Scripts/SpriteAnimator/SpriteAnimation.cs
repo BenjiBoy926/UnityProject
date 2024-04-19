@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
-    [CreateAssetMenu(menuName = nameof(AbstractHumanoidToy) + "/" + nameof(SpriteAnimation))]
+    [CreateAssetMenu(menuName = nameof(Abstract) + "/" + nameof(SpriteAnimation))]
     public class SpriteAnimation : ScriptableObject
     {
         public const string FramesRelativePath = nameof(_frames);

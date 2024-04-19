@@ -1,12 +1,13 @@
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class HeroOnGroundState : HeroState
     {
         private FromToCurve _toRun;
         private FromToCurve _toLeap;
         private bool _isTransitioningToJump;
+        private float _jumpTransitionSpeed;
 
         public HeroOnGroundState(Hero hero) : base(hero) 
         {
@@ -41,6 +42,7 @@ namespace AbstractHumanoidToy
         private void OnHeroStartedJumping()
         {
             _isTransitioningToJump = true;
+            _jumpTransitionSpeed = CalculateHorizontalSpeed();
             Hero.TransitionToJumpAnimation();
         }
         private void OnHeroStartedJumpAnimation()
@@ -62,7 +64,7 @@ namespace AbstractHumanoidToy
             }
             if (_isTransitioningToJump)
             {
-                return Hero.SpriteDirection * Hero.LeapMaxSpeed;
+                return _jumpTransitionSpeed;
             }
             if (Hero.IsCurrentFrameFirstFrame)
             {

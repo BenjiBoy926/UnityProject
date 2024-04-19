@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class Player : MonoBehaviour, DefaultActions.IDefaultMapActions
     {

@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     [Serializable]
     public class SpriteAnimationFrame

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class HeroJumpState : HeroState
     {

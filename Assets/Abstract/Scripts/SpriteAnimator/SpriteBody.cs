@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class SpriteBody : MonoBehaviour
     {

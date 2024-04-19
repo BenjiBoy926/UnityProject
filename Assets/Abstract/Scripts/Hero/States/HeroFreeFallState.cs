@@ -1,4 +1,4 @@
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class HeroFreeFallState : HeroState
     {

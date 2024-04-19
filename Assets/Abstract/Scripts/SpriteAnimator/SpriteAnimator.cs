@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class SpriteAnimator : MonoBehaviour
     {

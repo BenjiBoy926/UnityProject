@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 
-namespace AbstractHumanoidToy
+namespace Abstract
 {
     public class HeroContacts : MonoBehaviour
     {
