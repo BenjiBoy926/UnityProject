@@ -16,25 +16,25 @@ MonoBehaviour:
   - _sprite: {fileID: -1433315000, guid: 149babd0092125d4aa30846167ca5866, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
-    _transitionDuration: 0.1
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: 1602225286, guid: 149babd0092125d4aa30846167ca5866, type: 3}
     _duration: 0.13
     _isTransitionFrame: 0
-    _transitionDuration: 0.13
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: -1960828448, guid: 149babd0092125d4aa30846167ca5866, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
-    _transitionDuration: 0.1
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: 1182420367, guid: 149babd0092125d4aa30846167ca5866, type: 3}
     _duration: 0.1
     _isTransitionFrame: 0
-    _transitionDuration: 0.1
+    _transitionDuration: 0.03
     _isActionFrame: 0
   - _sprite: {fileID: 640047455, guid: 149babd0092125d4aa30846167ca5866, type: 3}
     _duration: 0.25
     _isTransitionFrame: 1
-    _transitionDuration: 0.25
+    _transitionDuration: 0.1
     _isActionFrame: 0

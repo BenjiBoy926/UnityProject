@@ -19,6 +19,11 @@ namespace Abstract
         {
             return _frames[MakeIndexValid(frameIndex)];
         }
+        public bool IsLastFrame(int index)
+        {
+            index = MakeIndexValid(index);
+            return index == (FrameCount - 1);
+        }
         private int MakeIndexValid(int index)
         {
             int remainder = index % FrameCount;

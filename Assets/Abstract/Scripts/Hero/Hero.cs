@@ -11,6 +11,7 @@ namespace Abstract
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
         public event Action StartedJumpAnimation = delegate { };
+        public event Action FinishedBackflipAnimation = delegate { };
         public event Action ActionFrameEntered = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
@@ -20,6 +21,7 @@ namespace Abstract
         public int SpriteDirection => _animator.FlipX ? -1 : 1;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
+        public bool IsAnimatingBackflip => _animator.IsAnimating(_backflip);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
         public bool IsTransitioningOnCurrentFrame => _animator.IsTransitioningOnCurrentFrame();
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
@@ -86,16 +88,25 @@ namespace Abstract
 
         private void Awake()
         {
-            SetState(new HeroOnGroundState(this));
+            if (_contacts.IsOnGround)
+            {
+                SetState(new HeroOnGroundState(this));
+            }
+            else
+            {
+                SetState(new HeroFreeFallState(this));
+            }
         }
         private void OnEnable()
         {
             _animator.StartedAnimation += OnAnimationStarted;
+            _animator.FinishedAnimation += OnAnimationFinished;
             _animator.ActionFrameEntered += OnActionFrameEntered;
         }
         private void OnDisable()
         {
             _animator.StartedAnimation -= OnAnimationStarted;
+            _animator.FinishedAnimation -= OnAnimationFinished;
             _animator.ActionFrameEntered -= OnActionFrameEntered;
         }
 
@@ -104,6 +115,13 @@ namespace Abstract
             if (_animator.IsAnimating(_jump))
             {
                 StartedJumpAnimation();
+            }
+        }
+        private void OnAnimationFinished()
+        {
+            if (_animator.IsAnimating(_backflip))
+            {
+                FinishedBackflipAnimation();
             }
         }
         private void OnActionFrameEntered()
@@ -156,6 +174,7 @@ namespace Abstract
         {
             _freeFallAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
         }
+
         public void TransitionToIdleAnimation()
         {
             _animator.TransitionTo(_idle);
@@ -168,17 +187,18 @@ namespace Abstract
         {
             _animator.TransitionTo(_jump);
         }
-        public void TransitionToFreeFallForwardAnimation()
+
+        public void SetFreeFallForwardAnimation()
         {
-            _animator.TransitionTo(_freeFallForward);
+            _animator.SetAnimation(_freeFallForward);
         }
-        public void TransitionToFreeFallBackwardAnimation()
+        public void SetFreeFallBackwardAnimation()
         {
-            _animator.TransitionTo(_freeFallBack);
+            _animator.SetAnimation(_freeFallBack);
         }
-        public void TransitionToFreeFallStraightAnimation()
+        public void SetFreeFallStraightAnimation()
         {
-            _animator.TransitionTo(_freeFallStraight);
+            _animator.SetAnimation(_freeFallStraight);
         }
         public void SetLandingAnimation()
         {
@@ -188,6 +208,7 @@ namespace Abstract
         {
             _animator.SetAnimation(_backflip);
         }
+
         public void TransitionFlipX(bool flipX)
         {
             _animator.TransitionFlipX(flipX);

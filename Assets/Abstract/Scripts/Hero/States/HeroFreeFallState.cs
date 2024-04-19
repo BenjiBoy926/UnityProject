@@ -1,3 +1,5 @@
+using Unity.VisualScripting.YamlDotNet.Serialization;
+
 namespace Abstract
 {
     public class HeroFreeFallState : HeroState
@@ -8,17 +10,29 @@ namespace Abstract
         {
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroHorizontalDirectionChanged;
-            ReflectCurrentHorizontalDirection();
+            Hero.FinishedBackflipAnimation += OnHeroFinishedBackflipAnimation;
+            if (!Hero.IsAnimatingBackflip)
+            {
+                SetFreeFallAnimation();
+            }
         }
         public override void Exit()
         {
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroHorizontalDirectionChanged;
+            Hero.FinishedBackflipAnimation -= OnHeroFinishedBackflipAnimation;
         }
 
         private void OnHeroHorizontalDirectionChanged()
         {
-            ReflectCurrentHorizontalDirection();
+            if (!Hero.IsAnimatingBackflip)
+            {
+                SetFreeFallAnimation();
+            }
+        }
+        private void OnHeroFinishedBackflipAnimation()
+        {
+            SetFreeFallAnimation();
         }
 
         public override void Update(float dt)
@@ -32,19 +46,19 @@ namespace Abstract
             }
         }
 
-        private void ReflectCurrentHorizontalDirection()
+        private void SetFreeFallAnimation()
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToFreeFallStraightAnimation();
+                Hero.SetFreeFallStraightAnimation();
             }
             else if (Hero.HorizontalDirection != Hero.SpriteDirection)
             {
-                Hero.TransitionToFreeFallBackwardAnimation();
+                Hero.SetFreeFallBackwardAnimation();
             }
             else
             {
-                Hero.TransitionToFreeFallForwardAnimation();
+                Hero.SetFreeFallForwardAnimation();
             }
         }
     }

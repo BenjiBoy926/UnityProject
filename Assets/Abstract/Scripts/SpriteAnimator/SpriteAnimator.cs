@@ -8,6 +8,7 @@ namespace Abstract
     public class SpriteAnimator : MonoBehaviour
     {
         public event Action StartedAnimation = delegate { };
+        public event Action FinishedAnimation = delegate { };
         public event Action ActionFrameEntered = delegate { };
 
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
@@ -108,9 +109,14 @@ namespace Abstract
 
         private void AdvanceOneFrame()
         {
+            bool isLastFrame = _currentAnimation.IsLastFrame(_currentFrameIndex);
             _currentFrameIndex++;
             _isFirstFrame = false;
             UpdateSpriteBody();
+            if (isLastFrame)
+            {
+                FinishedAnimation();
+            }
         }
         private void UpdateSpriteBody()
         {
