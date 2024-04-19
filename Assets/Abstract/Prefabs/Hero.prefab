@@ -306,7 +306,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _jumpSpeed: 10
-  _minJumpTime: 0.2
+  _minJumpTime: 0.1
   _maxJumpTime: 1
   _jumpAirControl:
     _forwards:
