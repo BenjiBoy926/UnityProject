@@ -9,6 +9,8 @@ namespace Abstract
     {
         [SerializeField]
         private Hero _hero;
+        [SerializeField]
+        private Camera _mouseConversionCamera;
         private DefaultActions _actions;
 
         private void Reset()
@@ -19,6 +21,7 @@ namespace Abstract
         {
             _actions = new DefaultActions();
             _actions.DefaultMap.SetCallbacks(this);
+            _mouseConversionCamera = Camera.main;
         }
         private void OnEnable()
         {
@@ -46,6 +49,19 @@ namespace Abstract
         public void OnJump(InputAction.CallbackContext context)
         {
             _hero.SetIsJumping(context.ReadValueAsButton());
+        }
+        public void OnDashTarget(InputAction.CallbackContext context)
+        {
+
+        }
+        public void OnDash(InputAction.CallbackContext context)
+        {
+
+        }
+
+        private Vector2 GetDashDirectionFromScreenPoint(Vector2 screenPoint)
+        {
+            return _mouseConversionCamera.ScreenToWorldPoint(screenPoint);
         }
     }
 }
