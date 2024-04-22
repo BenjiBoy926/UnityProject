@@ -11,10 +11,7 @@ namespace Abstract
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroHorizontalDirectionChanged;
             Hero.FinishedBackflipAnimation += OnHeroFinishedBackflipAnimation;
-            if (!Hero.IsAnimatingBackflip)
-            {
-                SetFreeFallAnimation();
-            }
+            Hero.SetBackflipAnimation();
         }
         public override void Exit()
         {

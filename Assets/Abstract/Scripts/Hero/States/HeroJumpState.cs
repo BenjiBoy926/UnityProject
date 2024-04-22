@@ -14,6 +14,7 @@ namespace Abstract
         {
             base.Enter();
             Hero.ActionFrameEntered += OnActionFrameEntered;
+            Hero.TransitionToJumpAnimation();
         }
         public override void Exit()
         {
@@ -23,19 +24,26 @@ namespace Abstract
 
         private void OnActionFrameEntered()
         {
+            if (!Hero.IsAnimatingJump)
+            {
+                return;
+            }
             _timeOfJumpActionFrameStart = Time.time;
         }
 
         public override void Update(float dt)
         {
             base.Update(dt);
+            if (!Hero.IsAnimatingJump)
+            {
+                return;
+            }
             if (Hero.IsCurrentFrameActionFrame)
             {
                 Hero.SetJumpingVelocity();
             }
             if (ShouldTransitionOutOfJump())
             {
-                Hero.SetBackflipAnimation();
                 Hero.SetState(new HeroFreeFallState(Hero));
             }
             Hero.ApplyJumpAirControl();

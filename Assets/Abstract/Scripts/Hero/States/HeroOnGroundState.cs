@@ -6,8 +6,6 @@ namespace Abstract
     {
         private FromToCurve _toRun;
         private FromToCurve _toLeap;
-        private bool _isTransitioningToJump;
-        private float _jumpTransitionSpeed;
 
         public HeroOnGroundState(Hero hero) : base(hero) 
         {
@@ -33,17 +31,11 @@ namespace Abstract
 
         private void OnHeroDirectionChanged()
         {
-            if (_isTransitioningToJump)
-            {
-                return;
-            }
             ReflectCurrentDirection();
         }
         private void OnHeroStartedJumping()
         {
-            _isTransitioningToJump = true;
-            _jumpTransitionSpeed = CalculateHorizontalSpeed();
-            Hero.TransitionToJumpAnimation();
+            Hero.SetState(new HeroJumpState(Hero));
         }
         private void OnHeroStartedJumpAnimation()
         {
@@ -61,10 +53,6 @@ namespace Abstract
             if (Hero.IsAnimatingIdle)
             {
                 return 0;
-            }
-            if (_isTransitioningToJump)
-            {
-                return _jumpTransitionSpeed;
             }
             if (Hero.IsCurrentFrameFirstFrame)
             {

@@ -22,6 +22,7 @@ namespace Abstract
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
         public bool IsAnimatingBackflip => _animator.IsAnimating(_backflip);
+        public bool IsAnimatingJump => _animator.IsAnimating(_jump);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
         public bool IsTransitioningOnCurrentFrame => _animator.IsTransitioningOnCurrentFrame();
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
