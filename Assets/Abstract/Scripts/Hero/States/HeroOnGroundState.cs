@@ -18,7 +18,6 @@ namespace Abstract
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroDirectionChanged;
             Hero.StartedJumping += OnHeroStartedJumping;
-            Hero.StartedJumpAnimation += OnHeroStartedJumpAnimation;
             ReflectCurrentDirection();
         }
         public override void Exit()
@@ -26,7 +25,6 @@ namespace Abstract
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroDirectionChanged;
             Hero.StartedJumping -= OnHeroStartedJumping;
-            Hero.StartedJumpAnimation -= OnHeroStartedJumpAnimation;
         }
 
         private void OnHeroDirectionChanged()
@@ -37,14 +35,14 @@ namespace Abstract
         {
             Hero.SetState(new HeroJumpState(Hero));
         }
-        private void OnHeroStartedJumpAnimation()
-        {
-            Hero.SetState(new HeroJumpState(Hero));
-        }
 
         public override void Update(float dt)
         {
             base.Update(dt);
+            if (!Hero.IsOnGround)
+            {
+                Hero.SetState(new HeroFreeFallState(Hero));
+            }
             float speed = CalculateHorizontalSpeed();
             Hero.SetHorizontalVelocity(speed);
         }

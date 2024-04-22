@@ -279,8 +279,8 @@ MonoBehaviour:
   _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _freeFallStraight: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
   _landingAnimation: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
-  _baseRunSpeed: 5
-  _leapAdditionalSpeed: 15
+  _baseRunSpeed: 10
+  _leapAdditionalSpeed: 10
   _runAccelerationCurve:
     serializedVersion: 2
     m_Curve:
