@@ -14,7 +14,7 @@ namespace Abstract
         {
             base.Enter();
             Hero.ActionFrameEntered += OnActionFrameEntered;
-            Hero.TransitionToJumpAnimation();
+            Hero.TransitionToJumpAnimation(0.1f);
         }
         public override void Exit()
         {
@@ -50,7 +50,11 @@ namespace Abstract
         }
         private bool ShouldTransitionOutOfJump()
         {
-            return Hero.IsCurrentFrameActionFrame && ((!Hero.IsJumping && TimeSinceJumpActionFrameStart >= Hero.MinJumpTime) || (TimeSinceJumpActionFrameStart >= Hero.MaxJumpTime));
+            return IsHeroAnimatingJumpActionFrame() && ((!Hero.IsJumping && TimeSinceJumpActionFrameStart >= Hero.MinJumpTime) || (TimeSinceJumpActionFrameStart >= Hero.MaxJumpTime));
+        }
+        private bool IsHeroAnimatingJumpActionFrame()
+        {
+            return Hero.IsAnimatingJump && Hero.IsCurrentFrameActionFrame;
         }
     }
 }

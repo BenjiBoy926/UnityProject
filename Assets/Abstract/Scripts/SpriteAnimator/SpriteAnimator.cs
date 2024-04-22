@@ -12,7 +12,7 @@ namespace Abstract
         public event Action ActionFrameEntered = delegate { };
 
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
-        private float CurrentFrameDuration => CurrentFrame.GetDuration(IsTransitioning());
+        private float CurrentFrameDuration => IsTransitioning() ? CurrentFrame.Duration * _transitionDurationScale : CurrentFrame.Duration;
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
         public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
         public bool FlipX => _body.FlipX;
@@ -32,6 +32,7 @@ namespace Abstract
         private int _currentFrameIndex;
         private float _currentFrameStartTime;
         private SpriteAnimation _nextAnimation;
+        private float _transitionDurationScale = 1;
         private bool _nextFlipX;
         private bool _isFirstFrame = true;
 
@@ -77,9 +78,10 @@ namespace Abstract
             UpdateSpriteBody();
             StartedAnimation();
         }
-        public void TransitionTo(SpriteAnimation animation)
+        public void TransitionTo(SpriteAnimation animation, float transitionDuractionScale)
         {
             _nextAnimation = animation;
+            _transitionDurationScale = transitionDuractionScale;
         }
         public void TransitionFlipX(bool flipX)
         {

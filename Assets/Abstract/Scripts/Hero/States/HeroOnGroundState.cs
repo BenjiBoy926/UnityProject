@@ -85,11 +85,11 @@ namespace Abstract
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToIdleAnimation();
+                Hero.TransitionToIdleAnimation(0.3f);
             }
             else
             {
-                Hero.TransitionToRunAnimation();
+                Hero.TransitionToRunAnimation(0.3f);
             }
         }
         private void TransitionFlipX()

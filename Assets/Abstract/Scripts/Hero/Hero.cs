@@ -176,17 +176,17 @@ namespace Abstract
             _freeFallAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
         }
 
-        public void TransitionToIdleAnimation()
+        public void TransitionToIdleAnimation(float transitionDurationScale)
         {
-            _animator.TransitionTo(_idle);
+            _animator.TransitionTo(_idle, transitionDurationScale);
         }
-        public void TransitionToRunAnimation()
-        {
-            _animator.TransitionTo(_run);
+        public void TransitionToRunAnimation(float transitionDurationScale)
+        {   
+            _animator.TransitionTo(_run, transitionDurationScale);
         }
-        public void TransitionToJumpAnimation()
+        public void TransitionToJumpAnimation(float transitionDurationScale)
         {
-            _animator.TransitionTo(_jump);
+            _animator.TransitionTo(_jump, transitionDurationScale);
         }
 
         public void SetFreeFallForwardAnimation()
