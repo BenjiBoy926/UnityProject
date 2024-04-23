@@ -26,6 +26,7 @@ namespace Abstract
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
+        public float MaxJumpSpeed => _maxJumpSpeed;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
@@ -71,7 +72,9 @@ namespace Abstract
 
         [Header("Jumping")]
         [SerializeField]
-        private float _jumpSpeed = 5;
+        private float _maxJumpSpeed = 5;
+        [SerializeField]
+        private AnimationCurve _jumpSpeedCurve;
         [SerializeField]
         private float _minJumpTime = 0.1f;
         [SerializeField]
@@ -142,9 +145,13 @@ namespace Abstract
         {
             _physicsBody.SetVelocity(velocity, Dimension.X);
         }
-        public void SetJumpingVelocity()
+        public void SetVerticalVelocity(float velocity)
         {
-            _physicsBody.SetVelocity(_jumpSpeed, Dimension.Y);
+            _physicsBody.SetVelocity(velocity, Dimension.Y);
+        }
+        public float EvaluateJumpSpeedCurve(float t)
+        {
+            return _jumpSpeedCurve.Evaluate(t);
         }
         public void ApplyJumpAirControl()
         {

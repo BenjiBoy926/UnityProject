@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frames:
   - _sprite: {fileID: 21300000, guid: b495409fee3c70443abd9a97c5e5e3c8, type: 3}
-    _duration: 1
+    _duration: 0
     _isTransitionFrame: 1
-    _transitionDuration: 0
     _isActionFrame: 0

@@ -5,6 +5,7 @@ namespace Abstract
     public class HeroJumpState : HeroState
     {
         private float TimeSinceJumpActionFrameStart => Time.time - _timeOfJumpActionFrameStart;
+        private float JumpProgress => TimeSinceJumpActionFrameStart / Hero.MaxJumpTime;
 
         private float _timeOfJumpActionFrameStart;
 
@@ -40,7 +41,7 @@ namespace Abstract
             }
             if (Hero.IsCurrentFrameActionFrame)
             {
-                Hero.SetJumpingVelocity();
+                Hero.SetVerticalVelocity(GetJumpSpeed());
             }
             if (ShouldTransitionOutOfJump())
             {
@@ -55,6 +56,10 @@ namespace Abstract
         private bool IsHeroAnimatingJumpActionFrame()
         {
             return Hero.IsAnimatingJump && Hero.IsCurrentFrameActionFrame;
+        }
+        private float GetJumpSpeed()
+        {
+            return Hero.EvaluateJumpSpeedCurve(JumpProgress) * Hero.MaxJumpSpeed;
         }
     }
 }
