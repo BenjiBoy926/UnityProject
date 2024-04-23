@@ -52,14 +52,16 @@ namespace Abstract
         }
         public void OnDashTarget(InputAction.CallbackContext context)
         {
-
+            Vector2 screenPoint = context.ReadValue<Vector2>();
+            Vector2 worldPoint = GetWorldPointFromScreenPoint(screenPoint);
+            _hero.SetDashTarget(worldPoint);
         }
         public void OnDash(InputAction.CallbackContext context)
         {
 
         }
 
-        private Vector2 GetDashDirectionFromScreenPoint(Vector2 screenPoint)
+        private Vector2 GetWorldPointFromScreenPoint(Vector2 screenPoint)
         {
             return _mouseConversionCamera.ScreenToWorldPoint(screenPoint);
         }

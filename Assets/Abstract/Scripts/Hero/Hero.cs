@@ -12,6 +12,7 @@ namespace Abstract
         public event Action StoppedJumping = delegate { };
         public event Action StartedJumpAnimation = delegate { };
         public event Action ActionFrameEntered = delegate { };
+        public event Action DashDirectionChanged = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -60,7 +61,9 @@ namespace Abstract
         [SerializeField]
         private SpriteAnimation _freeFallStraight;
         [SerializeField]
-        private SpriteAnimation _landingAnimation;
+        private SpriteAnimation _squatAnimation;
+        [SerializeField]
+        private SpriteAnimation _sideDashPrepAnimation;
 
         [Header("Running")]
         [SerializeField]
@@ -95,6 +98,7 @@ namespace Abstract
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
             _inputs.StartedJumping += OnStartedJumping;
             _inputs.StoppedJumping += OnStoppedJumping;
+            _inputs.DashDirectionChanged += OnDashDirectionChanged;
         }
         private void OnDisable()
         {
@@ -103,8 +107,8 @@ namespace Abstract
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
             _inputs.StartedJumping -= OnStartedJumping;
             _inputs.StoppedJumping -= OnStoppedJumping;
+            _inputs.DashDirectionChanged -= OnDashDirectionChanged;
         }
-
         private void OnAnimationStarted()
         {
             if (_animator.IsAnimating(_jump))
@@ -127,6 +131,10 @@ namespace Abstract
         private void OnStoppedJumping()
         {
             StoppedJumping();
+        }
+        private void OnDashDirectionChanged()
+        {
+            DashDirectionChanged();
         }
 
         public void SetState(HeroState state)
@@ -187,18 +195,27 @@ namespace Abstract
             _animator.TransitionTo(_freeFallStraight, transitionDurationScale);
         }
 
-        public void SetLandingAnimation()
+        public void SetSquatAnimation()
         {
-            _animator.SetAnimation(_landingAnimation);
+            _animator.SetAnimation(_squatAnimation);
         }
         public void SetBackflipAnimation()
         {
             _animator.SetAnimation(_backflip);
         }
+        public void SetSideDashPrepAnimation()
+        {
+            _animator.SetAnimation(_sideDashPrepAnimation);
+        }
 
         public void TransitionFlipX(bool flipX)
         {
             _animator.TransitionFlipX(flipX);
+        }
+
+        public void SetDashTarget(Vector2 target)
+        {
+            _inputs.SetDashTarget(target);
         }
     }
 }

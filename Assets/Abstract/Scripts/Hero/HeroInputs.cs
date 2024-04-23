@@ -8,6 +8,7 @@ namespace Abstract
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
+        public event Action DashDirectionChanged = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
@@ -16,6 +17,8 @@ namespace Abstract
         private int _horizontalDirection = 0;
         [SerializeField]
         private bool _isJumping;
+        [SerializeField]
+        private Vector2 _dashDirection;
 
         public void SetHorizontalDirection(int horizontalDirection)
         {
@@ -41,6 +44,20 @@ namespace Abstract
             {
                 StoppedJumping();
             }
+        }
+        public void SetDashTarget(Vector2 target)
+        {
+            SetDashDirection(target - (Vector2)transform.position);
+        }
+        public void SetDashDirection(Vector2 direction)
+        {
+            direction = direction.normalized;
+            if (direction == _dashDirection)
+            {
+                return;
+            }
+            _dashDirection = direction;
+            DashDirectionChanged();
         }
     }
 }

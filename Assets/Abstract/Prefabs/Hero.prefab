@@ -280,7 +280,8 @@ MonoBehaviour:
   _freeFallForward: {fileID: 11400000, guid: 58126f1399ae6de4cb73daa3c3d22e89, type: 2}
   _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _freeFallStraight: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
-  _landingAnimation: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
+  _squatAnimation: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
+  _sideDashPrepAnimation: {fileID: 11400000, guid: 9897c165df13f5f44a393957c5f20a2d, type: 2}
   _baseRunSpeed: 10
   _leapAdditionalSpeed: 10
   _runAccelerationCurve:

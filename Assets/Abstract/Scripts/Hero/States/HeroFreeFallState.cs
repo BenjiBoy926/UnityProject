@@ -28,7 +28,7 @@ namespace Abstract
             Hero.ApplyFreeFallAirControl();
             if (Hero.IsOnGround)
             {
-                Hero.SetLandingAnimation();
+                Hero.SetSquatAnimation();
                 Hero.SetState(new HeroOnGroundState(Hero));
             }
         }
