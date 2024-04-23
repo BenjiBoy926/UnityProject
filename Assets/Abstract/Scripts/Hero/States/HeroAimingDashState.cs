@@ -7,12 +7,11 @@ namespace Abstract
         public override void Enter()
         {
             base.Enter();
-            Hero.IsAimingDashChanged += OnIsAimingDashChanged;
             Hero.SetVerticalVelocity(0);
         }
-
-        private void OnIsAimingDashChanged()
+        public override void Update(float dt)
         {
+            base.Update(dt);
             if (!Hero.IsAimingDash)
             {
                 Hero.SetState(new HeroFreeFallState(Hero));

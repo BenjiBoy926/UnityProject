@@ -31,6 +31,10 @@ namespace Abstract
                 Hero.SetSquatAnimation();
                 Hero.SetState(new HeroOnGroundState(Hero));
             }
+            if (Hero.IsAimingDash)
+            {
+                Hero.SetState(new HeroAimingDashState(Hero));
+            }
         }
 
         private void TransitionFreeFallAnimation()

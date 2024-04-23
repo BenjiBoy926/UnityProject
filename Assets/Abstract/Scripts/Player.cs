@@ -58,7 +58,7 @@ namespace Abstract
         }
         public void OnDash(InputAction.CallbackContext context)
         {
-
+            _hero.SetIsAimingDash(context.ReadValueAsButton());
         }
 
         private Vector2 GetWorldPointFromScreenPoint(Vector2 screenPoint)

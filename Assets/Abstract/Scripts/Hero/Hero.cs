@@ -8,11 +8,6 @@ namespace Abstract
     public class Hero : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
-        public event Action IsJumpingChanged = delegate { };
-        public event Action StartedJumpAnimation = delegate { };
-        public event Action ActionFrameEntered = delegate { };
-        public event Action DashDirectionChanged = delegate { };
-        public event Action IsAimingDashChanged = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -94,48 +89,15 @@ namespace Abstract
         }
         private void OnEnable()
         {
-            _animator.StartedAnimation += OnAnimationStarted;
-            _animator.ActionFrameEntered += OnActionFrameEntered;
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
-            _inputs.IsJumpingChanged += OnIsJumpingChanged;
-            _inputs.DashDirectionChanged += OnDashDirectionChanged;
-            _inputs.IsAimingDashChanged += OnIsAimingDashChanged;
         }
         private void OnDisable()
         {
-            _animator.StartedAnimation -= OnAnimationStarted;
-            _animator.ActionFrameEntered -= OnActionFrameEntered;
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
-            _inputs.IsAimingDashChanged -= OnIsAimingDashChanged;
-            _inputs.DashDirectionChanged -= OnDashDirectionChanged;
-            _inputs.IsAimingDashChanged -= OnIsAimingDashChanged;
-        }
-        private void OnAnimationStarted()
-        {
-            if (_animator.IsAnimating(_jump))
-            {
-                StartedJumpAnimation();
-            }
-        }
-        private void OnActionFrameEntered()
-        {
-            ActionFrameEntered();
         }
         private void OnHorizontalDirectionChanged()
         {
             HorizontalDirectionChanged();
-        }
-        private void OnIsJumpingChanged()
-        {
-            IsJumpingChanged();
-        }
-        private void OnDashDirectionChanged()
-        {
-            DashDirectionChanged();
-        }
-        private void OnIsAimingDashChanged()
-        {
-            IsAimingDashChanged();
         }
 
         public void SetState(HeroState state)
@@ -154,6 +116,10 @@ namespace Abstract
         public void SetDashTarget(Vector2 target)
         {
             _inputs.SetDashTarget(target);
+        }
+        public void SetIsAimingDash(bool isAimingDash)
+        {
+            _inputs.SetIsAimingDash(isAimingDash);
         }
 
         public void SetHorizontalVelocity(float velocity)

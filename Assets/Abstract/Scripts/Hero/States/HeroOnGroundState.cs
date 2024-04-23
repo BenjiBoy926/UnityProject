@@ -43,6 +43,10 @@ namespace Abstract
             {
                 Hero.SetState(new HeroJumpState(Hero));
             }
+            if (Hero.IsAimingDash)
+            {
+                Hero.SetState(new HeroAimingDashState(Hero));
+            }
         }
         private float CalculateHorizontalSpeed()
         {
