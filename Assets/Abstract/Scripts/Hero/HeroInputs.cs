@@ -6,9 +6,9 @@ namespace Abstract
     public class HeroInputs : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
-        public event Action StartedJumping = delegate { };
-        public event Action StoppedJumping = delegate { };
+        public event Action IsJumpingChanged = delegate { };
         public event Action DashDirectionChanged = delegate { };
+        public event Action IsAimingDashChanged = delegate { };
 
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
@@ -19,6 +19,8 @@ namespace Abstract
         private bool _isJumping;
         [SerializeField]
         private Vector2 _dashDirection;
+        [SerializeField]
+        private bool _isAimingDash;
 
         public void SetHorizontalDirection(int horizontalDirection)
         {
@@ -36,14 +38,7 @@ namespace Abstract
                 return;
             }
             _isJumping = isJumping;
-            if (_isJumping)
-            {
-                StartedJumping();
-            }
-            else
-            {
-                StoppedJumping();
-            }
+            IsJumpingChanged();
         }
         public void SetDashTarget(Vector2 target)
         {
@@ -58,6 +53,15 @@ namespace Abstract
             }
             _dashDirection = direction;
             DashDirectionChanged();
+        }
+        public void IsAimingDash(bool isAimingDash)
+        {
+            if (isAimingDash == _isAimingDash)
+            {
+                return;
+            }
+            _isAimingDash = isAimingDash;
+            IsAimingDashChanged();
         }
     }
 }

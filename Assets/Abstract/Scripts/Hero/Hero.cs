@@ -8,11 +8,11 @@ namespace Abstract
     public class Hero : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
-        public event Action StartedJumping = delegate { };
-        public event Action StoppedJumping = delegate { };
+        public event Action IsJumpingChanged = delegate { };
         public event Action StartedJumpAnimation = delegate { };
         public event Action ActionFrameEntered = delegate { };
         public event Action DashDirectionChanged = delegate { };
+        public event Action IsAimingDashChanged = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -96,17 +96,18 @@ namespace Abstract
             _animator.StartedAnimation += OnAnimationStarted;
             _animator.ActionFrameEntered += OnActionFrameEntered;
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
-            _inputs.StartedJumping += OnStartedJumping;
-            _inputs.StoppedJumping += OnStoppedJumping;
+            _inputs.IsJumpingChanged += OnIsJumpingChanged;
             _inputs.DashDirectionChanged += OnDashDirectionChanged;
+            _inputs.IsAimingDashChanged += OnIsAimingDashChanged;
         }
+
+
         private void OnDisable()
         {
             _animator.StartedAnimation -= OnAnimationStarted;
             _animator.ActionFrameEntered -= OnActionFrameEntered;
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
-            _inputs.StartedJumping -= OnStartedJumping;
-            _inputs.StoppedJumping -= OnStoppedJumping;
+            _inputs.IsAimingDashChanged -= OnIsAimingDashChanged;
             _inputs.DashDirectionChanged -= OnDashDirectionChanged;
         }
         private void OnAnimationStarted()
@@ -124,17 +125,17 @@ namespace Abstract
         {
             HorizontalDirectionChanged();
         }
-        private void OnStartedJumping()
+        private void OnIsJumpingChanged()
         {
-            StartedJumping();
-        }
-        private void OnStoppedJumping()
-        {
-            StoppedJumping();
+            IsJumpingChanged();
         }
         private void OnDashDirectionChanged()
         {
             DashDirectionChanged();
+        }
+        private void OnIsAimingDashChanged()
+        {
+            IsAimingDashChanged();
         }
 
         public void SetState(HeroState state)
