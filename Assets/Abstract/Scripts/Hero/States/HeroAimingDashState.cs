@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Abstract
 {
     public class HeroAimingDashState : HeroState
@@ -8,6 +10,12 @@ namespace Abstract
         {
             base.Enter();
             Hero.SetVerticalVelocity(0);
+            Hero.SetAimingDashGravityScale();
+        }
+        public override void Exit()
+        {
+            base.Exit();
+            Hero.ResetGravityScale();
         }
         public override void Update(float dt)
         {
@@ -23,7 +31,7 @@ namespace Abstract
         {
             if (Hero.IsOnGround)
             {
-                Hero.SetSquatAnimation();
+                Hero.TransitionToSquatAnimation(0.5f);
             }
             else
             {
@@ -33,7 +41,14 @@ namespace Abstract
         }
         private void SetAimingDashInAirAnimation()
         {
-            
+            if (Mathf.Abs(Hero.DashAimX) > Mathf.Abs(Hero.DashAimY))
+            {
+                Hero.TransitionToSideDashPrepAnimation(0.5f);
+            }
+            else
+            {
+                Hero.TransitionToSquatAnimation(0.5f);
+            }
         }
     }
 }
