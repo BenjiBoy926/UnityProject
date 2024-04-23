@@ -86,8 +86,14 @@ namespace Abstract
         [SerializeField]
         private DirectionalAirControl _freeFallAirControl;
 
+        [Header("Dashing")]
+        [SerializeField]
+        private float _aimingDashGravityScale = 0.1f;
+        private float _defaultGravityScale;
+
         private void Awake()
         {
+            _defaultGravityScale = _physicsBody.gravityScale;
             SetState(new HeroFreeFallState(this));
         }
         private void OnEnable()
@@ -145,6 +151,14 @@ namespace Abstract
         {
             _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
+        public void SetAimingDashGravityScale()
+        {
+            _physicsBody.gravityScale = _aimingDashGravityScale;
+        }
+        public void ResetGravityScale()
+        {
+            _physicsBody.gravityScale = _defaultGravityScale;
+        }
 
         public void TransitionToIdleAnimation(float transitionDurationScale)
         {
@@ -170,6 +184,14 @@ namespace Abstract
         {
             _animator.TransitionTo(_freeFallStraight, transitionDurationScale);
         }
+        public void TransitionToSquatAnimation(float transitionDurationScale)
+        {
+            _animator.TransitionTo(_squatAnimation, transitionDurationScale);
+        }
+        public void TransitionToSideDashPrepAnimation(float transitionDurationScale)
+        {
+            _animator.TransitionTo(_sideDashPrepAnimation, transitionDurationScale);
+        }
         public void SetSquatAnimation()
         {
             _animator.SetAnimation(_squatAnimation);
@@ -177,10 +199,6 @@ namespace Abstract
         public void SetBackflipAnimation()
         {
             _animator.SetAnimation(_backflip);
-        }
-        public void SetSideDashPrepAnimation()
-        {
-            _animator.SetAnimation(_sideDashPrepAnimation);
         }
         public void TransitionToFaceDirection(float direction)
         {
