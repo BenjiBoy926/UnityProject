@@ -11,17 +11,15 @@ namespace Abstract
         public event Action StartedJumping = delegate { };
         public event Action StoppedJumping = delegate { };
         public event Action StartedJumpAnimation = delegate { };
-        public event Action FinishedBackflipAnimation = delegate { };
         public event Action ActionFrameEntered = delegate { };
 
-        public int HorizontalDirection => _horizontalDirection;
+        public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public int SpriteDirection => _animator.FlipX ? -1 : 1;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
-        public bool IsAnimatingBackflip => _animator.IsAnimating(_backflip);
         public bool IsAnimatingJump => _animator.IsAnimating(_jump);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
         public bool IsTransitioningOnCurrentFrame => _animator.IsTransitioningOnCurrentFrame();
@@ -30,7 +28,7 @@ namespace Abstract
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
-        public bool IsJumping => _isJumping;
+        public bool IsJumping => _inputs.IsJumping;
         public bool IsOnGround => _contacts.IsOnGround;
 
         [Header("Parts")]
@@ -42,6 +40,8 @@ namespace Abstract
         private SpriteAnimator _animator;
         [SerializeField]
         private HeroContacts _contacts;
+        [SerializeField]
+        private HeroInputs _inputs;
 
         [Header("Animations")]
         [SerializeField]
@@ -81,34 +81,25 @@ namespace Abstract
         [SerializeField]
         private DirectionalAirControl _freeFallAirControl;
 
-        [Header("Inputs")]
-        [SerializeField, Range(-1, 1)]
-        private int _horizontalDirection = 0;
-        [SerializeField]
-        private bool _isJumping = false;
-
         private void Awake()
         {
-            if (_contacts.IsOnGround)
-            {
-                SetState(new HeroOnGroundState(this));
-            }
-            else
-            {
-                SetState(new HeroFreeFallState(this));
-            }
+            SetState(new HeroFreeFallState(this));
         }
         private void OnEnable()
         {
             _animator.StartedAnimation += OnAnimationStarted;
-            _animator.FinishedAnimation += OnAnimationFinished;
             _animator.ActionFrameEntered += OnActionFrameEntered;
+            _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
+            _inputs.StartedJumping += OnStartedJumping;
+            _inputs.StoppedJumping += OnStoppedJumping;
         }
         private void OnDisable()
         {
             _animator.StartedAnimation -= OnAnimationStarted;
-            _animator.FinishedAnimation -= OnAnimationFinished;
             _animator.ActionFrameEntered -= OnActionFrameEntered;
+            _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
+            _inputs.StartedJumping -= OnStartedJumping;
+            _inputs.StoppedJumping -= OnStoppedJumping;
         }
 
         private void OnAnimationStarted()
@@ -118,16 +109,21 @@ namespace Abstract
                 StartedJumpAnimation();
             }
         }
-        private void OnAnimationFinished()
-        {
-            if (_animator.IsAnimating(_backflip))
-            {
-                FinishedBackflipAnimation();
-            }
-        }
         private void OnActionFrameEntered()
         {
             ActionFrameEntered();
+        }
+        private void OnHorizontalDirectionChanged()
+        {
+            HorizontalDirectionChanged();
+        }
+        private void OnStartedJumping()
+        {
+            StartedJumping();
+        }
+        private void OnStoppedJumping()
+        {
+            StoppedJumping();
         }
 
         public void SetState(HeroState state)
@@ -136,28 +132,11 @@ namespace Abstract
         }
         public void SetHorizontalDirection(int horizontalDirection)
         {
-            if (_horizontalDirection == horizontalDirection)
-            {
-                return;
-            }
-            _horizontalDirection = horizontalDirection;
-            HorizontalDirectionChanged();
+            _inputs.SetHorizontalDirection(horizontalDirection);
         }
         public void SetIsJumping(bool isJumping)
         {
-            if (isJumping == _isJumping)
-            {
-                return;
-            }
-            _isJumping = isJumping;
-            if (_isJumping)
-            {
-                StartedJumping();
-            }
-            else
-            {
-                StoppedJumping();
-            }
+            _inputs.SetIsJumping(isJumping);
         }
         public void SetHorizontalVelocity(float velocity)
         {
@@ -169,11 +148,11 @@ namespace Abstract
         }
         public void ApplyJumpAirControl()
         {
-            _jumpAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
+            _jumpAirControl.ApplyTo(_physicsBody, HorizontalDirection, SpriteDirection);
         }
         public void ApplyFreeFallAirControl()
         {
-            _freeFallAirControl.ApplyTo(_physicsBody, _horizontalDirection, SpriteDirection);
+            _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, SpriteDirection);
         }
 
         public void TransitionToIdleAnimation(float transitionDurationScale)

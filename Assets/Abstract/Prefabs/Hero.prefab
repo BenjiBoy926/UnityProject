@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 7646446932064873026}
   - component: {fileID: 9130010180061938019}
   - component: {fileID: 1035319642480623658}
+  - component: {fileID: 7827341310666358948}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -271,6 +272,7 @@ MonoBehaviour:
   _physicsBody: {fileID: 3488960483544655785}
   _animator: {fileID: 8908563907554770964}
   _contacts: {fileID: 1035319642480623658}
+  _inputs: {fileID: 7827341310666358948}
   _idle: {fileID: 11400000, guid: d42dde1aaedbec743bff9e1770842ded, type: 2}
   _run: {fileID: 11400000, guid: 4d7ee3718c96a4a438067f9351a7cab7, type: 2}
   _jump: {fileID: 11400000, guid: 77bc88aca6a584141a11355469248d48, type: 2}
@@ -322,8 +324,6 @@ MonoBehaviour:
     _backwards:
       _acceleration: 10
       _topSpeed: 10
-  _horizontalDirection: 0
-  _isJumping: 0
 --- !u!114 &9130010180061938019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,3 +352,17 @@ MonoBehaviour:
   _overlapAreaSize: 0.1
   _overlapAreaMargin: 0.1
   _isOnGround: 0
+--- !u!114 &7827341310666358948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7925818720938264243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eba5a9d72faef14a972f903cbc1cfc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalDirection: 0
+  _isJumping: 0
