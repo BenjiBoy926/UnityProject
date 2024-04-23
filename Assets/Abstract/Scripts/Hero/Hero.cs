@@ -90,10 +90,12 @@ namespace Abstract
         [SerializeField]
         private float _aimingDashGravityScale = 0.1f;
         private float _defaultGravityScale;
+        private Quaternion _defaultSpriteRotation;
 
         private void Awake()
         {
             _defaultGravityScale = _physicsBody.gravityScale;
+            _defaultSpriteRotation = _animator.transform.localRotation;
             SetState(new HeroFreeFallState(this));
         }
         private void OnEnable()
@@ -158,6 +160,18 @@ namespace Abstract
         public void ResetGravityScale()
         {
             _physicsBody.gravityScale = _defaultGravityScale;
+        }
+        public void SetSpriteUp(Vector2 up)
+        {
+            _animator.transform.up = up;
+        }
+        public void SetSpriteRight(Vector2 right)
+        {
+            _animator.transform.right = right;
+        }
+        public void ResetSpriteRotation()
+        {
+            _animator.transform.localRotation = _defaultSpriteRotation;
         }
 
         public void TransitionToIdleAnimation(float transitionDurationScale)

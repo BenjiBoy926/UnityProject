@@ -50,7 +50,7 @@ namespace Abstract
         }
         public void SetDashAim(Vector2 direction)
         {
-            direction = direction.normalized;
+            direction = MakeVectorIntoDashDirection(direction);
             if (direction == _dashAim)
             {
                 return;
@@ -66,6 +66,12 @@ namespace Abstract
             }
             _isAimingDash = isAimingDash;
             IsAimingDashChanged();
+        }
+        private Vector2 MakeVectorIntoDashDirection(Vector2 vector)
+        {
+            vector.y = Mathf.Max(0, vector.y);
+            vector.Normalize();
+            return vector;
         }
     }
 }

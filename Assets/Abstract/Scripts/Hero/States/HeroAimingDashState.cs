@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Abstract
 {
@@ -16,6 +17,7 @@ namespace Abstract
         {
             base.Exit();
             Hero.ResetGravityScale();
+            Hero.ResetSpriteRotation();
         }
         public override void Update(float dt)
         {
@@ -29,26 +31,40 @@ namespace Abstract
 
         private void ShowDashAim()
         {
+            TransitionToAnimation();
+            SetSpriteRotation();
+            Hero.SetFacingDirection(Hero.DashAimX);
+        }
+        private void TransitionToAnimation()
+        {
             if (Hero.IsOnGround)
             {
                 Hero.TransitionToSquatAnimation(0.5f);
             }
             else
             {
-                SetAimingDashInAirAnimation();
-            }
-            Hero.SetFacingDirection(Hero.DashAimX);
-        }
-        private void SetAimingDashInAirAnimation()
-        {
-            if (Mathf.Abs(Hero.DashAimX) > Mathf.Abs(Hero.DashAimY))
-            {
                 Hero.TransitionToSideDashPrepAnimation(0.5f);
+            }
+        }
+        private void SetSpriteRotation()
+        {
+            if (Hero.IsOnGround)
+            {
+                Hero.ResetSpriteRotation();
             }
             else
             {
-                Hero.TransitionToSquatAnimation(0.5f);
+                SetSpriteMidairRotation();
             }
+        }
+        private void SetSpriteMidairRotation()
+        {
+            Vector2 aim = new(Hero.DashAimX, Hero.DashAimY);
+            if (Hero.DashAimX < 0)
+            {
+                aim *= -1;
+            }
+            Hero.SetSpriteRight(aim);
         }
     }
 }
