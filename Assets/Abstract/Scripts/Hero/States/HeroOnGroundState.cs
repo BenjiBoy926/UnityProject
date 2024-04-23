@@ -56,25 +56,25 @@ namespace Abstract
             }
             if (Hero.IsCurrentFrameFirstFrame)
             {
-                return Hero.SpriteDirection * _toRun.Evaluate(Hero.CurrentFrameProgress);
+                return Hero.FacingDirection * _toRun.Evaluate(Hero.CurrentFrameProgress);
             }
             if (Hero.IsTransitioningOnCurrentFrame)
             {
-                return Hero.SpriteDirection * _toRun.Evaluate(1 - Hero.CurrentFrameProgress);
+                return Hero.FacingDirection * _toRun.Evaluate(1 - Hero.CurrentFrameProgress);
             }
             if (Hero.IsNextFrameActionFrame)
             {
-                return Hero.SpriteDirection * _toLeap.Evaluate(Hero.CurrentFrameProgress);
+                return Hero.FacingDirection * _toLeap.Evaluate(Hero.CurrentFrameProgress);
             }
             if (Hero.IsPreviousFrameActionFrame)
             {
-                return Hero.SpriteDirection * _toLeap.Evaluate(1 - Hero.CurrentFrameProgress);
+                return Hero.FacingDirection * _toLeap.Evaluate(1 - Hero.CurrentFrameProgress);
             }
             if (Hero.IsCurrentFrameActionFrame)
             {
-                return Hero.SpriteDirection * Hero.LeapMaxSpeed;
+                return Hero.FacingDirection * Hero.LeapMaxSpeed;
             }
-            return Hero.SpriteDirection * Hero.BaseRunSpeed;
+            return Hero.FacingDirection * Hero.BaseRunSpeed;
         }
 
         private void ReflectCurrentDirection()
@@ -98,13 +98,8 @@ namespace Abstract
         {
             if (Hero.HorizontalDirection != 0)
             {
-                Hero.TransitionFlipX(DirectionToFlipX(Hero.HorizontalDirection));
+                Hero.TransitionToFaceDirection(Hero.HorizontalDirection);
             }
-        }
-
-        private static bool DirectionToFlipX(int direction)
-        {
-            return direction == -1;
         }
     }
 }

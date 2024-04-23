@@ -67,7 +67,7 @@ namespace Abstract
         private void SetNextAnimation()
         {
             SetAnimation(_nextAnimation);
-            _body.SetFlipX(_nextFlipX);
+            SetFlipX(_nextFlipX);
         }
         public void SetAnimation(SpriteAnimation animation)
         {
@@ -90,6 +90,10 @@ namespace Abstract
         public bool IsAnimating(SpriteAnimation animation)
         {
             return _currentAnimation == animation;
+        }
+        public void SetFlipX(bool flipX)
+        {
+            _body.SetFlipX(flipX);
         }
 
         private bool ReadyToTransitionToNextAnimation()

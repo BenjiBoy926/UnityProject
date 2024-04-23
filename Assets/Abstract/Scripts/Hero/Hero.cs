@@ -13,7 +13,7 @@ namespace Abstract
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
-        public int SpriteDirection => _animator.FlipX ? -1 : 1;
+        public int FacingDirection => FlipXToDirection(_animator.FlipX);
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
         public bool IsAnimatingJump => _animator.IsAnimating(_jump);
@@ -28,6 +28,9 @@ namespace Abstract
         public bool IsJumping => _inputs.IsJumping;
         public bool IsOnGround => _contacts.IsOnGround;
         public bool IsAimingDash => _inputs.IsAimingDash;
+        public Vector2 DashAim => _inputs.DashAim;
+        public float DashAimX => _inputs.DashAimX;
+        public float DashAimY => _inputs.DashAimY;
 
         [Header("Parts")]
         [SerializeField]
@@ -136,11 +139,11 @@ namespace Abstract
         }
         public void ApplyJumpAirControl()
         {
-            _jumpAirControl.ApplyTo(_physicsBody, HorizontalDirection, SpriteDirection);
+            _jumpAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
         public void ApplyFreeFallAirControl()
         {
-            _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, SpriteDirection);
+            _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
 
         public void TransitionToIdleAnimation(float transitionDurationScale)
@@ -179,9 +182,22 @@ namespace Abstract
         {
             _animator.SetAnimation(_sideDashPrepAnimation);
         }
-        public void TransitionFlipX(bool flipX)
+        public void TransitionToFaceDirection(float direction)
         {
-            _animator.TransitionFlipX(flipX);
+            _animator.TransitionFlipX(DirectionToFlipX(direction));
+        }
+        public void SetFacingDirection(float direction)
+        {
+            _animator.SetFlipX(DirectionToFlipX(direction));
+        }
+
+        private static bool DirectionToFlipX(float direction)
+        {
+            return direction < 0;
+        }
+        private static int FlipXToDirection(bool flip)
+        {
+            return flip ? -1 : 1;
         }
     }
 }

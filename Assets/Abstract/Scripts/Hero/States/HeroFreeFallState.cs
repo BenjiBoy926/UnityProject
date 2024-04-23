@@ -43,7 +43,7 @@ namespace Abstract
             {
                 Hero.TransitionToFreeFallStraightAnimation(1);
             }
-            else if (Hero.HorizontalDirection != Hero.SpriteDirection)
+            else if (Hero.HorizontalDirection != Hero.FacingDirection)
             {
                 Hero.TransitionToFreeFallBackwardAnimation(1);
             }

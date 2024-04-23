@@ -13,13 +13,16 @@ namespace Abstract
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
         public bool IsAimingDash => _isAimingDash;
+        public Vector2 DashAim => _dashAim;
+        public float DashAimX => _dashAim.x;
+        public float DashAimY => _dashAim.y;
 
         [SerializeField, Range(-1, 1)]
         private int _horizontalDirection = 0;
         [SerializeField]
         private bool _isJumping;
         [SerializeField]
-        private Vector2 _dashDirection;
+        private Vector2 _dashAim;
         [SerializeField]
         private bool _isAimingDash;
 
@@ -43,16 +46,16 @@ namespace Abstract
         }
         public void SetDashTarget(Vector2 target)
         {
-            SetDashDirection(target - (Vector2)transform.position);
+            SetDashAim(target - (Vector2)transform.position);
         }
-        public void SetDashDirection(Vector2 direction)
+        public void SetDashAim(Vector2 direction)
         {
             direction = direction.normalized;
-            if (direction == _dashDirection)
+            if (direction == _dashAim)
             {
                 return;
             }
-            _dashDirection = direction;
+            _dashAim = direction;
             DashDirectionChanged();
         }
         public void SetIsAimingDash(bool isAimingDash)

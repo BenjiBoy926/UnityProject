@@ -29,10 +29,11 @@ namespace Abstract
             {
                 SetAimingDashInAirAnimation();
             }
+            Hero.SetFacingDirection(Hero.DashAimX);
         }
         private void SetAimingDashInAirAnimation()
         {
-
+            
         }
     }
 }
