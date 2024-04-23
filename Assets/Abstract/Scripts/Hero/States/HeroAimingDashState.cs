@@ -12,6 +12,7 @@ namespace Abstract
         public override void Update(float dt)
         {
             base.Update(dt);
+            ShowDashAim();
             if (!Hero.IsAimingDash)
             {
                 Hero.SetState(new HeroFreeFallState(Hero));
@@ -19,6 +20,17 @@ namespace Abstract
         }
 
         private void ShowDashAim()
+        {
+            if (Hero.IsOnGround)
+            {
+                Hero.SetSquatAnimation();
+            }
+            else
+            {
+                SetAimingDashInAirAnimation();
+            }
+        }
+        private void SetAimingDashInAirAnimation()
         {
 
         }
