@@ -32,6 +32,7 @@ namespace Abstract
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
         public bool IsOnGround => _contacts.IsOnGround;
+        public bool IsAimingDash => _inputs.IsAimingDash;
 
         [Header("Parts")]
         [SerializeField]
@@ -100,8 +101,6 @@ namespace Abstract
             _inputs.DashDirectionChanged += OnDashDirectionChanged;
             _inputs.IsAimingDashChanged += OnIsAimingDashChanged;
         }
-
-
         private void OnDisable()
         {
             _animator.StartedAnimation -= OnAnimationStarted;
@@ -109,6 +108,7 @@ namespace Abstract
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
             _inputs.IsAimingDashChanged -= OnIsAimingDashChanged;
             _inputs.DashDirectionChanged -= OnDashDirectionChanged;
+            _inputs.IsAimingDashChanged -= OnIsAimingDashChanged;
         }
         private void OnAnimationStarted()
         {
@@ -142,6 +142,7 @@ namespace Abstract
         {
             _stateMachine.SetState(state);
         }
+
         public void SetHorizontalDirection(int horizontalDirection)
         {
             _inputs.SetHorizontalDirection(horizontalDirection);
@@ -150,6 +151,11 @@ namespace Abstract
         {
             _inputs.SetIsJumping(isJumping);
         }
+        public void SetDashTarget(Vector2 target)
+        {
+            _inputs.SetDashTarget(target);
+        }
+
         public void SetHorizontalVelocity(float velocity)
         {
             _physicsBody.SetVelocity(velocity, Dimension.X);
@@ -195,7 +201,6 @@ namespace Abstract
         {
             _animator.TransitionTo(_freeFallStraight, transitionDurationScale);
         }
-
         public void SetSquatAnimation()
         {
             _animator.SetAnimation(_squatAnimation);
@@ -208,15 +213,9 @@ namespace Abstract
         {
             _animator.SetAnimation(_sideDashPrepAnimation);
         }
-
         public void TransitionFlipX(bool flipX)
         {
             _animator.TransitionFlipX(flipX);
-        }
-
-        public void SetDashTarget(Vector2 target)
-        {
-            _inputs.SetDashTarget(target);
         }
     }
 }

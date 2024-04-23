@@ -17,37 +17,32 @@ namespace Abstract
         {
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroDirectionChanged;
-            Hero.IsJumpingChanged += OnIsJumpingChanged;
             ReflectCurrentDirection();
         }
         public override void Exit()
         {
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroDirectionChanged;
-            Hero.IsJumpingChanged -= OnIsJumpingChanged;
         }
 
         private void OnHeroDirectionChanged()
         {
             ReflectCurrentDirection();
         }
-        private void OnIsJumpingChanged()
-        {
-            if (Hero.IsJumping)
-            {
-                Hero.SetState(new HeroJumpState(Hero));
-            }
-        }
 
         public override void Update(float dt)
         {
             base.Update(dt);
+            float speed = CalculateHorizontalSpeed();
+            Hero.SetHorizontalVelocity(speed);
             if (!Hero.IsOnGround)
             {
                 Hero.SetState(new HeroFreeFallState(Hero));
             }
-            float speed = CalculateHorizontalSpeed();
-            Hero.SetHorizontalVelocity(speed);
+            if (Hero.IsJumping)
+            {
+                Hero.SetState(new HeroJumpState(Hero));
+            }
         }
         private float CalculateHorizontalSpeed()
         {

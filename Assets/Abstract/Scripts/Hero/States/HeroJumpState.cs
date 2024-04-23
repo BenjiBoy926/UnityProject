@@ -7,29 +7,14 @@ namespace Abstract
         private float TimeSinceJumpActionFrameStart => Time.time - _timeOfJumpActionFrameStart;
         private float JumpProgress => TimeSinceJumpActionFrameStart / Hero.MaxJumpTime;
 
-        private float _timeOfJumpActionFrameStart;
+        private float _timeOfJumpActionFrameStart = -1;
 
         public HeroJumpState(Hero hero) : base(hero) { }
 
         public override void Enter()
         {
             base.Enter();
-            Hero.ActionFrameEntered += OnActionFrameEntered;
             Hero.TransitionToJumpAnimation(0.1f);
-        }
-        public override void Exit()
-        {
-            base.Exit();
-            Hero.ActionFrameEntered -= OnActionFrameEntered;
-        }
-
-        private void OnActionFrameEntered()
-        {
-            if (!Hero.IsAnimatingJump)
-            {
-                return;
-            }
-            _timeOfJumpActionFrameStart = Time.time;
         }
 
         public override void Update(float dt)
@@ -38,6 +23,10 @@ namespace Abstract
             if (!Hero.IsAnimatingJump)
             {
                 return;
+            }
+            if (StartedJumpActionThisFrame())
+            {
+                _timeOfJumpActionFrameStart = Time.time;
             }
             if (Hero.IsCurrentFrameActionFrame)
             {
@@ -53,13 +42,21 @@ namespace Abstract
         {
             return IsHeroAnimatingJumpActionFrame() && ((!Hero.IsJumping && TimeSinceJumpActionFrameStart >= Hero.MinJumpTime) || (TimeSinceJumpActionFrameStart >= Hero.MaxJumpTime));
         }
+        private float GetJumpSpeed()
+        {
+            return Hero.EvaluateJumpSpeedCurve(JumpProgress) * Hero.MaxJumpSpeed;
+        }
+        private bool StartedJumpActionThisFrame()
+        {
+            return IsHeroAnimatingJumpActionFrame() && !IsTimeOfJumpActionStartSet();
+        }
         private bool IsHeroAnimatingJumpActionFrame()
         {
             return Hero.IsAnimatingJump && Hero.IsCurrentFrameActionFrame;
         }
-        private float GetJumpSpeed()
+        private bool IsTimeOfJumpActionStartSet()
         {
-            return Hero.EvaluateJumpSpeedCurve(JumpProgress) * Hero.MaxJumpSpeed;
+            return _timeOfJumpActionFrameStart >= 0;
         }
     }
 }

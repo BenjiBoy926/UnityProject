@@ -12,6 +12,7 @@ namespace Abstract
 
         public int HorizontalDirection => _horizontalDirection;
         public bool IsJumping => _isJumping;
+        public bool IsAimingDash => _isAimingDash;
 
         [SerializeField, Range(-1, 1)]
         private int _horizontalDirection = 0;
@@ -54,7 +55,7 @@ namespace Abstract
             _dashDirection = direction;
             DashDirectionChanged();
         }
-        public void IsAimingDash(bool isAimingDash)
+        public void SetIsAimingDash(bool isAimingDash)
         {
             if (isAimingDash == _isAimingDash)
             {
