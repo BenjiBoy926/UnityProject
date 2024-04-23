@@ -78,10 +78,10 @@ namespace Abstract
             UpdateSpriteBody();
             StartedAnimation();
         }
-        public void TransitionTo(SpriteAnimation animation, float transitionDuractionScale)
+        public void TransitionTo(SpriteAnimation animation, float transitionDurationScale)
         {
             _nextAnimation = animation;
-            _transitionDurationScale = transitionDuractionScale;
+            _transitionDurationScale = transitionDurationScale;
         }
         public void TransitionFlipX(bool flipX)
         {

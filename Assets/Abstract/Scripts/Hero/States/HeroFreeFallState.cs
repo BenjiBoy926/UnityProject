@@ -1,5 +1,3 @@
-using Unity.VisualScripting.YamlDotNet.Serialization;
-
 namespace Abstract
 {
     public class HeroFreeFallState : HeroState
@@ -10,26 +8,18 @@ namespace Abstract
         {
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroHorizontalDirectionChanged;
-            Hero.FinishedBackflipAnimation += OnHeroFinishedBackflipAnimation;
             Hero.SetBackflipAnimation();
+            TransitionFreeFallAnimation();
         }
         public override void Exit()
         {
             base.Exit();
             Hero.HorizontalDirectionChanged -= OnHeroHorizontalDirectionChanged;
-            Hero.FinishedBackflipAnimation -= OnHeroFinishedBackflipAnimation;
         }
 
         private void OnHeroHorizontalDirectionChanged()
         {
-            if (!Hero.IsAnimatingBackflip)
-            {
-                SetFreeFallAnimation();
-            }
-        }
-        private void OnHeroFinishedBackflipAnimation()
-        {
-            SetFreeFallAnimation();
+            TransitionFreeFallAnimation();
         }
 
         public override void Update(float dt)
@@ -43,19 +33,19 @@ namespace Abstract
             }
         }
 
-        private void SetFreeFallAnimation()
+        private void TransitionFreeFallAnimation()
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.SetFreeFallStraightAnimation();
+                Hero.TransitionToFreeFallStraightAnimation(1);
             }
             else if (Hero.HorizontalDirection != Hero.SpriteDirection)
             {
-                Hero.SetFreeFallBackwardAnimation();
+                Hero.TransitionToFreeFallBackwardAnimation(1);
             }
             else
             {
-                Hero.SetFreeFallForwardAnimation();
+                Hero.TransitionToFreeFallForwardAnimation(1);
             }
         }
     }

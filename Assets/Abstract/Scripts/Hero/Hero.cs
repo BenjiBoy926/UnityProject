@@ -188,19 +188,19 @@ namespace Abstract
         {
             _animator.TransitionTo(_jump, transitionDurationScale);
         }
+        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale)
+        {
+            _animator.TransitionTo(_freeFallForward, transitionDurationScale);
+        }
+        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale)
+        {
+            _animator.TransitionTo(_freeFallBack, transitionDurationScale);
+        }
+        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale)
+        {
+            _animator.TransitionTo(_freeFallStraight, transitionDurationScale);
+        }
 
-        public void SetFreeFallForwardAnimation()
-        {
-            _animator.SetAnimation(_freeFallForward);
-        }
-        public void SetFreeFallBackwardAnimation()
-        {
-            _animator.SetAnimation(_freeFallBack);
-        }
-        public void SetFreeFallStraightAnimation()
-        {
-            _animator.SetAnimation(_freeFallStraight);
-        }
         public void SetLandingAnimation()
         {
             _animator.SetAnimation(_landingAnimation);
