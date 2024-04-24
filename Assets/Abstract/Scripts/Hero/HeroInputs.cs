@@ -69,9 +69,7 @@ namespace Abstract
         }
         private Vector2 MakeVectorIntoDashDirection(Vector2 vector)
         {
-            vector.y = Mathf.Max(0, vector.y);
-            vector.Normalize();
-            return vector;
+            return vector.normalized;
         }
     }
 }
