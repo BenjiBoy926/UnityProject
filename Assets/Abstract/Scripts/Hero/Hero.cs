@@ -32,6 +32,7 @@ namespace Abstract
         public Vector2 DashAim => _inputs.DashAim;
         public float DashAimX => _inputs.DashAimX;
         public float DashAimY => _inputs.DashAimY;
+        public float MaxDashSpeed => _maxDashSpeed;
 
         [Header("Parts")]
         [SerializeField]
@@ -95,7 +96,7 @@ namespace Abstract
         [SerializeField]
         private float _aimingDashGravityScale = 0.1f;
         [SerializeField]
-        private float _dashMaxSpeed = 40;
+        private float _maxDashSpeed = 40;
         [SerializeField]
         private AnimationCurve _dashSpeedFalloff;
         private float _defaultGravityScale;
@@ -159,6 +160,11 @@ namespace Abstract
         {
             _physicsBody.SetVelocity(velocity, Dimension.Y);
         }
+        public void SetVelocity(Vector2 velocity)
+        {
+            _physicsBody.velocity = velocity;
+        }
+
         public float EvaluateJumpSpeedCurve(float t)
         {
             return _jumpSpeedCurve.Evaluate(t);

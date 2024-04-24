@@ -4,11 +4,14 @@ namespace Abstract
 {
     public class HeroDashState : HeroState
     {
+        private Vector2 _aim;
+
         public HeroDashState(Hero hero) : base(hero) { }
 
         public override void Enter()
         {
             base.Enter();
+            _aim = Hero.DashAim;
             Hero.DashAnimationFinished += OnDashAnimationFinished;
             SetDashAnimation();
         }
@@ -16,6 +19,11 @@ namespace Abstract
         {
             base.Exit();
             Hero.DashAnimationFinished -= OnDashAnimationFinished;
+        }
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+            Hero.SetVelocity(_aim * Hero.MaxDashSpeed);
         }
 
         private void OnDashAnimationFinished()
@@ -25,7 +33,7 @@ namespace Abstract
 
         private void SetDashAnimation()
         {
-            if (Mathf.Abs(Hero.DashAimX) > Mathf.Abs(Hero.DashAimY))
+            if (_aim.x > _aim.y)
             {
                 Hero.SetSideDashAnimation();
             }

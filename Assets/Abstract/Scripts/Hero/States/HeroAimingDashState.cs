@@ -59,8 +59,8 @@ namespace Abstract
         }
         private void SetSpriteMidairRotation()
         {
-            Vector2 aim = new(Hero.DashAimX, Hero.DashAimY);
-            if (Hero.DashAimX < 0)
+            Vector2 aim = Hero.DashAim;
+            if (aim.x < 0)
             {
                 aim *= -1;
             }
