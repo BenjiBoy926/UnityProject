@@ -97,3 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hero: {fileID: 7044672627482123782}
+  _mouseConversionCamera: {fileID: 0}

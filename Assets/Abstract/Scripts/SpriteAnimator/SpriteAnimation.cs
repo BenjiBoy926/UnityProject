@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Abstract
@@ -11,6 +9,7 @@ namespace Abstract
         public const string FramesRelativePath = nameof(_frames);
 
         public int FrameCount => _frames.Length;
+        public float Duration => TimeBefore(FrameCount - 1) + _frames[^1].Duration;
 
         [SerializeField]
         private SpriteAnimationFrame[] _frames;
@@ -24,6 +23,17 @@ namespace Abstract
             index = MakeIndexValid(index);
             return index == (FrameCount - 1);
         }
+        public float TimeBefore(int index)
+        {
+            index = MakeIndexValid(index);
+            float total = 0;
+            for (int i = 0; i < index; i++)
+            {
+                total += _frames[i].Duration;
+            }
+            return total;
+        }
+        
         private int MakeIndexValid(int index)
         {
             int remainder = index % FrameCount;

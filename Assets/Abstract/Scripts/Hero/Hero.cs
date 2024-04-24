@@ -23,6 +23,7 @@ namespace Abstract
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
+        public float CurrentAnimationProgress => _animator.CurrentAnimationProgress;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
@@ -98,7 +99,7 @@ namespace Abstract
         [SerializeField]
         private float _maxDashSpeed = 40;
         [SerializeField]
-        private AnimationCurve _dashSpeedFalloff;
+        private AnimationCurve _dashSpeedCurve;
         private float _defaultGravityScale;
         private Quaternion _defaultSpriteRotation;
 
@@ -168,6 +169,10 @@ namespace Abstract
         public float EvaluateJumpSpeedCurve(float t)
         {
             return _jumpSpeedCurve.Evaluate(t);
+        }
+        public float EvaluateDashSpeedCurve(float t)
+        {
+            return _dashSpeedCurve.Evaluate(t);
         }
         public void ApplyJumpAirControl()
         {

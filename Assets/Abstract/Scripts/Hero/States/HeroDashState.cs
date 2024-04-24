@@ -5,6 +5,7 @@ namespace Abstract
     public class HeroDashState : HeroState
     {
         private Vector2 _aim;
+        private bool _hasReachedActionFrame;
 
         public HeroDashState(Hero hero) : base(hero) { }
 
@@ -20,20 +21,36 @@ namespace Abstract
             base.Exit();
             Hero.DashAnimationFinished -= OnDashAnimationFinished;
         }
-        public override void Update(float dt)
-        {
-            base.Update(dt);
-            Hero.SetVelocity(_aim * Hero.MaxDashSpeed);
-        }
-
         private void OnDashAnimationFinished()
         {
             Hero.SetState(new HeroFreeFallState(Hero));
         }
 
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+            if (Hero.IsCurrentFrameActionFrame)
+            {
+                _hasReachedActionFrame = true;
+            }
+            Vector2 velocity = GetDashVelocity();
+            Hero.SetVelocity(velocity);
+        }
+        private Vector2 GetDashVelocity()
+        {
+            if (!_hasReachedActionFrame)
+            {
+                return Vector2.zero;
+            }
+            else
+            {
+                return Hero.MaxDashSpeed * Hero.EvaluateDashSpeedCurve(Hero.CurrentAnimationProgress) * _aim;
+            }
+        }
+
         private void SetDashAnimation()
         {
-            if (_aim.x > _aim.y)
+            if (Mathf.Abs(_aim.x) > Mathf.Abs(_aim.y))
             {
                 Hero.SetSideDashAnimation();
             }

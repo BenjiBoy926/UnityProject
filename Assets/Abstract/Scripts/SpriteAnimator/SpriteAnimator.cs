@@ -23,6 +23,8 @@ namespace Abstract
         public bool IsPreviousFrameActionFrame => PreviousFrame.IsActionFrame;
         public bool IsNextFrameActionFrame => NextFrame.IsActionFrame;
         public bool IsCurrentFrameFirstFrame => _isFirstFrame;
+        public float CurrentTime => _currentAnimation.TimeBefore(_currentFrameIndex) + TimeSinceCurrentFrameStart;
+        public float CurrentAnimationProgress => CurrentTime / _currentAnimation.Duration;
         
         [SerializeField]
         private SpriteBody _body;
