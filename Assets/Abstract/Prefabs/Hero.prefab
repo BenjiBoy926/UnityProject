@@ -420,9 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 4379201103701369815}
-  _overlapAreaSize: 0.1
+  _overlapAreaExtents: 0.1
   _overlapAreaMargin: 0.1
-  _isOnGround: 0
+  _isTouchingGround: 0
 --- !u!114 &7827341310666358948
 MonoBehaviour:
   m_ObjectHideFlags: 0

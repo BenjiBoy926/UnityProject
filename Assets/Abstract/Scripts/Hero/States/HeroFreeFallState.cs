@@ -26,7 +26,7 @@ namespace Abstract
         {
             base.Update(dt);
             Hero.ApplyFreeFallAirControl();
-            if (Hero.IsOnGround)
+            if (Hero.IsTouchingGround)
             {
                 Hero.SetSquatAnimation();
                 Hero.SetState(new HeroOnGroundState(Hero));

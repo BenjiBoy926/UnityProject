@@ -37,7 +37,7 @@ namespace Abstract
         }
         private void TransitionToAnimation()
         {
-            if (Hero.IsOnGround)
+            if (Hero.IsTouchingGround)
             {
                 Hero.TransitionToSquatAnimation(0.5f);
             }
@@ -48,7 +48,7 @@ namespace Abstract
         }
         private void SetSpriteRotation()
         {
-            if (Hero.IsOnGround)
+            if (Hero.IsTouchingGround)
             {
                 Hero.ResetSpriteRotation();
             }

@@ -28,7 +28,7 @@ namespace Abstract
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
-        public bool IsOnGround => _contacts.IsOnGround;
+        public bool IsTouchingGround => _contacts.IsTouchingGround;
         public bool IsAimingDash => _inputs.IsAimingDash;
         public Vector2 DashAim => _inputs.DashAim;
         public float DashAimX => _inputs.DashAimX;
