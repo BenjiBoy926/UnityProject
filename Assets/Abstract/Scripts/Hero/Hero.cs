@@ -8,6 +8,7 @@ namespace Abstract
     public class Hero : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
+        public event Action DashAnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
@@ -63,6 +64,10 @@ namespace Abstract
         private SpriteAnimation _squatAnimation;
         [SerializeField]
         private SpriteAnimation _sideDashPrepAnimation;
+        [SerializeField]
+        private SpriteAnimation _sideDashAnimation;
+        [SerializeField]
+        private SpriteAnimation _upDashAnimation;
 
         [Header("Running")]
         [SerializeField]
@@ -89,6 +94,10 @@ namespace Abstract
         [Header("Dashing")]
         [SerializeField]
         private float _aimingDashGravityScale = 0.1f;
+        [SerializeField]
+        private float _dashMaxSpeed = 40;
+        [SerializeField]
+        private AnimationCurve _dashSpeedFalloff;
         private float _defaultGravityScale;
         private Quaternion _defaultSpriteRotation;
 
@@ -101,14 +110,23 @@ namespace Abstract
         private void OnEnable()
         {
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
+            _animator.FinishedAnimation += OnAnimationFinished;
         }
         private void OnDisable()
         {
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
+            _animator.FinishedAnimation -= OnAnimationFinished;
         }
         private void OnHorizontalDirectionChanged()
         {
             HorizontalDirectionChanged();
+        }
+        private void OnAnimationFinished()
+        {
+            if (_animator.IsAnimating(_upDashAnimation) || _animator.IsAnimating(_sideDashAnimation))
+            {
+                DashAnimationFinished();
+            }
         }
 
         public void SetState(HeroState state)
@@ -206,6 +224,15 @@ namespace Abstract
         {
             _animator.TransitionTo(_sideDashPrepAnimation, transitionDurationScale);
         }
+        public void SetSideDashAnimation()
+        {
+            _animator.SetAnimation(_sideDashAnimation);
+        }
+        public void SetUpDashAnimation()
+        {
+            _animator.SetAnimation(_upDashAnimation);
+        }
+
         public void SetSquatAnimation()
         {
             _animator.SetAnimation(_squatAnimation);

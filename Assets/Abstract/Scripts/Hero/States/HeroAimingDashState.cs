@@ -25,7 +25,7 @@ namespace Abstract
             ShowDashAim();
             if (!Hero.IsAimingDash)
             {
-                Hero.SetState(new HeroFreeFallState(Hero));
+                Hero.SetState(new HeroDashState(Hero));
             }
         }
 
