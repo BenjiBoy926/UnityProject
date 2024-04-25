@@ -21,7 +21,7 @@ namespace Core
         {
             return new(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
         }
-        public static Vector2 Flipped(this Vector2 vector)
+        public static Vector2 SwizzleYX(this Vector2 vector)
         {
             return new(vector.y, vector.x);
         }

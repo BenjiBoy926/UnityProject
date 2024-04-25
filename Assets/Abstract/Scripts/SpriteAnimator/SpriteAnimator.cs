@@ -25,6 +25,7 @@ namespace Abstract
         public bool IsCurrentFrameFirstFrame => _isFirstFrame;
         public float CurrentTime => _currentAnimation.TimeBefore(_currentFrameIndex) + TimeSinceCurrentFrameStart;
         public float CurrentAnimationProgress => CurrentTime / _currentAnimation.Duration;
+        public float ProgressAfterFirstActionFrame => (CurrentTime - _currentAnimation.TimeUpToAndIncludingFirstActionFrame) / _currentAnimation.TimeAfterFirstActionFrame;
         
         [SerializeField]
         private SpriteBody _body;

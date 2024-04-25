@@ -10,6 +10,9 @@ namespace Abstract
 
         public int FrameCount => _frames.Length;
         public float Duration => TimeBefore(FrameCount - 1) + _frames[^1].Duration;
+        public int IndexOfFirstActionFrame => Array.FindIndex(_frames, IsActionFrame);
+        public float TimeAfterFirstActionFrame => TimeAfter(IndexOfFirstActionFrame);
+        public float TimeUpToAndIncludingFirstActionFrame => TimeBefore(IndexOfFirstActionFrame + 1);
 
         [SerializeField]
         private SpriteAnimationFrame[] _frames;
@@ -33,6 +36,16 @@ namespace Abstract
             }
             return total;
         }
+        public float TimeAfter(int index)
+        {
+            index = MakeIndexValid(index);
+            float total = 0;
+            for (int i = index + 1; i < FrameCount; i++)
+            {
+                total += _frames[i].Duration;
+            }
+            return total;
+        }
         
         private int MakeIndexValid(int index)
         {
@@ -45,6 +58,10 @@ namespace Abstract
             {
                 return remainder;
             }
+        }
+        private bool IsActionFrame(SpriteAnimationFrame frame)
+        {
+            return frame.IsActionFrame;
         }
     }
 }

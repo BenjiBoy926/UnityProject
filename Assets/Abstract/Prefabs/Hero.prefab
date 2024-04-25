@@ -366,24 +366,6 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.2
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.58852565
-      value: 0.24527597
-      inSlope: -1.2263799
-      outSlope: -1.2263799
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
@@ -422,7 +404,6 @@ MonoBehaviour:
   _collider: {fileID: 4379201103701369815}
   _overlapAreaExtents: 0.1
   _overlapAreaMargin: 0.1
-  _isTouchingGround: 0
 --- !u!114 &7827341310666358948
 MonoBehaviour:
   m_ObjectHideFlags: 0

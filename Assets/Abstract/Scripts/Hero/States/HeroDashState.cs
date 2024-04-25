@@ -42,10 +42,11 @@ namespace Abstract
             {
                 return Vector2.zero;
             }
-            else
+            else if (Hero.IsCurrentFrameActionFrame)
             {
-                return Hero.MaxDashSpeed * Hero.EvaluateDashSpeedCurve(Hero.CurrentAnimationProgress) * _aim;
+                return Hero.MaxDashSpeed * _aim;
             }
+            return Hero.MaxDashSpeed * Hero.EvaluateDashSpeedCurve(Hero.ProgressAfterFirstActionFrame) * _aim;
         }
 
         private void SetDashAnimation()

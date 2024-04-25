@@ -1,5 +1,6 @@
 using Core;
 using System;
+using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,6 +17,7 @@ namespace Abstract
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
+        public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
         public bool IsAnimatingJump => _animator.IsAnimating(_jump);
         public bool IsCurrentFrameFirstFrame => _animator.IsCurrentFrameFirstFrame;
@@ -28,7 +30,7 @@ namespace Abstract
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
-        public bool IsTouchingGround => _contacts.IsTouchingGround;
+        public bool IsTouchingGround => _contacts.IsTouching(CardinalDirection.Down);
         public bool IsAimingDash => _inputs.IsAimingDash;
         public Vector2 DashAim => _inputs.DashAim;
         public float DashAimX => _inputs.DashAimX;
@@ -43,7 +45,7 @@ namespace Abstract
         [SerializeField]
         private SpriteAnimator _animator;
         [SerializeField]
-        private HeroContacts _contacts;
+        private CardinalContacts _contacts;
         [SerializeField]
         private HeroInputs _inputs;
 
