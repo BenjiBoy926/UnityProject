@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe7faae04f9769a46b00978efeb517f4, type: 3}
-  m_Name: Heroine_DashSidePrep
+  m_Name: Heroine_MidairDashAim
   m_EditorClassIdentifier: 
   _frames:
-  - _sprite: {fileID: 419560189, guid: 5a16e7408f29a7e4b873c1e6728b5a32, type: 3}
+  - _sprite: {fileID: 21300000, guid: df12084f90de0274589ac72f09d85fb3, type: 3}
     _duration: 0
     _isTransitionFrame: 1
     _isActionFrame: 0

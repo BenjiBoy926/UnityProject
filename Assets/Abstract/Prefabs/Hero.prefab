@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5685054135906551177}
   - component: {fileID: 4379201103701369815}
   m_Layer: 0
-  m_Name: HeroCollision
+  m_Name: HeroEnvironmentCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1634857613549958746}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,7 +75,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3}
+  m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
 --- !u!1 &5645607760272642507
 GameObject:
@@ -281,7 +281,7 @@ MonoBehaviour:
   _freeFallBack: {fileID: 11400000, guid: 7b284fbc9867e6d40959a2ca5974f1b3, type: 2}
   _freeFallStraight: {fileID: 11400000, guid: ff0ffae805aabb64d97523901721ac8d, type: 2}
   _squatAnimation: {fileID: 11400000, guid: 98f0aa6dab3fc364d811c637d266795d, type: 2}
-  _sideDashPrepAnimation: {fileID: 11400000, guid: 9897c165df13f5f44a393957c5f20a2d, type: 2}
+  _midairDashAimAnimation: {fileID: 11400000, guid: 9897c165df13f5f44a393957c5f20a2d, type: 2}
   _sideDashAnimation: {fileID: 11400000, guid: 82bd7418f7354f041af1a4bd3be4e02a, type: 2}
   _upDashAnimation: {fileID: 11400000, guid: 3568d7999259adf448818ad342bebc9c, type: 2}
   _baseRunSpeed: 10

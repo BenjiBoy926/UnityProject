@@ -68,7 +68,7 @@ namespace Abstract
         [SerializeField]
         private SpriteAnimation _squatAnimation;
         [SerializeField]
-        private SpriteAnimation _sideDashPrepAnimation;
+        private SpriteAnimation _midairDashAimAnimation;
         [SerializeField]
         private SpriteAnimation _sideDashAnimation;
         [SerializeField]
@@ -234,9 +234,9 @@ namespace Abstract
         {
             _animator.TransitionTo(_squatAnimation, transitionDurationScale);
         }
-        public void TransitionToSideDashPrepAnimation(float transitionDurationScale)
+        public void TransitionToMidairDashAimAnimation(float transitionDurationScale)
         {
-            _animator.TransitionTo(_sideDashPrepAnimation, transitionDurationScale);
+            _animator.TransitionTo(_midairDashAimAnimation, transitionDurationScale);
         }
         public void SetSideDashAnimation()
         {

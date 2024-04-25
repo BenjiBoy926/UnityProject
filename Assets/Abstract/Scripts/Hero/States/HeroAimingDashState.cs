@@ -55,7 +55,7 @@ namespace Abstract
             }
             else
             {
-                Hero.TransitionToSideDashPrepAnimation(0.5f);
+                Hero.TransitionToMidairDashAimAnimation(0.5f);
             }
         }
         private void SetSpriteRotation()
