@@ -7,12 +7,14 @@ namespace Abstract
         private Vector2 _aim;
         private bool _hasReachedActionFrame;
 
-        public HeroDashState(Hero hero) : base(hero) { }
+        public HeroDashState(Hero hero, Vector2 aim) : base(hero) 
+        {
+            _aim = aim;
+        }
 
         public override void Enter()
         {
             base.Enter();
-            _aim = Hero.DashAim;
             Hero.DashAnimationFinished += OnDashAnimationFinished;
             SetDashAnimation();
         }

@@ -5,6 +5,18 @@ namespace Abstract
 {
     public class HeroAimingDashState : HeroState
     {
+        private Vector2 Aim
+        {
+            get
+            {
+                if (Hero.IsTouchingGround && Hero.DashAimY < 0)
+                {
+                    return new Vector2(Hero.DashAimX, 0).normalized;
+                }
+                return Hero.DashAim;
+            }
+        }
+
         public HeroAimingDashState(Hero hero) : base(hero) { }
 
         public override void Enter()
@@ -25,7 +37,7 @@ namespace Abstract
             ShowDashAim();
             if (!Hero.IsAimingDash)
             {
-                Hero.SetState(new HeroDashState(Hero));
+                Hero.SetState(new HeroDashState(Hero, Aim));
             }
         }
 
@@ -59,7 +71,7 @@ namespace Abstract
         }
         private void SetSpriteMidairRotation()
         {
-            Vector2 aim = Hero.DashAim;
+            Vector2 aim = Aim;
             if (aim.x < 0)
             {
                 aim *= -1;
