@@ -1,6 +1,7 @@
 using Core;
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Abstract
@@ -35,12 +36,42 @@ namespace Abstract
         }
         private void DrawOverlapAreaGizmo(CardinalDirection direction)
         {
+            if (_contacts[(int)direction].IsTouching)
+            {
+                Gizmos.color = Color.red;
+            }
+            else
+            {
+                Gizmos.color = Color.yellow;
+            }
             Gizmos.DrawWireCube(GetAreaCenter(direction), GetAreaSize(direction));
         }
 
         public bool IsTouching(CardinalDirection direction)
         {
             return _contacts[(int)direction].IsTouching;
+        }
+        public int GetContactCount()
+        {
+            int count = 0;
+            for (int i = 0; i < _contacts.Length; i++)
+            {
+                if (_contacts[i].IsTouching)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public IEnumerable<Vector2> GetContactNormals()
+        {
+            for (int i = 0; i < _contacts.Length; i++)
+            {
+                if (_contacts[i].IsTouching)
+                {
+                    yield return _contacts[i].Normal;
+                }
+            }
         }
 
         private void Update()

@@ -27,6 +27,18 @@ namespace Abstract
         {
             Hero.SetState(new HeroFreeFallState(Hero));
         }
+        private void SetDashAnimation()
+        {
+            Hero.SetFacingDirection(_aim.x);
+            if (Mathf.Abs(_aim.x) > Mathf.Abs(_aim.y))
+            {
+                Hero.SetSideDashAnimation();
+            }
+            else
+            {
+                Hero.SetUpDashAnimation();
+            }
+        }
 
         public override void Update(float dt)
         {
@@ -37,6 +49,7 @@ namespace Abstract
             }
             Vector2 velocity = GetDashVelocity();
             Hero.SetVelocity(velocity);
+            CheckForRicochet();
         }
         private Vector2 GetDashVelocity()
         {
@@ -51,16 +64,45 @@ namespace Abstract
             return Hero.MaxDashSpeed * Hero.EvaluateDashSpeedCurve(Hero.ProgressAfterFirstActionFrame) * _aim;
         }
 
-        private void SetDashAnimation()
+        private void CheckForRicochet()
         {
-            if (Mathf.Abs(_aim.x) > Mathf.Abs(_aim.y))
+            if (!CanRicochet())
             {
-                Hero.SetSideDashAnimation();
+                return;
             }
-            else
+            if (GetRicochetNormal(out Vector2 normal))
             {
-                Hero.SetUpDashAnimation();
+                Ricochet(normal);
             }
+        }
+        private bool CanRicochet()
+        {
+            return _hasReachedActionFrame && Hero.GetContactCount() > 0;
+        }
+        private bool GetRicochetNormal(out Vector2 normal)
+        {
+            normal = Vector2.zero;
+            foreach (Vector2 contactNormal in Hero.GetContactNormals())
+            {
+                if (CanRicochetOffOfNormal(contactNormal))
+                {
+                    normal = contactNormal;
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool CanRicochetOffOfNormal(Vector2 normal)
+        {
+            return Vector2.Dot(_aim, normal) < -0.2f;
+        }
+        private void Ricochet(Vector2 normal)
+        {
+            Hero.SetState(new HeroDashState(Hero, GetRicochetAim(normal)));
+        }
+        private Vector2 GetRicochetAim(Vector2 normal)
+        {
+            return Vector2.Reflect(_aim, normal);
         }
     }
 }

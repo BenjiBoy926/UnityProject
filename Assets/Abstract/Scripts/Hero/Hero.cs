@@ -1,5 +1,6 @@
 using Core;
 using System;
+using System.Collections.Generic;
 using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -261,6 +262,15 @@ namespace Abstract
         public void SetFacingDirection(float direction)
         {
             _animator.SetFlipX(DirectionToFlipX(direction));
+        }
+
+        public int GetContactCount()
+        {
+            return _contacts.GetContactCount();
+        }
+        public IEnumerable<Vector2> GetContactNormals()
+        {
+            return _contacts.GetContactNormals();
         }
 
         private static bool DirectionToFlipX(float direction)
