@@ -10,24 +10,23 @@ namespace Abstract
         public readonly bool IsEmpty => _animation == null;
         public readonly SpriteAnimation Animation => _animation;
         public readonly float Scale => _scale;
-        public readonly bool FlipX => _flip.X;
 
         [SerializeField]
         private SpriteAnimation _animation;
         [SerializeField]
         private float _scale;
         [SerializeField]
-        private SpriteAnimationFlip _flip;
+        private bool _flipX;
     
-        public SpriteAnimationTransition(SpriteAnimation animation, float scale, SpriteAnimationFlip flip)
+        public SpriteAnimationTransition(SpriteAnimation animation, float scale, bool flipX)
         {
             _animation = animation;
             _scale = scale;
-            _flip = flip;
+            _flipX = flipX;
         }
         public readonly void ApplyFlip(SpriteBody body)
         {
-            _flip.Apply(body);
+            body.SetFlipX(_flipX);
         }
     }
 }

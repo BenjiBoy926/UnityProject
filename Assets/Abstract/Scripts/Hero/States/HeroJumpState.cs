@@ -14,7 +14,7 @@ namespace Abstract
         public override void Enter()
         {
             base.Enter();
-            Hero.TransitionToJumpAnimation(0.1f, Hero.CurrentFlip);
+            Hero.TransitionToJumpAnimation(0.1f, Hero.SpriteFlipX);
         }
 
         public override void Update(float dt)

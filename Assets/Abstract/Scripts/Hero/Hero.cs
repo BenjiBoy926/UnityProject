@@ -1,7 +1,6 @@
 using Core;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,7 +16,7 @@ namespace Abstract
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
-        public SpriteAnimationFlip CurrentFlip => new(_animator.FlipX, _animator.FlipY);
+        public bool SpriteFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
@@ -207,37 +206,37 @@ namespace Abstract
             _animator.transform.localRotation = _defaultSpriteRotation;
         }
 
-        public void TransitionToIdleAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToIdleAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_idle, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_idle, transitionDurationScale, flipX));
         }
-        public void TransitionToRunAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToRunAnimation(float transitionDurationScale, bool flipX)
         {   
-            _animator.SetTransition(new SpriteAnimationTransition(_run, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_run, transitionDurationScale, flipX));
         }
-        public void TransitionToJumpAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToJumpAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_jump, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_jump, transitionDurationScale, flipX));
         }
-        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, transitionDurationScale, flipX));
         }
-        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, transitionDurationScale, flipX));
         }
-        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, transitionDurationScale, flipX));
         }
-        public void TransitionToSquatAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToSquatAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_squatAnimation, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_squatAnimation, transitionDurationScale, flipX));
         }
-        public void TransitionToMidairDashAimAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
+        public void TransitionToMidairDashAimAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAimAnimation, transitionDurationScale, flip));
+            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAimAnimation, transitionDurationScale, flipX));
         }
         public void SetSideDashAnimation()
         {

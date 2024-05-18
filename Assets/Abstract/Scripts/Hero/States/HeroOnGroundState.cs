@@ -86,16 +86,16 @@ namespace Abstract
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToIdleAnimation(0.3f, Hero.CurrentFlip);
+                Hero.TransitionToIdleAnimation(0.3f, Hero.SpriteFlipX);
             }
             else
             {
-                Hero.TransitionToRunAnimation(0.3f, GetIntendedFlip());
+                Hero.TransitionToRunAnimation(0.3f, IntendedFlipX());
             }
         }
-        private SpriteAnimationFlip GetIntendedFlip()
+        private bool IntendedFlipX()
         {
-            return new SpriteAnimationFlip(Hero.DirectionToFlipX(Hero.HorizontalDirection), false);
+            return Hero.DirectionToFlipX(Hero.HorizontalDirection);
         }
     }
 }

@@ -51,23 +51,16 @@ namespace Abstract
         {
             if (Hero.IsTouchingGround)
             {
-                Hero.TransitionToSquatAnimation(0.5f, CurrentFlip());
+                Hero.TransitionToSquatAnimation(0.5f, IntendedFlipX());
             }
             else
             {
-                Hero.TransitionToMidairDashAimAnimation(0.5f, CurrentFlip());
+                Hero.TransitionToMidairDashAimAnimation(0.5f, IntendedFlipX());
             }
         }
-        private SpriteAnimationFlip CurrentFlip()
+        private bool IntendedFlipX()
         {
-            if (Hero.IsTouchingGround)
-            {
-                return new SpriteAnimationFlip(Aim.x < 0, false);
-            }
-            else
-            {
-                return new SpriteAnimationFlip(false, Aim.x < 0);
-            }
+            return Aim.x < 0;
         }
         private void SetSpriteRotation()
         {
@@ -82,7 +75,12 @@ namespace Abstract
         }
         private void SetSpriteMidairRotation()
         {
-            Hero.SetSpriteRight(Aim);
+            Vector2 aim = Aim;
+            if (aim.x < 0)
+            {
+                aim *= -1;
+            }
+            Hero.SetSpriteRight(aim);
         }
     }
 }

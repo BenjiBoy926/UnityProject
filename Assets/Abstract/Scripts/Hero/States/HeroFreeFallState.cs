@@ -41,15 +41,15 @@ namespace Abstract
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToFreeFallStraightAnimation(1, Hero.CurrentFlip);
+                Hero.TransitionToFreeFallStraightAnimation(1, Hero.SpriteFlipX);
             }
             else if (Hero.HorizontalDirection != Hero.FacingDirection)
             {
-                Hero.TransitionToFreeFallBackwardAnimation(1, Hero.CurrentFlip);
+                Hero.TransitionToFreeFallBackwardAnimation(1, Hero.SpriteFlipX);
             }
             else
             {
-                Hero.TransitionToFreeFallForwardAnimation(1, Hero.CurrentFlip);
+                Hero.TransitionToFreeFallForwardAnimation(1, Hero.SpriteFlipX);
             }
         }
     }
