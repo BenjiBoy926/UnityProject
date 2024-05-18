@@ -68,6 +68,10 @@ namespace Abstract
         private SpriteAnimation _squatAnimation;
         [SerializeField]
         private SpriteAnimation _midairDashAimAnimation;
+        [SerializeField]
+        private SpriteAnimation _dashSideSquatAnimation;
+        [SerializeField]
+        private SpriteAnimation _ceilingPerchAnimation;
         [SerializeField, FormerlySerializedAs("_sideDashAnimation")]
         private SpriteAnimation _dashAnimation;
 
@@ -243,6 +247,14 @@ namespace Abstract
         public void SetSquatAnimation()
         {
             _animator.SetAnimation(_squatAnimation);
+        }
+        public void SetCeilingPerchAnimation()
+        {
+            _animator.SetAnimation(_ceilingPerchAnimation);
+        }
+        public void SetDashSideSquatAnimation()
+        {
+            _animator.SetAnimation(_dashSideSquatAnimation);
         }
         public void SetBackflipAnimation()
         {
