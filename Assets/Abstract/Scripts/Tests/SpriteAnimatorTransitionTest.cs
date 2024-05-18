@@ -15,12 +15,12 @@ namespace Abstract
         [Button]
         private void TransitionToAnimation1()
         {
-            _animator.TransitionTo(_animation1, 1);
+            _animator.SetTransition(new SpriteAnimationTransition(_animation1, 1, new SpriteAnimationFlip()));
         }
         [Button]
         private void TransitionToAnimation2()
         {
-            _animator.TransitionTo(_animation2, 1);
+            _animator.SetTransition(new SpriteAnimationTransition(_animation2, 1, new SpriteAnimationFlip()));
         }
     }
 }

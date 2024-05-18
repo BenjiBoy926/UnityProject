@@ -17,6 +17,7 @@ namespace Abstract
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
+        public SpriteAnimationFlip CurrentFlip => new(_animator.FlipX, _animator.FlipY);
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
@@ -206,37 +207,37 @@ namespace Abstract
             _animator.transform.localRotation = _defaultSpriteRotation;
         }
 
-        public void TransitionToIdleAnimation(float transitionDurationScale)
+        public void TransitionToIdleAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_idle, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_idle, transitionDurationScale, flip));
         }
-        public void TransitionToRunAnimation(float transitionDurationScale)
+        public void TransitionToRunAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {   
-            _animator.TransitionTo(_run, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_run, transitionDurationScale, flip));
         }
-        public void TransitionToJumpAnimation(float transitionDurationScale)
+        public void TransitionToJumpAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_jump, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_jump, transitionDurationScale, flip));
         }
-        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale)
+        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_freeFallForward, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, transitionDurationScale, flip));
         }
-        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale)
+        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_freeFallBack, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, transitionDurationScale, flip));
         }
-        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale)
+        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_freeFallStraight, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, transitionDurationScale, flip));
         }
-        public void TransitionToSquatAnimation(float transitionDurationScale)
+        public void TransitionToSquatAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_squatAnimation, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_squatAnimation, transitionDurationScale, flip));
         }
-        public void TransitionToMidairDashAimAnimation(float transitionDurationScale)
+        public void TransitionToMidairDashAimAnimation(float transitionDurationScale, SpriteAnimationFlip flip)
         {
-            _animator.TransitionTo(_midairDashAimAnimation, transitionDurationScale);
+            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAimAnimation, transitionDurationScale, flip));
         }
         public void SetSideDashAnimation()
         {
@@ -255,10 +256,6 @@ namespace Abstract
         {
             _animator.SetAnimation(_backflip);
         }
-        public void TransitionToFaceDirection(float direction)
-        {
-            _animator.TransitionFlipX(DirectionToFlipX(direction));
-        }
         public void SetFacingDirection(float direction)
         {
             _animator.SetFlipX(DirectionToFlipX(direction));
@@ -273,11 +270,11 @@ namespace Abstract
             return _contacts.GetContactNormals();
         }
 
-        private static bool DirectionToFlipX(float direction)
+        public static bool DirectionToFlipX(float direction)
         {
             return direction < 0;
         }
-        private static int FlipXToDirection(bool flip)
+        public static int FlipXToDirection(bool flip)
         {
             return flip ? -1 : 1;
         }

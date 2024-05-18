@@ -6,6 +6,7 @@ namespace Abstract
     public class SpriteBody : MonoBehaviour
     {
         public bool FlipX => _renderer.flipX;
+        public bool FlipY => _renderer.flipY;  
 
         [SerializeField]
         private SpriteRenderer _renderer;
@@ -19,9 +20,14 @@ namespace Abstract
         {
             _renderer.sprite = frame.Sprite;
         }
-        public void SetFlipX(bool flipX)
+        public void SetFlip(bool x, bool y)
         {
-            _renderer.flipX = flipX;
+            _renderer.flipX = x;
+            _renderer.flipY = y;
+        }
+        public void SetFlipX(bool x)
+        {
+            _renderer.flipX = x;
         }
     }
 }

@@ -4,8 +4,8 @@ namespace Abstract
 {
     public class HeroOnGroundState : HeroState
     {
-        private FromToCurve _toRun;
-        private FromToCurve _toLeap;
+        private readonly FromToCurve _toRun;
+        private readonly FromToCurve _toLeap;
 
         public HeroOnGroundState(Hero hero) : base(hero) 
         {
@@ -80,26 +80,22 @@ namespace Abstract
         private void ReflectCurrentDirection()
         {
             TransitionAnimation();
-            TransitionFlipX();
         }
 
         private void TransitionAnimation()
         {
             if (Hero.HorizontalDirection == 0)
             {
-                Hero.TransitionToIdleAnimation(0.3f);
+                Hero.TransitionToIdleAnimation(0.3f, Hero.CurrentFlip);
             }
             else
             {
-                Hero.TransitionToRunAnimation(0.3f);
+                Hero.TransitionToRunAnimation(0.3f, GetIntendedFlip());
             }
         }
-        private void TransitionFlipX()
+        private SpriteAnimationFlip GetIntendedFlip()
         {
-            if (Hero.HorizontalDirection != 0)
-            {
-                Hero.TransitionToFaceDirection(Hero.HorizontalDirection);
-            }
+            return new SpriteAnimationFlip(Hero.DirectionToFlipX(Hero.HorizontalDirection), false);
         }
     }
 }

@@ -12,10 +12,11 @@ namespace Abstract
         public event Action ActionFrameEntered = delegate { };
 
         private bool IsCurrentFrameFinished => TimeSinceCurrentFrameStart >= CurrentFrameDuration;
-        private float CurrentFrameDuration => IsTransitioning() ? CurrentFrame.Duration * _transitionDurationScale : CurrentFrame.Duration;
+        private float CurrentFrameDuration => IsTransitioning() ? CurrentFrame.Duration * _activeTransition.Scale : CurrentFrame.Duration;
         private float TimeSinceCurrentFrameStart => Time.time - _currentFrameStartTime;
         public float CurrentFrameProgress => TimeSinceCurrentFrameStart / CurrentFrame.Duration;
         public bool FlipX => _body.FlipX;
+        public bool FlipY => _body.FlipY;
         private SpriteAnimationFrame CurrentFrame => _currentAnimation.GetFrame(_currentFrameIndex);
         private SpriteAnimationFrame PreviousFrame => _currentAnimation.GetFrame(_currentFrameIndex + 1);
         private SpriteAnimationFrame NextFrame => _currentAnimation.GetFrame(_currentFrameIndex - 1);
@@ -34,9 +35,7 @@ namespace Abstract
         [SerializeField]
         private int _currentFrameIndex;
         private float _currentFrameStartTime;
-        private SpriteAnimation _nextAnimation;
-        private float _transitionDurationScale = 1;
-        private bool _nextFlipX;
+        private SpriteAnimationTransition _activeTransition;
         private bool _isFirstFrame = true;
 
         private void Reset()
@@ -69,26 +68,21 @@ namespace Abstract
 
         private void SetNextAnimation()
         {
-            SetAnimation(_nextAnimation);
-            SetFlipX(_nextFlipX);
+            _activeTransition.ApplyFlip(_body);
+            SetAnimation(_activeTransition.Animation);
         }
         public void SetAnimation(SpriteAnimation animation)
         {
             _currentAnimation = animation;
             _currentFrameIndex = 0;
-            _nextAnimation = null;
+            _activeTransition = SpriteAnimationTransition.Empty;
             _isFirstFrame = true;
             UpdateSpriteBody();
             StartedAnimation();
         }
-        public void TransitionTo(SpriteAnimation animation, float transitionDurationScale)
+        public void SetTransition(SpriteAnimationTransition transition)
         {
-            _nextAnimation = animation;
-            _transitionDurationScale = transitionDurationScale;
-        }
-        public void TransitionFlipX(bool flipX)
-        {
-            _nextFlipX = flipX;
+            _activeTransition = transition;
         }
         public bool IsAnimating(SpriteAnimation animation)
         {
@@ -113,7 +107,7 @@ namespace Abstract
         }
         private bool IsTransitioning()
         {
-            return _nextAnimation != null;
+            return !_activeTransition.IsEmpty;
         }
 
         private void AdvanceOneFrame()
