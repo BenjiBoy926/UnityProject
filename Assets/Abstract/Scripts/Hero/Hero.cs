@@ -68,10 +68,8 @@ namespace Abstract
         private SpriteAnimation _squatAnimation;
         [SerializeField]
         private SpriteAnimation _midairDashAimAnimation;
-        [SerializeField]
-        private SpriteAnimation _sideDashAnimation;
-        [SerializeField]
-        private SpriteAnimation _upDashAnimation;
+        [SerializeField, FormerlySerializedAs("_sideDashAnimation")]
+        private SpriteAnimation _dashAnimation;
 
         [Header("Running")]
         [SerializeField]
@@ -127,7 +125,7 @@ namespace Abstract
         }
         private void OnAnimationFinished()
         {
-            if (_animator.IsAnimating(_upDashAnimation) || _animator.IsAnimating(_sideDashAnimation))
+            if (_animator.IsAnimating(_dashAnimation))
             {
                 DashAnimationFinished();
             }
@@ -239,11 +237,7 @@ namespace Abstract
         }
         public void SetSideDashAnimation()
         {
-            _animator.SetAnimation(_sideDashAnimation);
-        }
-        public void SetUpDashAnimation()
-        {
-            _animator.SetAnimation(_upDashAnimation);
+            _animator.SetAnimation(_dashAnimation);
         }
 
         public void SetSquatAnimation()
