@@ -26,7 +26,6 @@ namespace Abstract
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
-        public float CurrentAnimationProgress => _animator.CurrentAnimationProgress;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
@@ -255,7 +254,7 @@ namespace Abstract
         {
             _animator.SetAnimation(_backflip);
         }
-        public void SetFacingDirection(float direction)
+        public void FaceTowards(float direction)
         {
             _animator.SetFlipX(DirectionToFlipX(direction));
         }

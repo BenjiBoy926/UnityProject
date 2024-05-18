@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.3535534"
-     inkscape:cx="852.77076"
-     inkscape:cy="3901.8151"
+     inkscape:zoom="0.25000001"
+     inkscape:cx="1598"
+     inkscape:cy="4321.9999"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -69,7 +69,7 @@
        id="page3"
        margin="0"
        bleed="0"
-       inkscape:export-filename="..\Assets\Abstract\Sprites\Heroine_UpDash.png"
+       inkscape:export-filename="..\Assets\Abstract\Sprites\Heroine_SideDash.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <inkscape:page

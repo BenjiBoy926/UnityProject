@@ -8,6 +8,7 @@ namespace Abstract
         {
             base.Enter();
             Hero.HorizontalDirectionChanged += OnHeroHorizontalDirectionChanged;
+            Hero.ResetSpriteRotation();
             Hero.SetBackflipAnimation();
             TransitionFreeFallAnimation();
         }

@@ -37,7 +37,7 @@ namespace Abstract
             ShowDashAim();
             if (!Hero.IsAimingDash)
             {
-                Hero.SetState(new HeroDashState(Hero, Aim));
+                Hero.SetState(new HeroDashState(Hero, Aim, true));
             }
         }
 
@@ -45,7 +45,7 @@ namespace Abstract
         {
             TransitionToAnimation();
             SetSpriteRotation();
-            Hero.SetFacingDirection(Hero.DashAimX);
+            Hero.FaceTowards(Hero.DashAimX);
         }
         private void TransitionToAnimation()
         {
@@ -75,12 +75,12 @@ namespace Abstract
         }
         private void SetSpriteMidairRotation()
         {
-            Vector2 aim = Aim;
-            if (aim.x < 0)
+            Vector2 spriteRight = Aim;
+            if (spriteRight.x < 0)
             {
-                aim *= -1;
+                spriteRight *= -1;
             }
-            Hero.SetSpriteRight(aim);
+            Hero.SetSpriteRight(spriteRight);
         }
     }
 }

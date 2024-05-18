@@ -6,10 +6,12 @@ namespace Abstract
     {
         private Vector2 _aim;
         private bool _hasReachedActionFrame;
+        private bool _richochetEnabled;
 
-        public HeroDashState(Hero hero, Vector2 aim) : base(hero) 
+        public HeroDashState(Hero hero, Vector2 aim, bool ricochetEnabled) : base(hero) 
         {
             _aim = aim;
+            _richochetEnabled = ricochetEnabled;
         }
 
         public override void Enter()
@@ -29,15 +31,14 @@ namespace Abstract
         }
         private void SetDashAnimation()
         {
-            Hero.SetFacingDirection(_aim.x);
-            if (Mathf.Abs(_aim.x) > Mathf.Abs(_aim.y))
+            Hero.FaceTowards(_aim.x);
+            Hero.SetSideDashAnimation();
+            Vector2 spriteRight = _aim;
+            if (spriteRight.x < 0)
             {
-                Hero.SetSideDashAnimation();
+                spriteRight *= -1;
             }
-            else
-            {
-                Hero.SetUpDashAnimation();
-            }
+            Hero.SetSpriteRight(spriteRight);
         }
 
         public override void Update(float dt)
@@ -77,7 +78,7 @@ namespace Abstract
         }
         private bool CanRicochet()
         {
-            return _hasReachedActionFrame && Hero.GetContactCount() > 0;
+            return _richochetEnabled && _hasReachedActionFrame && Hero.GetContactCount() > 0;
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {
@@ -98,7 +99,7 @@ namespace Abstract
         }
         private void Ricochet(Vector2 normal)
         {
-            Hero.SetState(new HeroDashState(Hero, GetRicochetAim(normal)));
+            Hero.SetState(new HeroDashState(Hero, GetRicochetAim(normal), false));
         }
         private Vector2 GetRicochetAim(Vector2 normal)
         {
