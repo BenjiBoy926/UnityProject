@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.3535534"
-     inkscape:cx="934.79513"
-     inkscape:cy="4012.1237"
+     inkscape:cx="852.77076"
+     inkscape:cy="3901.8151"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -157,7 +157,10 @@
        y="1190.6249"
        width="132.29166"
        height="132.29169"
-       id="page7" />
+       id="page7"
+       inkscape:export-filename="..\Assets\Abstract\Sprites\Heroine_MidairDashAim.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -465,7 +468,7 @@
        sodipodi:nodetypes="ccsc" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
-       d="m 59.456196,996.99546 c -4.567621,-26.56268 -28.457892,-31.30021 -35.754351,-31.4873 -7.296456,-0.18708 9.374851,40.65464 21.909791,43.27394 12.534939,2.6192 13.84456,-11.78664 13.84456,-11.78664 z"
+       d="m 111.84369,996.99546 c -4.56762,-26.56268 -28.457889,-31.30021 -35.754348,-31.4873 -7.296456,-0.18708 9.374851,40.65464 21.909791,43.27394 12.534937,2.6192 13.844557,-11.78664 13.844557,-11.78664 z"
        id="path79"
        sodipodi:nodetypes="cssc" />
     <path
@@ -1092,18 +1095,18 @@
        id="path72" />
     <ellipse
        cy="1005.2662"
-       cx="64.266319"
+       cx="116.65382"
        id="ellipse2"
        style="display:inline;opacity:0.99;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.79375;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        rx="8.9769344"
        ry="8.9769201" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
-       d="m 0.71035734,981.25799 v 26.75371 c 0,0 31.05671766,14.78 33.30178166,6.7352 2.245063,-8.0449 -25.4440567,-8.6061 -33.30178166,-33.48891 z"
+       d="m 53.097854,981.25799 v 26.75371 c 0,0 31.056718,14.78 33.301782,6.7352 2.245063,-8.0449 -25.444057,-8.6061 -33.301782,-33.48891 z"
        id="path77" />
     <path
        style="fill:#ffffff;stroke:#000000;stroke-width:0.79375"
-       d="m 57.772398,1011.3793 c -3.050076,5.8791 -41.856957,8.8214 -50.2846787,-32.94415 74.1222767,2.81678 51.9770667,29.68205 50.2846787,32.94415 z"
+       d="m 110.15989,1011.3793 c -3.05007,5.8791 -41.856952,8.8214 -50.284674,-32.94415 74.122274,2.81678 51.977064,29.68205 50.284674,32.94415 z"
        id="path78"
        sodipodi:nodetypes="scs" />
     <ellipse
