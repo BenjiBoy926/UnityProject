@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="342.49999"
-     inkscape:cy="5726.4999"
+     inkscape:zoom="0.1767767"
+     inkscape:cx="625.08238"
+     inkscape:cy="2095.8644"
      inkscape:document-units="px"
      inkscape:current-layer="layer19"
      showgrid="true"
@@ -174,7 +174,10 @@
        y="1455.2082"
        width="132.29166"
        height="132.29166"
-       id="page192" />
+       id="page192"
+       inkscape:export-filename="..\Assets\Abstract\Sprites\Heroine_CeilingPerch.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
