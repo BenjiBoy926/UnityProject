@@ -30,7 +30,6 @@ namespace Abstract
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
         public bool IsJumping => _inputs.IsJumping;
-        public bool IsTouchingGround => _contacts.IsTouching(CardinalDirection.Down);
         public bool IsAimingDash => _inputs.IsAimingDash;
         public Vector2 DashAim => _inputs.DashAim;
         public float DashAimX => _inputs.DashAimX;
@@ -65,15 +64,15 @@ namespace Abstract
         [SerializeField]
         private SpriteAnimation _freeFallStraight;
         [SerializeField]
-        private SpriteAnimation _squatAnimation;
+        private SpriteAnimation _squat;
         [SerializeField]
-        private SpriteAnimation _midairDashAimAnimation;
+        private SpriteAnimation _midairDashAim;
         [SerializeField]
-        private SpriteAnimation _dashSideSquatAnimation;
+        private SpriteAnimation _wallPerch;
         [SerializeField]
-        private SpriteAnimation _ceilingPerchAnimation;
+        private SpriteAnimation _ceilingPerch;
         [SerializeField, FormerlySerializedAs("_sideDashAnimation")]
-        private SpriteAnimation _dashAnimation;
+        private SpriteAnimation _dash;
 
         [Header("Running")]
         [SerializeField]
@@ -129,7 +128,7 @@ namespace Abstract
         }
         private void OnAnimationFinished()
         {
-            if (_animator.IsAnimating(_dashAnimation))
+            if (_animator.IsAnimating(_dash))
             {
                 DashAnimationFinished();
             }
@@ -207,6 +206,11 @@ namespace Abstract
             _animator.transform.localRotation = _defaultSpriteRotation;
         }
 
+        public bool IsTouching(CardinalDirection direction)
+        {
+            return _contacts.IsTouching(direction);
+        }
+
         public void TransitionToIdleAnimation(float transitionDurationScale, bool flipX)
         {
             _animator.SetTransition(new SpriteAnimationTransition(_idle, transitionDurationScale, flipX));
@@ -233,28 +237,28 @@ namespace Abstract
         }
         public void TransitionToSquatAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_squatAnimation, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_squat, transitionDurationScale, flipX));
         }
         public void TransitionToMidairDashAimAnimation(float transitionDurationScale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAimAnimation, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAim, transitionDurationScale, flipX));
         }
         public void SetSideDashAnimation()
         {
-            _animator.SetAnimation(_dashAnimation);
+            _animator.SetAnimation(_dash);
         }
 
         public void SetSquatAnimation()
         {
-            _animator.SetAnimation(_squatAnimation);
+            _animator.SetAnimation(_squat);
         }
         public void SetCeilingPerchAnimation()
         {
-            _animator.SetAnimation(_ceilingPerchAnimation);
+            _animator.SetAnimation(_ceilingPerch);
         }
-        public void SetDashSideSquatAnimation()
+        public void SetWallPerchAnimation()
         {
-            _animator.SetAnimation(_dashSideSquatAnimation);
+            _animator.SetAnimation(_wallPerch);
         }
         public void SetBackflipAnimation()
         {

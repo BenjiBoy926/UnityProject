@@ -35,7 +35,7 @@ namespace Abstract
             base.Update(dt);
             float speed = CalculateHorizontalSpeed();
             Hero.SetHorizontalVelocity(speed);
-            if (!Hero.IsTouchingGround)
+            if (!Hero.IsTouching(CardinalDirection.Down))
             {
                 Hero.SetState(new HeroFreeFallState(Hero));
             }

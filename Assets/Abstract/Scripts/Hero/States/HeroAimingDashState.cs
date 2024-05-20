@@ -9,7 +9,7 @@ namespace Abstract
         {
             get
             {
-                if (Hero.IsTouchingGround && Hero.DashAimY < 0)
+                if (Hero.IsTouching(CardinalDirection.Down) && Hero.DashAimY < 0)
                 {
                     return new Vector2(Hero.DashAimX, 0).normalized;
                 }
@@ -49,7 +49,7 @@ namespace Abstract
         }
         private void TransitionToAnimation()
         {
-            if (Hero.IsTouchingGround)
+            if (Hero.IsTouching(CardinalDirection.Down))
             {
                 Hero.TransitionToSquatAnimation(0.5f, IntendedFlipX());
             }
@@ -60,11 +60,11 @@ namespace Abstract
         }
         private bool IntendedFlipX()
         {
-            return Aim.x < 0;
+            return Hero.DirectionToFlipX(Aim.x);
         }
         private void SetSpriteRotation()
         {
-            if (Hero.IsTouchingGround)
+            if (Hero.IsTouching(CardinalDirection.Down))
             {
                 Hero.ResetSpriteRotation();
             }
