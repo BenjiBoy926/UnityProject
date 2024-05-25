@@ -51,20 +51,32 @@ namespace Abstract
         {
             if (Hero.IsTouching(CardinalDirection.Down))
             {
-                Hero.TransitionToSquatAnimation(0.5f, IntendedFlipX());
+                Hero.TransitionToSquatAnimation(0.5f, FlipXTowardsAim());
+            }
+            else if (Hero.IsTouching(CardinalDirection.Up))
+            {
+                Hero.TransitionToCeilingPerchAnimation(0.5f, FlipXTowardsAim());
+            }
+            else if (Hero.IsTouching(CardinalDirection.Right))
+            {
+                Hero.TransitionToWallPerchAnimation(0.5f, Hero.DirectionToFlipX(-1));
+            }
+            else if (Hero.IsTouching(CardinalDirection.Left))
+            {
+                Hero.TransitionToWallPerchAnimation(0.5f, Hero.DirectionToFlipX(1));
             }
             else
             {
-                Hero.TransitionToMidairDashAimAnimation(0.5f, IntendedFlipX());
+                Hero.TransitionToMidairDashAimAnimation(0.5f, FlipXTowardsAim());
             }
         }
-        private bool IntendedFlipX()
+        private bool FlipXTowardsAim()
         {
             return Hero.DirectionToFlipX(Aim.x);
         }
         private void SetSpriteRotation()
         {
-            if (Hero.IsTouching(CardinalDirection.Down))
+            if (Hero.IsTouchingAnything())
             {
                 Hero.ResetSpriteRotation();
             }

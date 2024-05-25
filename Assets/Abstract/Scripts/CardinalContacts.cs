@@ -51,17 +51,16 @@ namespace Abstract
         {
             return _contacts[(int)direction].IsTouching;
         }
-        public int GetContactCount()
+        public bool IsTouchingAnything()
         {
-            int count = 0;
             for (int i = 0; i < _contacts.Length; i++)
             {
                 if (_contacts[i].IsTouching)
                 {
-                    count++;
+                    return true;
                 }
             }
-            return count;
+            return false;
         }
         public IEnumerable<Vector2> GetContactNormals()
         {

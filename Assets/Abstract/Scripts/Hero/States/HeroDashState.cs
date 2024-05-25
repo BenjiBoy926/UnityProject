@@ -78,7 +78,7 @@ namespace Abstract
         }
         private bool CanRicochet()
         {
-            return _richochetEnabled && _hasReachedActionFrame && Hero.GetContactCount() > 0;
+            return _richochetEnabled && _hasReachedActionFrame && Hero.IsTouchingAnything();
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {

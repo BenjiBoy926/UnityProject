@@ -210,6 +210,14 @@ namespace Abstract
         {
             return _contacts.IsTouching(direction);
         }
+        public bool IsTouchingAnything()
+        {
+            return _contacts.IsTouchingAnything();
+        }
+        public IEnumerable<Vector2> GetContactNormals()
+        {
+            return _contacts.GetContactNormals();
+        }
 
         public void TransitionToIdleAnimation(float transitionDurationScale, bool flipX)
         {
@@ -239,6 +247,14 @@ namespace Abstract
         {
             _animator.SetTransition(new SpriteAnimationTransition(_squat, transitionDurationScale, flipX));
         }
+        public void TransitionToCeilingPerchAnimation(float scale, bool flipX)
+        {
+            _animator.SetTransition(new SpriteAnimationTransition(_ceilingPerch, scale, flipX));
+        }
+        public void TransitionToWallPerchAnimation(float scale, bool flipX)
+        {
+            _animator.SetTransition(new SpriteAnimationTransition(_wallPerch, scale, flipX));
+        }
         public void TransitionToMidairDashAimAnimation(float transitionDurationScale, bool flipX)
         {
             _animator.SetTransition(new SpriteAnimationTransition(_midairDashAim, transitionDurationScale, flipX));
@@ -267,15 +283,6 @@ namespace Abstract
         public void FaceTowards(float direction)
         {
             _animator.SetFlipX(DirectionToFlipX(direction));
-        }
-
-        public int GetContactCount()
-        {
-            return _contacts.GetContactCount();
-        }
-        public IEnumerable<Vector2> GetContactNormals()
-        {
-            return _contacts.GetContactNormals();
         }
 
         public static bool DirectionToFlipX(float direction)
