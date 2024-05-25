@@ -1,7 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public class SpriteAnimationTransitionTest : MonoBehaviour
     {

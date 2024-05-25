@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Abstract
+namespace Leafling
 {
     [Serializable]
     public class SpriteAnimationFrame

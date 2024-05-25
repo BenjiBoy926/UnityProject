@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-namespace Abstract.Editor
+namespace Leafling.Editor
 {
     [CustomEditor(typeof(SpriteAnimation))]
     public class SpriteAnimationEditor : UnityEditor.Editor

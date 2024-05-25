@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
-    [CreateAssetMenu(menuName = nameof(Abstract) + "/" + nameof(SpriteAnimation))]
+    [CreateAssetMenu(menuName = nameof(Leafling) + "/" + nameof(SpriteAnimation))]
     public class SpriteAnimation : ScriptableObject
     {
         public const string FramesRelativePath = nameof(_frames);
@@ -29,18 +29,17 @@ namespace Abstract
         public float TimeBefore(int index)
         {
             index = MakeIndexValid(index);
-            float total = 0;
-            for (int i = 0; i < index; i++)
-            {
-                total += _frames[i].Duration;
-            }
-            return total;
+            return TimeInRange(0, index);
         }
         public float TimeAfter(int index)
         {
             index = MakeIndexValid(index);
+            return TimeInRange(index + 1, FrameCount);
+        }
+        private float TimeInRange(int start, int end)
+        {
             float total = 0;
-            for (int i = index + 1; i < FrameCount; i++)
+            for (int i = start + 1; i < end; i++)
             {
                 total += _frames[i].Duration;
             }

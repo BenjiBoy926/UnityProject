@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Abstract
+namespace Leafling
 {
     public class Leafling : MonoBehaviour
     {

@@ -1,22 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Abstract
+namespace Leafling
 {
     public class LeaflingAimingDashState : LeaflingState
     {
-        private Vector2 Aim
-        {
-            get
-            {
-                if (Leafling.IsTouching(CardinalDirection.Down) && Leafling.DashAimY < 0)
-                {
-                    return new Vector2(Leafling.DashAimX, 0).normalized;
-                }
-                return Leafling.DashAim;
-            }
-        }
-
         public LeaflingAimingDashState(Leafling leafling) : base(leafling) { }
 
         public override void Enter()
@@ -37,7 +25,7 @@ namespace Abstract
             ShowDashAim();
             if (!Leafling.IsAimingDash)
             {
-                Leafling.SetState(new LeaflingDashState(Leafling, Aim, true));
+                Leafling.SetState(new LeaflingDashState(Leafling, Leafling.DashAim, true));
             }
         }
 
@@ -71,7 +59,7 @@ namespace Abstract
         }
         private bool FlipXTowardsAim()
         {
-            return Leafling.DirectionToFlipX(Aim.x);
+            return Leafling.DirectionToFlipX(Leafling.DashAimX);
         }
         private void SetSpriteRotation()
         {
@@ -81,17 +69,8 @@ namespace Abstract
             }
             else
             {
-                SetSpriteMidairRotation();
+                LeaflingDashTools.SetRotation(Leafling, Leafling.DashAim);
             }
-        }
-        private void SetSpriteMidairRotation()
-        {
-            Vector2 spriteRight = Aim;
-            if (spriteRight.x < 0)
-            {
-                spriteRight *= -1;
-            }
-            Leafling.SetSpriteRight(spriteRight);
         }
     }
 }

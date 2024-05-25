@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public class SpriteAnimator : MonoBehaviour
     {

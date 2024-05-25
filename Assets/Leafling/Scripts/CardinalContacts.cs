@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public class CardinalContacts : MonoBehaviour
     {

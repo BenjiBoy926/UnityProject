@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public class LeaflingDashState : LeaflingState
     {
@@ -33,13 +33,7 @@ namespace Abstract
         {
             Leafling.FaceTowards(_aim.x);
             Leafling.SetSideDashAnimation();
-            // NOTE: this logic is duplicated in aiming dash state, need to collapse it somehow
-            Vector2 spriteRight = _aim;
-            if (spriteRight.x < 0)
-            {
-                spriteRight *= -1;
-            }
-            Leafling.SetSpriteRight(spriteRight);
+            LeaflingDashTools.SetRotation(Leafling, _aim);
         }
 
         public override void Update(float dt)

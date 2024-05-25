@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public class LeaflingOnGroundState : LeaflingState
     {

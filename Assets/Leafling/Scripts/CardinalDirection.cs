@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Abstract
+namespace Leafling
 {
     public enum CardinalDirection
     {
