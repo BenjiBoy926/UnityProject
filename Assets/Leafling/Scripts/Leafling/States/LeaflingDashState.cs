@@ -6,12 +6,12 @@ namespace Leafling
     {
         private Vector2 _aim;
         private bool _hasReachedActionFrame;
-        private bool _richochetEnabled;
+        private bool _dashOnRicochet;
 
-        public LeaflingDashState(Leafling leafling, Vector2 aim, bool ricochetEnabled) : base(leafling) 
+        public LeaflingDashState(Leafling leafling, Vector2 aim, bool dashOnRicochet) : base(leafling) 
         {
             _aim = aim;
-            _richochetEnabled = ricochetEnabled;
+            _dashOnRicochet = dashOnRicochet;
         }
 
         public override void Enter()
@@ -86,7 +86,7 @@ namespace Leafling
         {
             if (!_hasReachedActionFrame)
             {
-                return -_aim.normalized;
+                return Vector2.zero;
             }
             else if (Leafling.IsCurrentFrameActionFrame)
             {
@@ -108,7 +108,7 @@ namespace Leafling
         }
         private bool CanRicochet()
         {
-            return _richochetEnabled && _hasReachedActionFrame && Leafling.IsTouchingAnything();
+            return _hasReachedActionFrame && Leafling.IsTouchingAnything();
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {
@@ -125,11 +125,21 @@ namespace Leafling
         }
         private bool CanRicochetOffOfNormal(Vector2 normal)
         {
-            return Vector2.Dot(_aim, normal) < -0.2f;
+            return Vector2.Dot(_aim, normal) < -0.01f;
         }
         private void Ricochet(Vector2 normal)
         {
-            Leafling.SetState(new LeaflingDashState(Leafling, GetRicochetAim(normal), false));
+            Vector2 ricochetDirection = GetRicochetAim(normal);
+            if (_dashOnRicochet)
+            {
+                Leafling.SetState(new LeaflingDashState(Leafling, ricochetDirection, false));
+            }
+            else
+            {
+                Leafling.SetVelocity(ricochetDirection * Leafling.MaxDashSpeed);
+                Leafling.FaceTowards(ricochetDirection.x);
+                Leafling.SetState(new LeaflingFreeFallState(Leafling));
+            }
         }
         private Vector2 GetRicochetAim(Vector2 normal)
         {
