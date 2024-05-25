@@ -73,7 +73,7 @@ namespace Leafling
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             for (int i = 0; i < _contacts.Length; i++)
             {
