@@ -18,7 +18,7 @@ namespace Leafling
         {
             base.Enter();
             Leafling.DashAnimationFinished += OnDashAnimationFinished;
-            SetDashAnimation();
+            PrepareToDash();
         }
         public override void Exit()
         {
@@ -29,11 +29,46 @@ namespace Leafling
         {
             Leafling.SetState(new LeaflingFreeFallState(Leafling));
         }
-        private void SetDashAnimation()
+        private void PrepareToDash()
         {
-            Leafling.FaceTowards(_aim.x);
-            Leafling.SetSideDashAnimation();
-            LeaflingDashTools.SetRotation(Leafling, _aim);
+            SetSquatAnimation();
+            if (Leafling.IsTouchingAnything())
+            {
+                Leafling.ResetSpriteRotation();
+            }
+            else
+            {
+                LeaflingDashTools.SetRotation(Leafling, _aim);
+            }
+            Leafling.TransitionToDashAnimation(1, Leafling.DirectionToFlipX(_aim.x));
+        }
+        private void SetSquatAnimation()
+        {
+            if (Leafling.IsTouching(CardinalDirection.Down))
+            {
+                Leafling.SetSquatAnimation();
+                Leafling.FaceTowards(_aim.x);
+            }
+            else if (Leafling.IsTouching(CardinalDirection.Up))
+            {
+                Leafling.SetCeilingPerchAnimation();
+                Leafling.FaceTowards(_aim.x);
+            }
+            else if (Leafling.IsTouching(CardinalDirection.Right))
+            {
+                Leafling.SetWallPerchAnimation();
+                Leafling.FaceTowards(-1);
+            }
+            else if (Leafling.IsTouching(CardinalDirection.Left))
+            {
+                Leafling.SetWallPerchAnimation();
+                Leafling.FaceTowards(1);
+            }
+            else
+            {
+                Leafling.SetMidairDashAimAnimation();
+                Leafling.FaceTowards(_aim.x);
+            }
         }
 
         public override void Update(float dt)
@@ -51,7 +86,7 @@ namespace Leafling
         {
             if (!_hasReachedActionFrame)
             {
-                return Vector2.zero;
+                return -_aim.normalized;
             }
             else if (Leafling.IsCurrentFrameActionFrame)
             {

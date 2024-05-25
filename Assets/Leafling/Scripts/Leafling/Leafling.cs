@@ -219,33 +219,33 @@ namespace Leafling
             return _contacts.GetContactNormals();
         }
 
-        public void TransitionToIdleAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToIdleAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_idle, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_idle, scale, flipX));
         }
-        public void TransitionToRunAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToRunAnimation(float scale, bool flipX)
         {   
-            _animator.SetTransition(new SpriteAnimationTransition(_run, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_run, scale, flipX));
         }
-        public void TransitionToJumpAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToJumpAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_jump, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_jump, scale, flipX));
         }
-        public void TransitionToFreeFallForwardAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToFreeFallForwardAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, scale, flipX));
         }
-        public void TransitionToFreeFallBackwardAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToFreeFallBackwardAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, scale, flipX));
         }
-        public void TransitionToFreeFallStraightAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToFreeFallStraightAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, scale, flipX));
         }
-        public void TransitionToSquatAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToSquatAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_squat, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_squat, scale, flipX));
         }
         public void TransitionToCeilingPerchAnimation(float scale, bool flipX)
         {
@@ -255,13 +255,13 @@ namespace Leafling
         {
             _animator.SetTransition(new SpriteAnimationTransition(_wallPerch, scale, flipX));
         }
-        public void TransitionToMidairDashAimAnimation(float transitionDurationScale, bool flipX)
+        public void TransitionToMidairDashAimAnimation(float scale, bool flipX)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAim, transitionDurationScale, flipX));
+            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAim, scale, flipX));
         }
-        public void SetSideDashAnimation()
+        public void TransitionToDashAnimation(float scale, bool flipX)
         {
-            _animator.SetAnimation(_dash);
+            _animator.SetTransition(new SpriteAnimationTransition(_dash, scale, flipX));
         }
 
         public void SetSquatAnimation()
@@ -275,6 +275,10 @@ namespace Leafling
         public void SetWallPerchAnimation()
         {
             _animator.SetAnimation(_wallPerch);
+        }
+        public void SetMidairDashAimAnimation()
+        {
+            _animator.SetAnimation(_midairDashAim);
         }
         public void SetBackflipAnimation()
         {
