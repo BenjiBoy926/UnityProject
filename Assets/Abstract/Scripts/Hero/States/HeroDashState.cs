@@ -33,6 +33,7 @@ namespace Abstract
         {
             Hero.FaceTowards(_aim.x);
             Hero.SetSideDashAnimation();
+            // NOTE: this logic is duplicated in aiming dash state, need to collapse it somehow
             Vector2 spriteRight = _aim;
             if (spriteRight.x < 0)
             {

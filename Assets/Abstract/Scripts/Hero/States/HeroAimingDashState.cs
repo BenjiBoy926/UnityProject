@@ -45,7 +45,6 @@ namespace Abstract
         {
             TransitionToAnimation();
             SetSpriteRotation();
-            Hero.FaceTowards(Hero.DashAimX);
         }
         private void TransitionToAnimation()
         {
