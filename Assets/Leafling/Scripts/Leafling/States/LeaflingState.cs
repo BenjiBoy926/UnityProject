@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace Abstract
 {
-    public class HeroState
+    public class LeaflingState
     {
-        protected Hero Hero => _hero;
+        protected Leafling Leafling => _leafling;
         protected float TimeSinceStateStart => Time.time - _timeOfStateStart;
 
-        private Hero _hero;
+        private Leafling _leafling;
         private float _timeOfStateStart;
 
-        public HeroState(Hero hero)
+        public LeaflingState(Leafling leafling)
         {
-            _hero = hero;
+            _leafling = leafling;
         }
         public virtual void Enter()
         {

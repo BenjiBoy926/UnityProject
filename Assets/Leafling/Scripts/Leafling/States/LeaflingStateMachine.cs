@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Abstract
 {
-    public class HeroStateMachine : MonoBehaviour
+    public class LeaflingStateMachine : MonoBehaviour
     {
-        private HeroState _currentState;
+        private LeaflingState _currentState;
 
-        public void SetState(HeroState state)
+        public void SetState(LeaflingState state)
         {
             if (_currentState != null)
             {

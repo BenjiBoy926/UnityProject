@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Abstract
 {
-    public class Hero : MonoBehaviour
+    public class Leafling : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action DashAnimationFinished = delegate { };
@@ -38,7 +38,7 @@ namespace Abstract
 
         [Header("Parts")]
         [SerializeField]
-        private HeroStateMachine _stateMachine;
+        private LeaflingStateMachine _stateMachine;
         [SerializeField]
         private Rigidbody2D _physicsBody;
         [SerializeField]
@@ -46,7 +46,7 @@ namespace Abstract
         [SerializeField]
         private CardinalContacts _contacts;
         [SerializeField]
-        private HeroInputs _inputs;
+        private LeaflingInputs _inputs;
 
         [Header("Animations")]
         [SerializeField]
@@ -110,7 +110,7 @@ namespace Abstract
         {
             _defaultGravityScale = _physicsBody.gravityScale;
             _defaultSpriteRotation = _animator.transform.localRotation;
-            SetState(new HeroFreeFallState(this));
+            SetState(new LeaflingFreeFallState(this));
         }
         private void OnEnable()
         {
@@ -134,7 +134,7 @@ namespace Abstract
             }
         }
 
-        public void SetState(HeroState state)
+        public void SetState(LeaflingState state)
         {
             _stateMachine.SetState(state);
         }

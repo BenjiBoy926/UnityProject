@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace Abstract
 {
-    public class HeroDashState : HeroState
+    public class LeaflingDashState : LeaflingState
     {
         private Vector2 _aim;
         private bool _hasReachedActionFrame;
         private bool _richochetEnabled;
 
-        public HeroDashState(Hero hero, Vector2 aim, bool ricochetEnabled) : base(hero) 
+        public LeaflingDashState(Leafling leafling, Vector2 aim, bool ricochetEnabled) : base(leafling) 
         {
             _aim = aim;
             _richochetEnabled = ricochetEnabled;
@@ -17,40 +17,40 @@ namespace Abstract
         public override void Enter()
         {
             base.Enter();
-            Hero.DashAnimationFinished += OnDashAnimationFinished;
+            Leafling.DashAnimationFinished += OnDashAnimationFinished;
             SetDashAnimation();
         }
         public override void Exit()
         {
             base.Exit();
-            Hero.DashAnimationFinished -= OnDashAnimationFinished;
+            Leafling.DashAnimationFinished -= OnDashAnimationFinished;
         }
         private void OnDashAnimationFinished()
         {
-            Hero.SetState(new HeroFreeFallState(Hero));
+            Leafling.SetState(new LeaflingFreeFallState(Leafling));
         }
         private void SetDashAnimation()
         {
-            Hero.FaceTowards(_aim.x);
-            Hero.SetSideDashAnimation();
+            Leafling.FaceTowards(_aim.x);
+            Leafling.SetSideDashAnimation();
             // NOTE: this logic is duplicated in aiming dash state, need to collapse it somehow
             Vector2 spriteRight = _aim;
             if (spriteRight.x < 0)
             {
                 spriteRight *= -1;
             }
-            Hero.SetSpriteRight(spriteRight);
+            Leafling.SetSpriteRight(spriteRight);
         }
 
         public override void Update(float dt)
         {
             base.Update(dt);
-            if (Hero.IsCurrentFrameActionFrame)
+            if (Leafling.IsCurrentFrameActionFrame)
             {
                 _hasReachedActionFrame = true;
             }
             Vector2 velocity = GetDashVelocity();
-            Hero.SetVelocity(velocity);
+            Leafling.SetVelocity(velocity);
             CheckForRicochet();
         }
         private Vector2 GetDashVelocity()
@@ -59,11 +59,11 @@ namespace Abstract
             {
                 return Vector2.zero;
             }
-            else if (Hero.IsCurrentFrameActionFrame)
+            else if (Leafling.IsCurrentFrameActionFrame)
             {
-                return Hero.MaxDashSpeed * _aim;
+                return Leafling.MaxDashSpeed * _aim;
             }
-            return Hero.MaxDashSpeed * Hero.EvaluateDashSpeedCurve(Hero.ProgressAfterFirstActionFrame) * _aim;
+            return Leafling.MaxDashSpeed * Leafling.EvaluateDashSpeedCurve(Leafling.ProgressAfterFirstActionFrame) * _aim;
         }
 
         private void CheckForRicochet()
@@ -79,12 +79,12 @@ namespace Abstract
         }
         private bool CanRicochet()
         {
-            return _richochetEnabled && _hasReachedActionFrame && Hero.IsTouchingAnything();
+            return _richochetEnabled && _hasReachedActionFrame && Leafling.IsTouchingAnything();
         }
         private bool GetRicochetNormal(out Vector2 normal)
         {
             normal = Vector2.zero;
-            foreach (Vector2 contactNormal in Hero.GetContactNormals())
+            foreach (Vector2 contactNormal in Leafling.GetContactNormals())
             {
                 if (CanRicochetOffOfNormal(contactNormal))
                 {
@@ -100,7 +100,7 @@ namespace Abstract
         }
         private void Ricochet(Vector2 normal)
         {
-            Hero.SetState(new HeroDashState(Hero, GetRicochetAim(normal), false));
+            Leafling.SetState(new LeaflingDashState(Leafling, GetRicochetAim(normal), false));
         }
         private Vector2 GetRicochetAim(Vector2 normal)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5685054135906551177}
   - component: {fileID: 4379201103701369815}
   m_Layer: 0
-  m_Name: HeroEnvironmentCollision
+  m_Name: EnvironmentCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8908563907554770964}
   - component: {fileID: 7625393306548818467}
   m_Layer: 0
-  m_Name: HeroAnimation
+  m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 1035319642480623658}
   - component: {fileID: 7827341310666358948}
   m_Layer: 0
-  m_Name: Hero
+  m_Name: BaseLeafling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

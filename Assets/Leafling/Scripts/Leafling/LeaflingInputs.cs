@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Abstract
 {
-    public class HeroInputs : MonoBehaviour
+    public class LeaflingInputs : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action IsJumpingChanged = delegate { };

@@ -8,14 +8,14 @@ namespace Abstract
     public class Player : MonoBehaviour, DefaultActions.IDefaultMapActions
     {
         [SerializeField]
-        private Hero _hero;
+        private Leafling _leafling;
         [SerializeField]
         private Camera _mouseConversionCamera;
         private DefaultActions _actions;
 
         private void Reset()
         {
-            _hero = GetComponent<Hero>();
+            _leafling = GetComponent<Leafling>();
         }
         private void Awake()
         {
@@ -44,21 +44,21 @@ namespace Abstract
             {
                 direction = 1;
             }
-            _hero.SetHorizontalDirection(direction);
+            _leafling.SetHorizontalDirection(direction);
         }
         public void OnJump(InputAction.CallbackContext context)
         {
-            _hero.SetIsJumping(context.ReadValueAsButton());
+            _leafling.SetIsJumping(context.ReadValueAsButton());
         }
         public void OnDashTarget(InputAction.CallbackContext context)
         {
             Vector2 screenPoint = context.ReadValue<Vector2>();
             Vector2 worldPoint = GetWorldPointFromScreenPoint(screenPoint);
-            _hero.SetDashTarget(worldPoint);
+            _leafling.SetDashTarget(worldPoint);
         }
         public void OnDash(InputAction.CallbackContext context)
         {
-            _hero.SetIsAimingDash(context.ReadValueAsButton());
+            _leafling.SetIsAimingDash(context.ReadValueAsButton());
         }
 
         private Vector2 GetWorldPointFromScreenPoint(Vector2 screenPoint)

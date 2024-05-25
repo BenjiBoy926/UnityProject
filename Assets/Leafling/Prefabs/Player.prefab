@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e4633e89e271445a2c4ae46bb03737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hero: {fileID: 7044672627482123782}
+  _leafling: {fileID: 7044672627482123782}
   _mouseConversionCamera: {fileID: 0}
