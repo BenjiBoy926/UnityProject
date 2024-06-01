@@ -5,34 +5,51 @@ namespace Leafling
 {
     public class LeaflingAimingDashState : LeaflingState
     {
-        public LeaflingAimingDashState(Leafling leafling) : base(leafling) { }
+        private Vector2 _aim;
+
+        public LeaflingAimingDashState(Leafling leafling) : base(leafling) 
+        { 
+            _aim = leafling.DashAim;
+        }
 
         public override void Enter()
         {
             base.Enter();
             Leafling.SetVerticalVelocity(0);
-            Leafling.SetAimingDashGravityScale();
         }
         public override void Exit()
         {
             base.Exit();
-            Leafling.ResetGravityScale();
             Leafling.ResetSpriteRotation();
         }
         public override void Update(float dt)
         {
             base.Update(dt);
-            ShowDashAim();
+            _aim = CalculateDashAim();
+            TransitionToAnimation();
+            SetSpriteRotation();
             if (!Leafling.IsAimingDash)
             {
-                Leafling.SetState(new LeaflingDashState(Leafling, Leafling.DashAim, true));
+                Leafling.SetState(new LeaflingDashState(Leafling, _aim, true));
             }
         }
 
-        private void ShowDashAim()
+        private Vector2 CalculateDashAim()
         {
-            TransitionToAnimation();
-            SetSpriteRotation();
+            Vector2 aim = Leafling.DashAim;
+            foreach (Vector2 normal in Leafling.GetContactNormals())
+            {
+                aim = ClampAbovePlane(aim, normal);
+            }
+            return aim;
+        }
+        private Vector2 ClampAbovePlane(Vector2 vector, Vector2 normal)
+        {
+            if (Vector2.Dot(vector, normal) < 0)
+            {
+                return Vector3.ProjectOnPlane(vector, normal).normalized;
+            }
+            return vector;
         }
         private void TransitionToAnimation()
         {
@@ -69,7 +86,7 @@ namespace Leafling
             }
             else
             {
-                LeaflingDashTools.SetRotation(Leafling, Leafling.DashAim);
+                LeaflingDashTools.SetRotation(Leafling, _aim);
             }
         }
     }

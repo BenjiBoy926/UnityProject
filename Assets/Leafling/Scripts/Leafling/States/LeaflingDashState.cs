@@ -77,6 +77,7 @@ namespace Leafling
             if (Leafling.IsCurrentFrameActionFrame)
             {
                 _hasReachedActionFrame = true;
+                LeaflingDashTools.SetRotation(Leafling, _aim);
             }
             Vector2 velocity = GetDashVelocity();
             Leafling.SetVelocity(velocity);

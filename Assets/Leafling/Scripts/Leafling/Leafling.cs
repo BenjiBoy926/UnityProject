@@ -9,6 +9,7 @@ namespace Leafling
     public class Leafling : MonoBehaviour
     {
         public event Action HorizontalDirectionChanged = delegate { };
+        public event Action DashAnimationStarted = delegate { };
         public event Action DashAnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
@@ -115,16 +116,25 @@ namespace Leafling
         private void OnEnable()
         {
             _inputs.HorizontalDirectionChanged += OnHorizontalDirectionChanged;
+            _animator.StartedAnimation += OnAnimationStarted;
             _animator.FinishedAnimation += OnAnimationFinished;
         }
         private void OnDisable()
         {
             _inputs.HorizontalDirectionChanged -= OnHorizontalDirectionChanged;
+            _animator.StartedAnimation -= OnAnimationStarted;
             _animator.FinishedAnimation -= OnAnimationFinished;
         }
         private void OnHorizontalDirectionChanged()
         {
             HorizontalDirectionChanged();
+        }
+        private void OnAnimationStarted()
+        {
+            if (_animator.IsAnimating(_dash))
+            {
+                DashAnimationStarted();
+            }
         }
         private void OnAnimationFinished()
         {
