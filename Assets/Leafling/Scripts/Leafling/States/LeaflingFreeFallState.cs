@@ -36,21 +36,25 @@ namespace Leafling
             {
                 Leafling.SetState(new LeaflingAimingDashState(Leafling));
             }
+            if (Leafling.IsJumping)
+            {
+                Leafling.SetState(new LeaflingFlutterState(Leafling));
+            }
         }
 
         private void TransitionFreeFallAnimation()
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.TransitionToFreeFallStraightAnimation(1, Leafling.SpriteFlipX);
+                Leafling.TransitionToFreeFallStraightAnimation(1, Leafling.CurrentFlipX);
             }
             else if (Leafling.HorizontalDirection != Leafling.FacingDirection)
             {
-                Leafling.TransitionToFreeFallBackwardAnimation(1, Leafling.SpriteFlipX);
+                Leafling.TransitionToFreeFallBackwardAnimation(1, Leafling.CurrentFlipX);
             }
             else
             {
-                Leafling.TransitionToFreeFallForwardAnimation(1, Leafling.SpriteFlipX);
+                Leafling.TransitionToFreeFallForwardAnimation(1, Leafling.CurrentFlipX);
             }
         }
     }

@@ -86,7 +86,7 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.TransitionToIdleAnimation(0.3f, Leafling.SpriteFlipX);
+                Leafling.TransitionToIdleAnimation(0.3f, Leafling.CurrentFlipX);
             }
             else
             {

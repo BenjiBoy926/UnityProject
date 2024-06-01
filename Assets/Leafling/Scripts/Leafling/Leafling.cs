@@ -1,4 +1,5 @@
 using Core;
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +12,15 @@ namespace Leafling
         public event Action HorizontalDirectionChanged = delegate { };
         public event Action DashAnimationStarted = delegate { };
         public event Action DashAnimationFinished = delegate { };
+        public event Action AnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
         public float BaseRunSpeed => _baseRunSpeed;
         public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
         public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
+
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
-        public bool SpriteFlipX => _animator.FlipX;
+        public bool CurrentFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
         public float ProgressAfterFirstActionFrame => _animator.ProgressAfterFirstActionFrame;
         public bool IsAnimatingIdle => _animator.IsAnimating(_idle);
@@ -27,6 +30,8 @@ namespace Leafling
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
+        public SpriteAnimation Flutter => _flutter;
+
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
@@ -65,6 +70,8 @@ namespace Leafling
         [SerializeField]
         private SpriteAnimation _freeFallStraight;
         [SerializeField]
+        private SpriteAnimation _flutter;
+        [SerializeField]
         private SpriteAnimation _squat;
         [SerializeField]
         private SpriteAnimation _midairDashAim;
@@ -96,6 +103,8 @@ namespace Leafling
         private DirectionalAirControl _jumpAirControl;
         [SerializeField]
         private DirectionalAirControl _freeFallAirControl;
+        [SerializeField]
+        private DirectionalAirControl _flutterAirControl;
 
         [Header("Dashing")]
         [SerializeField]
@@ -142,6 +151,7 @@ namespace Leafling
             {
                 DashAnimationFinished();
             }
+            AnimationFinished();
         }
 
         public void SetState(LeaflingState state)
@@ -195,6 +205,10 @@ namespace Leafling
         {
             _freeFallAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
         }
+        public void ApplyFlutterAirControl()
+        {
+            _flutterAirControl.ApplyTo(_physicsBody, HorizontalDirection, FacingDirection);
+        }
         public void SetAimingDashGravityScale()
         {
             _physicsBody.gravityScale = _aimingDashGravityScale;
@@ -229,6 +243,10 @@ namespace Leafling
             return _contacts.GetContactNormals();
         }
 
+        public void SetTransition(SpriteAnimationTransition transition)
+        {
+            _animator.SetTransition(transition);
+        }
         public void TransitionToIdleAnimation(float scale, bool flipX)
         {
             _animator.SetTransition(new SpriteAnimationTransition(_idle, scale, flipX));
@@ -297,6 +315,11 @@ namespace Leafling
         public void FaceTowards(float direction)
         {
             _animator.SetFlipX(DirectionToFlipX(direction));
+        }
+
+        public bool IsAnimating(SpriteAnimation animation)
+        {
+            return _animator.IsAnimating(animation);
         }
 
         public static bool DirectionToFlipX(float direction)
