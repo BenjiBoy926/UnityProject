@@ -27,7 +27,7 @@ namespace Leafling
         }
         private void OnDashAnimationFinished()
         {
-            Leafling.SetState(new LeaflingFreeFallState(Leafling));
+            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
         }
         private void PrepareToDash()
         {
@@ -139,7 +139,7 @@ namespace Leafling
             {
                 Leafling.SetVelocity(ricochetDirection * Leafling.MaxDashSpeed);
                 Leafling.FaceTowards(ricochetDirection.x);
-                Leafling.SetState(new LeaflingFreeFallState(Leafling));
+                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)

@@ -120,7 +120,7 @@ namespace Leafling
         {
             _defaultGravityScale = _physicsBody.gravityScale;
             _defaultSpriteRotation = _animator.transform.localRotation;
-            SetState(new LeaflingFreeFallState(this));
+            SetState(new LeaflingFreeFallState(this, FreeFallEntry.Normal));
         }
         private void OnEnable()
         {

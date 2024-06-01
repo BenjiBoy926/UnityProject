@@ -2,14 +2,22 @@ namespace Leafling
 {
     public class LeaflingFreeFallState : LeaflingState
     {
-        public LeaflingFreeFallState(Leafling leafling) : base(leafling) { }
+        private FreeFallEntry _entry;
+
+        public LeaflingFreeFallState(Leafling leafling, FreeFallEntry entry) : base(leafling)
+        {
+            _entry = entry;
+        }
 
         public override void Enter()
         {
             base.Enter();
             Leafling.HorizontalDirectionChanged += OnLeaflingHorizontalDirectionChanged;
             Leafling.ResetSpriteRotation();
-            Leafling.SetBackflipAnimation();
+            if (_entry == FreeFallEntry.Backflip)
+            {
+                Leafling.SetBackflipAnimation();
+            }
             TransitionFreeFallAnimation();
         }
         public override void Exit()

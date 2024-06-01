@@ -37,7 +37,7 @@ namespace Leafling
             Leafling.SetHorizontalVelocity(speed);
             if (!Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling));
+                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
             if (Leafling.IsJumping)
             {

@@ -21,7 +21,7 @@ namespace Leafling
         {
             if (Leafling.IsAnimating(Leafling.Flutter))
             {
-                Leafling.SetState(new LeaflingFreeFallState(Leafling));
+                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
             }
         }
 
