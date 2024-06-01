@@ -16,9 +16,13 @@ namespace Leafling
             Leafling.ResetSpriteRotation();
             if (_entry == FreeFallEntry.Backflip)
             {
-                Leafling.SetBackflipAnimation();
+                Leafling.SetAnimation(Leafling.Backflip);
+                TransitionFreeFallAnimation();
             }
-            TransitionFreeFallAnimation();
+            else
+            {
+                Leafling.SetAnimation(Leafling.FreeFallStraight);
+            }
         }
         public override void Exit()
         {
@@ -37,7 +41,7 @@ namespace Leafling
             Leafling.ApplyFreeFallAirControl();
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetSquatAnimation();
+                Leafling.SetAnimation(Leafling.Squat);
                 Leafling.SetState(new LeaflingOnGroundState(Leafling));
             }
             if (Leafling.IsAimingDash)
@@ -54,15 +58,15 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.TransitionToFreeFallStraightAnimation(1, Leafling.CurrentFlipX);
+                Leafling.SetTransition(new(Leafling.FreeFallStraight, 1, Leafling.CurrentFlipX));
             }
             else if (Leafling.HorizontalDirection != Leafling.FacingDirection)
             {
-                Leafling.TransitionToFreeFallBackwardAnimation(1, Leafling.CurrentFlipX);
+                Leafling.SetTransition(new(Leafling.FreeFallBack, 1, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.TransitionToFreeFallForwardAnimation(1, Leafling.CurrentFlipX);
+                Leafling.SetTransition(new(Leafling.FreeFallForward, 1, Leafling.CurrentFlipX));
             }
         }
     }

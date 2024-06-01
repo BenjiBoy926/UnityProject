@@ -355,11 +355,11 @@ MonoBehaviour:
       _topSpeed: 10
   _flutterAirControl:
     _forwards:
-      _acceleration: 30
-      _topSpeed: 30
-    _backwards:
       _acceleration: 20
       _topSpeed: 20
+    _backwards:
+      _acceleration: 15
+      _topSpeed: 15
   _aimingDashGravityScale: 0.1
   _maxDashSpeed: 30
   _dashSpeedCurve:

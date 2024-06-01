@@ -55,23 +55,23 @@ namespace Leafling
         {
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.TransitionToSquatAnimation(0.5f, FlipXTowardsAim());
+                Leafling.SetTransition(new(Leafling.Squat, 0.5f, FlipXTowardsAim()));
             }
             else if (Leafling.IsTouching(CardinalDirection.Up))
             {
-                Leafling.TransitionToCeilingPerchAnimation(0.5f, FlipXTowardsAim());
+                Leafling.SetTransition(new(Leafling.CeilingPerch, 0.5f, FlipXTowardsAim()));
             }
             else if (Leafling.IsTouching(CardinalDirection.Right))
             {
-                Leafling.TransitionToWallPerchAnimation(0.5f, Leafling.DirectionToFlipX(-1));
+                Leafling.SetTransition(new(Leafling.WallPerch, 0.5f, Leafling.DirectionToFlipX(-1)));
             }
             else if (Leafling.IsTouching(CardinalDirection.Left))
             {
-                Leafling.TransitionToWallPerchAnimation(0.5f, Leafling.DirectionToFlipX(1));
+                Leafling.SetTransition(new(Leafling.WallPerch, 0.5f, Leafling.DirectionToFlipX(1)));
             }
             else
             {
-                Leafling.TransitionToMidairDashAimAnimation(0.5f, FlipXTowardsAim());
+                Leafling.SetTransition(new(Leafling.MidairDashAim, 0.5f, FlipXTowardsAim()));
             }
         }
         private bool FlipXTowardsAim()

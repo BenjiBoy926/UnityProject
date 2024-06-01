@@ -15,10 +15,6 @@ namespace Leafling
         public event Action AnimationFinished = delegate { };
 
         public int HorizontalDirection => _inputs.HorizontalDirection;
-        public float BaseRunSpeed => _baseRunSpeed;
-        public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
-        public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
-
         public int FacingDirection => FlipXToDirection(_animator.FlipX);
         public bool CurrentFlipX => _animator.FlipX;
         public float CurrentFrameProgress => _animator.CurrentFrameProgress;
@@ -30,8 +26,24 @@ namespace Leafling
         public bool IsNextFrameActionFrame => _animator.IsNextFrameActionFrame;
         public bool IsPreviousFrameActionFrame => _animator.IsPreviousFrameActionFrame;
         public bool IsCurrentFrameActionFrame => _animator.IsCurrentFrameActionFrame;
-        public SpriteAnimation Flutter => _flutter;
 
+        public SpriteAnimation Idle => _idle;
+        public SpriteAnimation Run => _run;
+        public SpriteAnimation Jump => _jump;
+        public SpriteAnimation Backflip => _backflip;
+        public SpriteAnimation FreeFallForward => _freeFallForward;
+        public SpriteAnimation FreeFallBack => _freeFallBack;
+        public SpriteAnimation FreeFallStraight => _freeFallStraight; 
+        public SpriteAnimation Flutter => _flutter;
+        public SpriteAnimation Squat => _squat;
+        public SpriteAnimation MidairDashAim => _midairDashAim;
+        public SpriteAnimation WallPerch => _wallPerch;
+        public SpriteAnimation CeilingPerch => _ceilingPerch;
+        public SpriteAnimation Dash => _dash;
+
+        public float BaseRunSpeed => _baseRunSpeed;
+        public float LeapMaxSpeed => _baseRunSpeed + _leapAdditionalSpeed;
+        public AnimationCurve RunAccelerationCurve => _runAccelerationCurve;
         public float MaxJumpSpeed => _maxJumpSpeed;
         public float MinJumpTime => _minJumpTime;
         public float MaxJumpTime => _maxJumpTime;
@@ -247,70 +259,9 @@ namespace Leafling
         {
             _animator.SetTransition(transition);
         }
-        public void TransitionToIdleAnimation(float scale, bool flipX)
+        public void SetAnimation(SpriteAnimation animation)
         {
-            _animator.SetTransition(new SpriteAnimationTransition(_idle, scale, flipX));
-        }
-        public void TransitionToRunAnimation(float scale, bool flipX)
-        {   
-            _animator.SetTransition(new SpriteAnimationTransition(_run, scale, flipX));
-        }
-        public void TransitionToJumpAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_jump, scale, flipX));
-        }
-        public void TransitionToFreeFallForwardAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallForward, scale, flipX));
-        }
-        public void TransitionToFreeFallBackwardAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallBack, scale, flipX));
-        }
-        public void TransitionToFreeFallStraightAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_freeFallStraight, scale, flipX));
-        }
-        public void TransitionToSquatAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_squat, scale, flipX));
-        }
-        public void TransitionToCeilingPerchAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_ceilingPerch, scale, flipX));
-        }
-        public void TransitionToWallPerchAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_wallPerch, scale, flipX));
-        }
-        public void TransitionToMidairDashAimAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_midairDashAim, scale, flipX));
-        }
-        public void TransitionToDashAnimation(float scale, bool flipX)
-        {
-            _animator.SetTransition(new SpriteAnimationTransition(_dash, scale, flipX));
-        }
-
-        public void SetSquatAnimation()
-        {
-            _animator.SetAnimation(_squat);
-        }
-        public void SetCeilingPerchAnimation()
-        {
-            _animator.SetAnimation(_ceilingPerch);
-        }
-        public void SetWallPerchAnimation()
-        {
-            _animator.SetAnimation(_wallPerch);
-        }
-        public void SetMidairDashAimAnimation()
-        {
-            _animator.SetAnimation(_midairDashAim);
-        }
-        public void SetBackflipAnimation()
-        {
-            _animator.SetAnimation(_backflip);
+            _animator.SetAnimation(animation);
         }
         public void FaceTowards(float direction)
         {

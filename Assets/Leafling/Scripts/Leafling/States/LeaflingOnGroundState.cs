@@ -86,11 +86,11 @@ namespace Leafling
         {
             if (Leafling.HorizontalDirection == 0)
             {
-                Leafling.TransitionToIdleAnimation(0.3f, Leafling.CurrentFlipX);
+                Leafling.SetTransition(new(Leafling.Idle, 0.3f, Leafling.CurrentFlipX));
             }
             else
             {
-                Leafling.TransitionToRunAnimation(0.3f, IntendedFlipX());
+                Leafling.SetTransition(new(Leafling.Run, 0.3f, IntendedFlipX()));
             }
         }
         private bool IntendedFlipX()

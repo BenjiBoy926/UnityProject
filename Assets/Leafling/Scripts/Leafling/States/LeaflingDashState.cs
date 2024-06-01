@@ -27,7 +27,7 @@ namespace Leafling
         }
         private void OnDashAnimationFinished()
         {
-            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
+            Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
         }
         private void PrepareToDash()
         {
@@ -40,33 +40,33 @@ namespace Leafling
             {
                 LeaflingDashTools.SetRotation(Leafling, _aim);
             }
-            Leafling.TransitionToDashAnimation(1, Leafling.DirectionToFlipX(_aim.x));
+            Leafling.SetTransition(new(Leafling.Dash, 1, Leafling.DirectionToFlipX(_aim.x)));
         }
         private void SetSquatAnimation()
         {
             if (Leafling.IsTouching(CardinalDirection.Down))
             {
-                Leafling.SetSquatAnimation();
+                Leafling.SetAnimation(Leafling.Squat);
                 Leafling.FaceTowards(_aim.x);
             }
             else if (Leafling.IsTouching(CardinalDirection.Up))
             {
-                Leafling.SetCeilingPerchAnimation();
+                Leafling.SetAnimation(Leafling.CeilingPerch);
                 Leafling.FaceTowards(_aim.x);
             }
             else if (Leafling.IsTouching(CardinalDirection.Right))
             {
-                Leafling.SetWallPerchAnimation();
+                Leafling.SetAnimation(Leafling.WallPerch);
                 Leafling.FaceTowards(-1);
             }
             else if (Leafling.IsTouching(CardinalDirection.Left))
             {
-                Leafling.SetWallPerchAnimation();
+                Leafling.SetAnimation(Leafling.WallPerch);
                 Leafling.FaceTowards(1);
             }
             else
             {
-                Leafling.SetMidairDashAimAnimation();
+                Leafling.SetAnimation(Leafling.MidairDashAim);
                 Leafling.FaceTowards(_aim.x);
             }
         }
@@ -139,7 +139,7 @@ namespace Leafling
             {
                 Leafling.SetVelocity(ricochetDirection * Leafling.MaxDashSpeed);
                 Leafling.FaceTowards(ricochetDirection.x);
-                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Normal));
+                Leafling.SetState(new LeaflingFreeFallState(Leafling, FreeFallEntry.Backflip));
             }
         }
         private Vector2 GetRicochetAim(Vector2 normal)
